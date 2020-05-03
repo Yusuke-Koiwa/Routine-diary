@@ -24,6 +24,7 @@
     }
     .day {
       height: 100px;
+      padding: 0 2px;
       position: relative;
       :hover {
         border: none;
@@ -35,6 +36,10 @@
       .new_task_link {
         height: 80px;
         width: 100%;
+      }
+      .holiday_name {
+        float: right;
+        color: lightcoral;
       }
       .task_body {
         position: absolute;
@@ -65,13 +70,17 @@
     }
   }
 
-  .wday-0 {}
+  .wday-0 {
+    background-color: rgba(255,0,0,0.1);
+  }
   .wday-1 {}
   .wday-2 {}
   .wday-3 {}
   .wday-4 {}
   .wday-5 {}
-  .wday-6 {}
+  .wday-6 {
+    background-color: rgba(0,0,255,0.1);
+  }
 
   .today {}
   .past {
@@ -82,12 +91,12 @@
   .start-date {}
 
   .prev-month {
-    background-color: #ffffff;
-    opacity: 0.3;
+    background-color: lightgray;
+    opacity: 0.4;
   }
   .next-month { 
-    background-color: #ffffff;
-    opacity: 0.3;
+    background-color: lightgray;
+    opacity: 0.4;
   }
   .current-month {}
 

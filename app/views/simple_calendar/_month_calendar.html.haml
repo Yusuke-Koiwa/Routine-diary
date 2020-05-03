@@ -15,8 +15,5 @@
         %tr
           - week.each do |day|
             %td
-              = content_tag :div, class: calendar.td_classes_for(day) do
-                - if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(block)
-                  - capture_haml(day, sorted_events.fetch(day, []), &block)
-                - else
-                  - block.call day, sorted_events.fetch(day, [])
+              = content_tag :div, class: [calendar.td_classes_for(day), "holiday"] do
+                - capture_haml(day, sorted_events.fetch(day, []), &block)

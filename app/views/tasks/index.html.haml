@@ -23,6 +23,10 @@
 
   = date.to_formatted_s(:only_date)
 
+  - if HolidayJp.holiday?(date)
+    .holiday_name
+      = HolidayJp.between(date, date).first.name
+
   = link_to new_task_path(date) do
     .new_task_link
 
