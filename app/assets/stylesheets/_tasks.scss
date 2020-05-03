@@ -40,6 +40,8 @@
         position: absolute;
         top: 20px;
         height: 80px;
+        width: 100%;
+        word-wrap: break-word;
         overflow: scroll;
       }
       .task_score {
