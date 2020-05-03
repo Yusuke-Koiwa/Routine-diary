@@ -28,7 +28,8 @@
       = link_to edit_task_path(task) do
         = icon('fa', 'check', class: "task_score check-icon")
     - elsif task.score == "bad"
-      = icon('fa', 'times', class: "task_score bad-icon")
+      = link_to edit_task_path(task) do
+        = icon('fa', 'times', class: "task_score bad-icon")
     - else
       .task_score
     - if task.body != ""

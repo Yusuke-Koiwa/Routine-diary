@@ -9,7 +9,11 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = Task.new(date: params[:format], start_time: params[:format].to_datetime)
+    if Task.exists?(date: params[:format])
+      redirect_to tasks_path
+    else
+      @task = Task.new(date: params[:format], start_time: params[:format].to_datetime)
+    end
   end
 
   def edit
