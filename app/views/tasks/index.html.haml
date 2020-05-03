@@ -18,11 +18,14 @@
         %td= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
 = link_to 'New Task', new_task_path
+
 = month_calendar events: @tasks do |date, tasks|
+
   = date.to_formatted_s(:only_date)
+
   = link_to new_task_path(date) do
     .new_task_link
-      new
+
   - tasks.each do |task|
     - if task.score == "done"
       = link_to edit_task_path(task) do
@@ -32,6 +35,7 @@
         = icon('fa', 'times', class: "task_score bad-icon")
     - else
       .task_score
+
     - if task.body != ""
       = link_to edit_task_path(task) do
         .task_body
