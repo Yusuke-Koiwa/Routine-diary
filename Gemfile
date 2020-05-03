@@ -66,3 +66,4 @@ gem "font-awesome-sass"
 gem 'haml-rails'
 gem 'pry-rails'
 gem 'rename'
+gem 'jquery-rails'
