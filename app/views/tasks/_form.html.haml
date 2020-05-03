@@ -1,0 +1,24 @@
+= form_with(model: task, local: true) do |form|
+  - if task.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(task.errors.count, "error")
+        prohibited this task from being saved:
+      %ul
+        - task.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.radio_button :score, :done
+    = form.label :score, "◯", {value: :done, style: "display: inline-block;"}
+    = form.radio_button :score, :bad
+    = form.label :score, "×", {value: :bad, style: "display: inline-block;"}
+    = form.radio_button :score, :none
+    = form.label :score, "-", {value: :none, style: "display: inline-block;"}
+  .field
+    = form.label :body
+    = form.text_area :body, cols: "17", rows: "5", wrap: "hard"
+  .field
+    = form.hidden_field :start_time
+    = form.hidden_field :date
+  .actions
+    = form.submit

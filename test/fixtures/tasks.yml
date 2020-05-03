@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  score: MyString
+  body: MyString
+  start_time: 2020-05-01 18:16:24
+
+two:
+  score: MyString
+  body: MyString
+  start_time: 2020-05-01 18:16:24

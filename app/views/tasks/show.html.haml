@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Score:
+  = @task.score
+%p
+  %strong Body:
+  = @task.body
+%p
+  %strong Start time:
+  = @task.start_time
+= link_to 'Edit', edit_task_path(@task)
+|
+= link_to 'Back', tasks_path
