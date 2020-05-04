@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :move_to_root_path,  unless: :user_signed_in?
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -59,5 +60,10 @@ class TasksController < ApplicationController
 
     def task_params
       params.require(:task).permit(:score, :body, :start_time, :date, :user_id)
+    end
+
+    def move_to_root_path
+      flash.now[:alert] = "ログインが必要です"
+      render "welcome/home"
     end
 end
