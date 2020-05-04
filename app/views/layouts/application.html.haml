@@ -8,4 +8,17 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body
+    %header
+      .nav-bar
+        = link_to "Routine diary", root_path, class: "logo"
+        - if user_signed_in?
+          .menu-list
+            .menu-list__menu
+              マイページ
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "menu-list__menu"
+        - else
+          .menu-list
+            = link_to "新規登録", new_user_registration_path, class: "menu-list__menu"
+            = link_to "ログイン", new_user_session_path, class: "menu-list__menu"
+
     = yield
