@@ -33,12 +33,13 @@
     - tasks.each do |task|
       - if task.score == "done"
         = link_to edit_task_path(task) do
-          = icon('fa', 'check', class: "task_score check-icon")
+          = icon('fa', 'check', class: "task-icon task-icon--check")
       - elsif task.score == "bad"
         = link_to edit_task_path(task) do
-          = icon('fa', 'times', class: "task_score bad-icon")
+          = icon('fa', 'times', class: "task-icon task-icon--bad")
       - else
-        .task_score
+        = link_to edit_task_path(task) do
+          = icon('fa', 'minus-circle', class: "task-icon task-icon--hidden")
 
       - if task.body != ""
         = link_to edit_task_path(task) do
