@@ -2,3 +2,4 @@
 = render 'form', task: @task
 = link_to 'Show', @task
 = link_to 'Back', user_path(current_user)
+= link_to 'Destroy', task_path(@task), method: :delete, data: { confirm: '削除します。よろしいですか?' }
