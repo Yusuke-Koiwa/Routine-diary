@@ -50,7 +50,7 @@
         word-wrap: break-word;
         overflow: scroll;
       }
-      .task_score {
+      .task-icon {
         position: absolute;
         top: 20px;
         left: 50%;
@@ -59,15 +59,20 @@
         font-size: 100px;
         width: 100%;
         overflow: hidden;
+
+        &--check {
+          color: greenyellow;
+          opacity: 0.7;
+        }
+        &--bad {
+          color: red;
+          opacity: 0.6;
+        }
+        &--hidden {
+          opacity: 0;
+        }
       }
-      .check-icon {
-        color: greenyellow;
-        opacity: 0.7;
-      }
-      .bad-icon {
-        color: red;
-        opacity: 0.6;
-      }
+        
     }
   }
 
