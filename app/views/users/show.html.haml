@@ -1,60 +1,45 @@
-%h1 Tasks
-%table
-  %thead
-    %tr
-      %th Score
-      %th Body
-      %th Start time
-      %th{:colspan => "3"}
-  %tbody
-    - @tasks.each do |task|
-      %tr
-        %td= task.score
-        %td= task.body
-        %td= task.start_time
-        %td= link_to 'Show', task
-        %td= link_to 'Edit', edit_task_path(task)
-        %td= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Task', new_task_path
+.contents
+  = render "profile"
 
-= month_calendar events: @tasks do |date, tasks|
+  = month_calendar events: @tasks do |date, tasks|
 
-  = date.to_formatted_s(:only_date)
+    = date.to_formatted_s(:only_date)
 
-  - if HolidayJp.holiday?(date)
-    .holiday_name
-      = HolidayJp.between(date, date).first.name
+    - if HolidayJp.holiday?(date)
+      .holiday_name
+        = HolidayJp.between(date, date).first.name
 
-  - if @user.id == current_user.id
-    = link_to new_task_path(date) do
-      .new_task_link
+    - if @user.id == current_user.id
+      = link_to new_task_path(date) do
+        .new_task_link
 
-    - tasks.each do |task|
-      - if task.score == "done"
-        = link_to edit_task_path(task) do
+      - tasks.each do |task|
+        - if task.score == "done"
+          = link_to edit_task_path(task) do
+            = icon('fa', 'check', class: "task-icon task-icon--check")
+        - elsif task.score == "bad"
+          = link_to edit_task_path(task) do
+            = icon('fa', 'times', class: "task-icon task-icon--bad")
+        - else
+          = link_to edit_task_path(task) do
+            = icon('fa', 'minus-circle', class: "task-icon task-icon--hidden")
+
+        - if task.body != ""
+          = link_to edit_task_path(task) do
+            .task_body
+              = simple_format task.body
+
+    - else
+      - tasks.each do |task|
+        - if task.score == "done"
           = icon('fa', 'check', class: "task-icon task-icon--check")
-      - elsif task.score == "bad"
-        = link_to edit_task_path(task) do
+        - elsif task.score == "bad"
           = icon('fa', 'times', class: "task-icon task-icon--bad")
-      - else
-        = link_to edit_task_path(task) do
-          = icon('fa', 'minus-circle', class: "task-icon task-icon--hidden")
+        - else
+          .task_score
 
-      - if task.body != ""
-        = link_to edit_task_path(task) do
+        - if task.body != ""
           .task_body
             = simple_format task.body
-
-  - else
-    - tasks.each do |task|
-      - if task.score == "done"
-        = icon('fa', 'check', class: "task_score check-icon")
-      - elsif task.score == "bad"
-        = icon('fa', 'times', class: "task_score bad-icon")
-      - else
-        .task_score
-
-      - if task.body != ""
-        .task_body
-          = simple_format task.body
+  
+  
