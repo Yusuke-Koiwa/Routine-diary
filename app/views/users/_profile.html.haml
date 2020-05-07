@@ -17,7 +17,7 @@
               .routine__text-box__content
                 = routine.content
               .routine__text-box__start-date
-                = "#{routine.created_at.strftime('%Y/%m/%d')} 開始"
+                = "開始日：#{routine.created_at.strftime('%Y/%m/%d')}"
             .routine__icons
               = link_to edit_routine_path(routine) do
                 = icon('fa', 'edit', class: "routine__icon routine__icon--edit")
