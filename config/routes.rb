@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: "welcome#home"
   resources :users
   resources :tasks
+  resources :routines, except: [:index, :show]
 end
