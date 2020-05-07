@@ -1,13 +1,32 @@
 .user-header
   - if @user.id == current_user.id
     .user-header__left
-      =link_to edit_user_path(@user) do
+      = link_to edit_user_path(@user) do
         .user-header__left__name
           = @user.name
         .user-header__left__img
           = image_tag @user.image.url
+
     .user-header__center
+      = link_to new_routine_path do
+        = icon('fa', 'plus-circle', class: "new-routine-link")
+      .routine-list
+        - @user.routines.each do |routine|
+          .routine
+            .routine__text-box
+              .routine__text-box__content
+                = routine.content
+              .routine__text-box__start-date
+                = "#{routine.created_at.strftime('%Y/%m/%d')} 開始"
+            .routine__icons
+              = link_to edit_routine_path(routine) do
+                = icon('fa', 'edit', class: "routine__icon routine__icon--edit")
+              = link_to routine_path(routine), method: :delete, data: { confirm: '削除します。よろしいですか?' } do
+                = icon('fa', 'trash-alt', class: "routine__icon routine__icon--destroy")
+
     .user-header__right
+      = @done_days
+      = @continuous_days
 
   - else
     .user-header__left
@@ -15,4 +34,15 @@
         = @user.name
       .user-header__left__img
         = image_tag @user.image.url
+          
     .user-header__center
+      .routine-list
+        - @user.routines.each do |routine|
+          .routine
+            .routine__text-box
+              .routine__text-box__content
+                = routine.content
+              .routine__text-box__start-date
+                = "#{routine.created_at.strftime('%Y/%m/%d')} 開始"
+
+    .user-header__right
