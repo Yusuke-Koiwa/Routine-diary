@@ -1,0 +1,15 @@
+= form_with(model: routine, local: true) do |f|
+  - if routine.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(routine.errors.count, "error")
+        prohibited this task from being saved:
+      %ul
+        - routine.errors.full_messages.each do |message|
+          %li= message
+  
+  .field
+    = f.label :content
+    = f.text_area :content
+  .actions
+    = f.submit
