@@ -1,13 +1,13 @@
 .flash {
   color: white;
   text-align: center;
-  line-height: 20px;
-  height: 20px;
+  line-height: 30px;
+  height: 30px;
   width: 100%;
   &__alert{
     background-color: #ff5c7a;
   }
   &__notice {
-    background-color: #9fa2ff;
+    background-color: lightskyblue;
   }
 }
