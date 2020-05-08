@@ -2,8 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  has_many :tasks
-  has_many :routines
+  has_many :tasks, :dependent => :destroy
+  has_many :routines, :dependent => :destroy
 
   mount_uploader :image, ImageUploader
 
@@ -16,19 +16,24 @@ class User < ApplicationRecord
 
   def continuous_days(tasks)
     sorted_tasks = tasks.where("date <= ?", Date.today).order(date: "DESC")
-    if sorted_tasks.first.date < Date.today - 1
-      return 0
+    latest_day = sorted_tasks.first.date
+
+    if latest_day >= Date.yesterday
+      num = 0
+      calc_continuous_days(sorted_tasks, num)
     else
-      length = sorted_tasks.length
-      sorted_tasks.each_with_index do |task, index|
-        if task.score != "done"
-          return index
-        end
-        if index == length - 1
-          return index + 1
-        end
+      return 0
+    end    
+  end
+
+  def calc_continuous_days(tasks, num)
+    tasks.each do |task|
+      if task.score != "done"
+        return num
       end
+      num += 1
     end
+    return num
   end
 
 end
