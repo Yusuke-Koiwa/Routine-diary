@@ -5,9 +5,14 @@ class UsersController < ApplicationController
 
   def show
     @tasks = @user.tasks
-    @done_days = @user.done_days(@tasks)
-    @continuous_days = @user.continuous_days(@tasks)
     @routines = @user.routines
+    if @tasks.present?
+      @done_days = @user.done_days(@tasks)
+      @continuous_days = @user.continuous_days(@tasks)
+    else
+      @done_days = 0
+      @continuous_days = 0
+    end
   end
 
   def edit
@@ -22,6 +27,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user.destroy
+    flash[:notice] = "退会しました。またのご利用をお待ちしております。"
+    redirect_to root_path
   end
 
   private
