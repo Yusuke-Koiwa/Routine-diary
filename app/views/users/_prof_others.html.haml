@@ -1,0 +1,28 @@
+.user-header__left
+  .user-header__left__name
+    = @user.name
+  .user-header__left__img
+    = image_tag @user.image.url
+      
+.user-header__center
+  .routine-list
+    - @user.routines.each do |routine|
+      .routine
+        .routine__text-box
+          .routine__text-box__content
+            = routine.content
+          .routine__text-box__start-date
+            = "#{routine.created_at.strftime('%Y/%m/%d')} 開始"
+
+.user-header__right
+  .continuous-days
+    .count-top
+      .count
+        = @continuous_days
+      .unit
+        日
+    .text
+      継続中
+
+  .done-days
+    = "達成総日数：#{@done_days}日"

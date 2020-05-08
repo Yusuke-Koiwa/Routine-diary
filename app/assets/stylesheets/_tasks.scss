@@ -1,0 +1,140 @@
+.task-contents {
+  background-color: white;
+  width: 100%;
+  padding-top: 50px;
+
+  .task-list {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 800px;
+
+    .task {
+      background-color: white;
+      border: 1px solid lightskyblue;
+      box-shadow: 1px 1px 3px lightslategray;
+      margin-bottom: 20px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__left {
+        width: 125px;
+        
+        .user-info {
+          text-align: center;
+        
+          &__name {
+
+          }
+
+          &__image {
+            margin: 0 auto;
+            background-color: white;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            border: 1px solid lightskyblue;;
+            img {
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+
+      &__right {
+        width: 85%;
+        background-color: white;
+        border: 1px solid lightskyblue;
+
+        .task__main {
+          padding: 10px 0 0 10px;
+          display: flex;
+
+          &__left-box {
+            background-color: white;
+            border: 1px solid lightskyblue;
+            width: 25%;
+            margin-bottom: 10px;
+            height: 150px;
+            position: relative;
+
+            .date {
+              font-size: 16px;
+            }
+              
+            .score {
+              text-align: center;
+              top: calc(50% + 10px);
+              left: 50%;
+              transform : translate(-50%, -50%);
+              position: absolute;
+              
+              &__icon {
+                font-size: 100px;
+                line-height: 100px;
+                
+                &--check {
+                  color: greenyellow;
+                  opacity: 0.7;
+                }
+                &--bad {
+                  color: red;
+                  opacity: 0.6;
+                }
+              }
+              
+            }
+            &__body {
+
+            }
+          }
+
+          &__right-box {
+            width: 75%;
+            margin-left: 10px;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between;	
+
+            .routine-list {
+              border: 1px solid lightskyblue;
+              max-height: 140px;
+              overflow-y: scroll;
+              padding: 10px 10px 0;
+              margin-right: 10px;
+
+              .routine {
+                background-color: rgb(238, 252, 255);;
+                box-shadow: 1px 1px 3px lightslategray;
+                border: 1px solid lightskyblue;
+                height: 30px;
+                line-height: 30px;
+                margin-bottom: 10px;
+                padding-left: 10px;
+              }
+            }
+
+            .good-job {
+              display: flex;
+              margin: 10px 0 0 auto;
+              width: 50px;
+              text-align: right;
+              
+    
+              &__btn {
+    
+              }
+              &__count {
+                
+              }
+    
+            }
+          }
+
+        } 
+
+      }
+    }
+  }
+}

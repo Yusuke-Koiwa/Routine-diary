@@ -1,9 +1,10 @@
 class TasksController < ApplicationController
   before_action :move_to_root_path,  unless: :user_signed_in?
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user?, only: [:edit, :update, :destroy]
 
   def index
-    @tasks = Task.includes(:user)
+    @tasks = Task.includes(:user).where("date <= ?", Date.today).where.not(score: nil).order(date: "DESC")
   end
 
   def show
@@ -54,5 +55,13 @@ class TasksController < ApplicationController
     def move_to_root_path
       flash.now[:alert] = "ログインが必要です"
       render "welcome/home"
+    end
+
+    def correct_user?
+      task = Task.find(params[:id])
+      if task.user_id != current_user.id
+        flash[:alert] = "権限がありません"
+        redirect_to user_path(current_user)
+      end
     end
 end
