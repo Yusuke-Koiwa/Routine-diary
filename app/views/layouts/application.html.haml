@@ -13,6 +13,7 @@
         = link_to "トップページ", root_path, class: "logo"
         - if user_signed_in?
           .menu-list
+            = link_to "投稿一覧", tasks_path, class: "menu-list__menu"
             = link_to "マイページ", user_path(current_user), class: "menu-list__menu"
             = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "menu-list__menu"
         - else

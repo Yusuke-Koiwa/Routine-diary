@@ -1,46 +1,38 @@
-%p#notice= notice
-%h1 Tasks
-%table
-  %thead
-    %tr
-      %th Score
-      %th Body
-      %th Start time
-      %th{:colspan => "3"}
-  %tbody
+.task-contents
+  .task-list
     - @tasks.each do |task|
-      %tr
-        %td= task.score
-        %td= task.body
-        %td= task.start_time
-        %td= link_to 'Show', task
-        %td= link_to 'Edit', edit_task_path(task)
-        %td= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Task', new_task_path
+      .task
+        .task__left
+          = link_to user_path(task.user_id) do
+            .user-info
+              .user-info__name
+                = task.user.name
+              .user-info__image
+                = image_tag task.user.image.url
 
-= month_calendar events: @tasks do |date, tasks|
+        .task__right
+          .task__main
+            .task__main__left-box
+              .date
+                = task.date.strftime('%-m月%-d日')
 
-  = date.to_formatted_s(:only_date)
+              .score
+                - if task.score == "done"
+                  = icon('fa', 'check', class: "score__icon score__icon--check")
+                - else task.score == "bad"
+                  = icon('fa', 'times', class: "score__icon score__icon--bad")
 
-  - if HolidayJp.holiday?(date)
-    .holiday_name
-      = HolidayJp.between(date, date).first.name
+              .body
+                = task.body
 
-  = link_to new_task_path(date) do
-    .new_task_link
-
-  - tasks.each do |task|
-    - if task.score == "done"
-      = link_to edit_task_path(task) do
-        = icon('fa', 'check', class: "task_score check-icon")
-    - elsif task.score == "bad"
-      = link_to edit_task_path(task) do
-        = icon('fa', 'times', class: "task_score bad-icon")
-    - else
-      .task_score
-
-    - if task.body != ""
-      = link_to edit_task_path(task) do
-        .task_body
-          = simple_format task.body
+            .task__main__right-box
+              .routine-list
+                - task.user.routines.each do |r|
+                  .routine
+                    = r.content
+              .good-job
+                = icon('far', 'thumbs-up', class: "good-job__btn")
+                .good-job__count
+                  100
+          
+      
