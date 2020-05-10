@@ -1,9 +1,45 @@
 .contents
   .user-header
-    - if @user.id == current_user.id
-      = render "prof_myself"
-    - else
-      = render "prof_others"
+    .user-header__left
+      .user-info
+        = link_to edit_user_path(@user) do
+          .user-info__name
+            = @user.name
+          .user-info__img
+            = image_tag @user.image.url
+      .user-menu-list
+        = link_to "#", class: "user-menu follow" do
+          フォロー
+          .count
+            100
+        = link_to "#", class: "user-menu follower" do
+          フォロワー
+          .count
+            100
+        = link_to "#", class: "user-menu good-job" do
+          グッジョブ
+          .count
+            100
+    
+    .user-header__center
+      - if @user.id == current_user.id
+        = render "routines_myself"
+      - else
+        = render "routines_others"
+
+    .user-header__right
+      .continuous-days
+        .count-top
+          .count
+            = @continuous_days
+          .unit
+            日
+        .text
+          継続中
+
+      .done-days
+        = "達成総日数：#{@done_days}日"
+
   = render "calendar"
   
   
