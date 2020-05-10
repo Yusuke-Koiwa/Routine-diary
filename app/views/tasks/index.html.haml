@@ -1,4 +1,4 @@
-.task-contents
+.contents
   .task-list
     - @tasks.each do |task|
       .task
@@ -16,11 +16,10 @@
               .date
                 = task.date.strftime('%-m月%-d日')
 
-              .score
-                - if task.score == "done"
-                  = icon('fa', 'check', class: "score__icon score__icon--check")
-                - else task.score == "bad"
-                  = icon('fa', 'times', class: "score__icon score__icon--bad")
+              - if task.score == "done"
+                = icon('fa', 'check', class: "score-icon score-icon--done")
+              - else task.score == "bad"
+                = icon('fa', 'times', class: "score-icon score-icon--bad")
 
               .body
                 = task.body
@@ -30,9 +29,13 @@
                 - task.user.routines.each do |r|
                   .routine
                     = r.content
-              .good-job
-                = icon('far', 'thumbs-up', class: "good-job__btn")
-                .good-job__count
-                  100
-          
-      
+              - if current_user.already_praised?(task)
+                = link_to "/praises/#{task.id}/destroy", method: :post, class: "good-job good-job--on" do
+                  = icon('far', 'thumbs-up', class: "good-job__btn good-job--on") 
+                  .good-job__count
+                    = task.praises.count
+              - else
+                = link_to "/praises/#{task.id}/create", method: :post, class: "good-job good-job--off" do
+                  = icon('far', 'thumbs-up', class: "good-job__btn good-job--off")
+                  .good-job__count
+                    = task.praises.count

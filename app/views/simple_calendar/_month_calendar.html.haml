@@ -19,5 +19,5 @@
         %tr
           - week.each do |day|
             %td
-              = content_tag :div, class: [calendar.td_classes_for(day), "holiday"] do
+              = content_tag :div, class: [calendar.td_classes_for(day)] do
                 - capture_haml(day, sorted_events.fetch(day, []), &block)

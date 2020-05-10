@@ -1,40 +1,69 @@
 = month_calendar events: @tasks do |date, tasks|
 
-  = date.to_formatted_s(:only_date)
+  -if date == Date.today
+    .today-circle
+      = date.to_formatted_s(:only_date)
+  -else
+    = date.to_formatted_s(:only_date)
 
   - if HolidayJp.holiday?(date)
     .holiday_name
       = HolidayJp.between(date, date).first.name
-
+  
   - if @user.id == current_user.id
     = link_to new_task_path(date) do
       .new_task_link
 
-    - tasks.each do |task|
-      - if task.score == "done"
-        = link_to edit_task_path(task) do
-          = icon('fa', 'check', class: "task-icon task-icon--check")
-      - elsif task.score == "bad"
-        = link_to edit_task_path(task) do
-          = icon('fa', 'times', class: "task-icon task-icon--bad")
+  - tasks.each do |task|
+    -if task.score
+      - if current_user.already_praised?(task)
+        = link_to "/praises/#{task.id}/destroy", method: :post, class: "good-job good-job--on" do
+          = icon('far', 'thumbs-up', class: "good-job__btn good-job--on") 
+          .good-job__count
+            = task.praises.count
       - else
-        = link_to edit_task_path(task) do
-          = icon('fa', 'minus-circle', class: "task-icon task-icon--hidden")
+        = link_to "/praises/#{task.id}/create", method: :post, class: "good-job good-job--off" do
+          = icon('far', 'thumbs-up', class: "good-job__btn good-job--off")
+          .good-job__count
+            = task.praises.count
 
-      - if task.body != ""
-        = link_to edit_task_path(task) do
-          .task_body
-            = simple_format task.body
 
-  - else
-    - tasks.each do |task|
-      - if task.score == "done"
+    - if task.score == "done"
+      = link_to task_path(task) do
         = icon('fa', 'check', class: "task-icon task-icon--check")
-      - elsif task.score == "bad"
+    - elsif task.score == "bad"
+      = link_to task_path(task) do
         = icon('fa', 'times', class: "task-icon task-icon--bad")
-      - else
-        .task_score
+    - else
+      = link_to task_path(task) do
+        = icon('fa', 'minus-circle', class: "task-icon task-icon--hidden")
 
-      - if task.body != ""
+    - if task.body != ""
+      = link_to task_path(task) do
         .task_body
           = simple_format task.body
+
+  -# - else
+  -#   - tasks.each do |task|
+  -#     -if task.score
+  -#       - if current_user.already_praised?(task)
+  -#         = link_to "/praises/#{task.id}/destroy", method: :post, class: "good-job good-job--on" do
+  -#           = icon('far', 'thumbs-up', class: "good-job__btn good-job--on") 
+  -#           .good-job__count
+  -#             = task.praises.count
+  -#       - else
+  -#         = link_to "/praises/#{task.id}/create", method: :post, class: "good-job good-job--off" do
+  -#           = icon('far', 'thumbs-up', class: "good-job__btn good-job--off")
+  -#           .good-job__count
+  -#             = task.praises.count
+
+  -#     - if task.score == "done"
+  -#       = icon('fa', 'check', class: "task-icon task-icon--check")
+  -#     - elsif task.score == "bad"
+  -#       = icon('fa', 'times', class: "task-icon task-icon--bad")
+  -#     - else
+  -#       .task_score
+
+  -#     - if task.body != ""
+  -#       .task_body
+  -#         = simple_format task.body

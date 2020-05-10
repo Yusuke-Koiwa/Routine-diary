@@ -1,7 +1,7 @@
 .simple-calendar {
   background-color: white;
   max-width: 800px;
-  margin: 15px auto;
+  margin: 10px auto;
   box-shadow: 1px 1px 5px rgb(136, 136, 136);
   border: 1px solid black;
   padding: 5px 10px 10px;
@@ -30,6 +30,13 @@
   table {
     margin: 0 auto;
     
+    tr th:nth-of-type(1) {
+      color: rgb(255, 0, 64);
+    }
+
+    tr th:nth-of-type(7) {
+      color: rgb(0, 60, 255);
+    }
     
     thead th {
       text-align: center;
@@ -75,11 +82,11 @@
       }
       .task-icon {
         position: absolute;
-        top: 10px;
+        top: 20px;
         left: 50%;
         transform : translateX(-50%);
         text-align: center;
-        font-size: 100px;
+        font-size: 90px;
         width: 100%;
         overflow: hidden;
 
@@ -95,12 +102,40 @@
           opacity: 0;
         }
       }
+      .good-job {
+        background-color: white;
+        display: flex;
+        padding: 0 3px;
+        margin-top: 2px;
+        position: absolute;
+        top: 0;
+        right: 2px;
+        border: 1px solid;
+        border-radius: 15px;
+
+        &--on {
+          color: rgb(252, 77, 135);
+        }
+
+        &--off {
+          color: lightskyblue;
+        }
         
+        &__btn {
+          margin-right: 2px;
+          margin-top: 1px;
+          font-size: 14px;
+          
+        }
+        &__count {
+          font-size: 12px;
+        }
+      }
     }
   }
 
   .wday-0 {
-    background-color: rgba(255,0,0,0.1);
+    background-color: rgb(255, 240, 250);
   }
   .wday-1 {}
   .wday-2 {}
@@ -108,10 +143,21 @@
   .wday-4 {}
   .wday-5 {}
   .wday-6 {
-    background-color: rgba(0,0,255,0.1);
+    background-color: rgb(234, 242, 255);
   }
 
-  .today {}
+  .today {
+    position: relative;
+    .today-circle {
+      position: absolute;
+      padding: 1px 6px 0;
+      top: 0;
+      left: 0;
+      background-color: rgba(255, 0, 0, 0.3);
+      border-radius: 50%;
+      border: 1px solid rgb(255, 116, 116);
+    }
+  }
   .past {
     
   }
