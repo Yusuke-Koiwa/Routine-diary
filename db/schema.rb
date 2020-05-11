@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_033522) do
+ActiveRecord::Schema.define(version: 2020_05_11_074311) do
 
   create_table "praises", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "task_id"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2020_05_08_033522) do
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_praises_on_task_id"
     t.index ["user_id"], name: "index_praises_on_user_id"
+  end
+
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "follow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
+    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "routines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -55,4 +65,6 @@ ActiveRecord::Schema.define(version: 2020_05_08_033522) do
 
   add_foreign_key "praises", "tasks"
   add_foreign_key "praises", "users"
+  add_foreign_key "relationships", "users"
+  add_foreign_key "relationships", "users", column: "follow_id"
 end
