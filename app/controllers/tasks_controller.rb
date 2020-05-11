@@ -1,13 +1,15 @@
 class TasksController < ApplicationController
   before_action :move_to_root_path,  unless: :user_signed_in?
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user?, only: [:edit, :update, :destroy]
+  before_action :set_task, only: [:show, :update, :destroy]
+  before_action :correct_user?, only: [:update, :destroy]
 
   def index
-    @tasks = Task.includes(:user).where("date <= ?", Date.today).where.not(score: nil).order(date: "DESC")
+    @tasks = Task.includes([:user, user: :praises]).where("date <= ?", Date.today).where.not(score: nil).order(date: "DESC")
   end
 
   def show
+    @user = @task.user
+    @praised_users = @task.praised_users if @task.praises.exists?
   end
 
   def new
@@ -16,9 +18,6 @@ class TasksController < ApplicationController
     else
       @task = Task.new(date: params[:format], start_time: params[:format].to_datetime, user_id: current_user.id)
     end
-  end
-
-  def edit
   end
 
   def create

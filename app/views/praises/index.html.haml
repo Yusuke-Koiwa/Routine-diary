@@ -1,5 +1,5 @@
 .contents
-  .user-header
+  .user-header.user-header--fixed
     .user-header__left
       .user-menu-list
         = link_to "#", class: "user-menu menu-link" do
@@ -35,24 +35,11 @@
     
     .user-header__center
       - if @user.id == current_user.id
-        = render "routines_myself"
+        = render "users/routines_myself"
       - else
-        = render "routines_others"
+        = render "users/routines_others"
 
-    .user-header__right
-      .continuous-days
-        .count-top
-          .count
-            = @continuous_days
-          .unit
-            日
-        .text
-          継続中
-
-      .done-days
-        = "達成総日数：#{@done_days}日"
-
-  = render "calendar"
-  
-  
-  
+  .index-title
+    グッジョブした投稿
+  .task-list.task-list--down
+    = render partial: "tasks/posts", locals: { tasks: @praised_tasks}

@@ -11,16 +11,15 @@ header {
   background-color: rgb(0, 91, 165,);
   opacity: 0.98;
   width: 100%;
-  height: 50px;
+  height: 40px;
   position: fixed;
   top: 0;
   z-index: 1;
   
   .nav-bar {
     display: flex;
-    height: 50px;
     text-align: center;
-    line-height: 50px;
+    line-height: 40px;
     justify-content: space-between;
 
     .logo {
@@ -39,4 +38,10 @@ header {
       }
     }
   }
+}
+
+.contents {
+  background-color: white;
+  width: 100%;
+  padding-top: 40px;
 }
