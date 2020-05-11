@@ -1,31 +1,30 @@
-.contents
-  - if @user.id == current_user.id
-    = render 'form', task: @task
-    = link_to 'Back', user_path(current_user)
-    = link_to 'Destroy', task_path(@task), method: :delete, data: { confirm: '削除します。よろしいですか?' }
+- if @user.id == current_user.id
+  = render 'form', task: @task
+  = link_to 'Back', user_path(current_user)
+  = link_to 'Destroy', task_path(@task), method: :delete, data: { confirm: '削除します。よろしいですか?' }
 
-  - else
-    = @task.score
-    = @task.body
+- else
+  = @task.score
+  = @task.body
 
-  - if current_user.already_praised?(@task)
-    = link_to "/praises/#{@task.id}/destroy", method: :post, class: "good-job good-job--on" do
-      = icon('far', 'thumbs-up', class: "good-job__btn good-job--on") 
-      .good-job__count
-        = @task.praises.count
-  - else
-    = link_to "/praises/#{@task.id}/create", method: :post, class: "good-job good-job--off" do
-      = icon('far', 'thumbs-up', class: "good-job__btn good-job--off")
-      .good-job__count
-        = @task.praises.count
-  
-  .praised_user-btn
-    グッジョブ
-  - if @praised_users  
-    - @praised_users.each do |user|
-      = link_to user_path(user) do
-        = user.name
-        = image_tag user.image.url
-        - if user.routines.exists?
-          - user.routines.each do |routine|
-            = routine.content
+- if current_user.already_praised?(@task)
+  = link_to "/praises/#{@task.id}/destroy", method: :post, class: "good-job good-job--on" do
+    = icon('far', 'thumbs-up', class: "good-job__btn good-job--on") 
+    .good-job__count
+      = @task.praises.count
+- else
+  = link_to "/praises/#{@task.id}/create", method: :post, class: "good-job good-job--off" do
+    = icon('far', 'thumbs-up', class: "good-job__btn good-job--off")
+    .good-job__count
+      = @task.praises.count
+
+.praised_user-btn
+  グッジョブ
+- if @praised_users  
+  - @praised_users.each do |user|
+    = link_to user_path(user) do
+      = user.name
+      = image_tag user.image.url
+      - if user.routines.exists?
+        - user.routines.each do |routine|
+          = routine.content

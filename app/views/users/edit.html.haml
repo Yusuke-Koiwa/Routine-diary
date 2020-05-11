@@ -1,20 +1,19 @@
-.contents
-  - if @user.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@user.errors.count, "error")
-        prohibited this task from being saved:
-      %ul
-        - @user.errors.full_messages.each do |message|
-          %li= message
+- if @user.errors.any?
+  #error_explanation
+    %h2
+      = pluralize(@user.errors.count, "error")
+      prohibited this task from being saved:
+    %ul
+      - @user.errors.full_messages.each do |message|
+        %li= message
 
-  .form
-    = form_with(model: @user, local: true) do |f|
-      = f.text_field :name, class: 'form__user__name', placeholder: 'type a name'
-      = f.label :image, class: 'form__user__image' do
-        = icon('fas', 'image', class: 'form__user__icon')
-        = f.file_field :image, class: 'form__user__file'
-      = f.submit 'Send', class: 'form__user__submit'
+.form
+  = form_with(model: @user, local: true) do |f|
+    = f.text_field :name, class: 'form__user__name', placeholder: 'type a name'
+    = f.label :image, class: 'form__user__image' do
+      = icon('fas', 'image', class: 'form__user__icon')
+      = f.file_field :image, class: 'form__user__file'
+    = f.submit 'Send', class: 'form__user__submit'
 
-  - if @user.id == current_user.id
-    = link_to "退会", user_path(@user), method: :delete, data: { confirm: 'アカウントを削除します。本当によろしいですか?' }
+- if @user.id == current_user.id
+  = link_to "退会", user_path(@user), method: :delete, data: { confirm: 'アカウントを削除します。本当によろしいですか?' }

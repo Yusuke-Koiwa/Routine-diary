@@ -65,8 +65,7 @@
           }
         }
       }
-      &__follow-btn {
-        background-color: white;
+      .follow-btn {
         border: 1px solid lightskyblue;
         border-radius: 25px;
         height: 25px;
@@ -75,10 +74,20 @@
         text-align: center;
         margin-top: 3px;
         
-        &:hover {
-          background-color: rgb(92, 192, 255);
-          color: white;
+        &--off {
+          background-color: white;
+          &:hover {
+            background-color: rgb(211, 238, 255);
+          }
         }
+        &--on {
+          background-color: rgb(63, 179, 252);
+          color: white;
+          &:hover {
+            background-color: rgb(97, 192, 252);
+          }
+        }
+
       }
     }
   }

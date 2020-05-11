@@ -1,7 +1,7 @@
 class PraisesController < ApplicationController
+  before_action :set_user, only: :index
 
   def index
-    @user = User.find(params[:user_id])
     @praised_tasks = @user.praised_tasks
   end
   
@@ -19,5 +19,9 @@ class PraisesController < ApplicationController
   private
   def praise_params
     params.permit(:task_id).merge(user_id: current_user.id)
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 end
