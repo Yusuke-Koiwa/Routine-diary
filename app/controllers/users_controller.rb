@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def praises_index
-    @praised_tasks = @user.praised_tasks
+    @praised_tasks = @user.praised_tasks.order(created_at: "DESC")
   end
 
   private
