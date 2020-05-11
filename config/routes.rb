@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   root to: "welcome#home"
   resources :users do
     resources :relationships, only: [:index, :create, :destroy]
+    member do
+      get :praises_index
+    end
   end
   resources :routines, except: [:index, :show]
   resources :tasks, except: [:edit]
-  get "praises/:user_id/index" => "praises#index"
   post "praises/:task_id/create" => "praises#create"
   post "praises/:task_id/destroy" => "praises#destroy"
 end
