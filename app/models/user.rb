@@ -7,8 +7,12 @@ class User < ApplicationRecord
   has_many :praises, dependent: :destroy
   has_many :praised_tasks, through: :praises, source: :task
 
-  mount_uploader :image, ImageUploader
+  has_many :relationships
+  has_many :follow_users, through: :relationships, source: :follow
+  has_many :reverse_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :follower_users, through: :reverse_relationships, source: :user
 
+  mount_uploader :image, ImageUploader
   validates :name, presence: true
 
   def done_days(tasks)
@@ -47,4 +51,17 @@ class User < ApplicationRecord
     self.praises.exists?(task_id: task.id)
   end
 
+  def follow(other_user)
+    unless self == other_user
+      self.relationships.find_or_create_by(follow_id: other_user.id)
+    end
+
+    def unfollow(other_user)
+      relationship = self.relationships.find_by(follow_id: other_user.id)
+      relationship.destroy if relationship
+    end
+
+    def already_followed?(other_users)
+      self.follow_users.include?(other_user)
+    end
 end
