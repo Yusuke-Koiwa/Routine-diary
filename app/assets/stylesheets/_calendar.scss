@@ -134,6 +134,20 @@
     }
   }
 
+  .today {
+    background-color: white;
+    position: relative;
+    .today-circle {
+      position: absolute;
+      padding: 1px 6px 0;
+      top: 0;
+      left: 0;
+      background-color: rgba(255, 0, 0, 0.3);
+      border-radius: 50%;
+      border: 1px solid rgb(255, 116, 116);
+    }
+  }
+
   .wday-0 {
     background-color: rgb(255, 240, 250);
   }
@@ -146,18 +160,7 @@
     background-color: rgb(234, 242, 255);
   }
 
-  .today {
-    position: relative;
-    .today-circle {
-      position: absolute;
-      padding: 1px 6px 0;
-      top: 0;
-      left: 0;
-      background-color: rgba(255, 0, 0, 0.3);
-      border-radius: 50%;
-      border: 1px solid rgb(255, 116, 116);
-    }
-  }
+  
   .past {
     
   }

@@ -2,6 +2,9 @@
   margin: 0 auto;
   padding: 20px;
   max-width: 800px;
+  &--down {
+    padding-top: 200px
+  }
 
   .task {
     background-color: white;
