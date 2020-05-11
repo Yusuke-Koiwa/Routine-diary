@@ -21,7 +21,13 @@
       
       .user-info {
         text-align: center;
-      
+        padding: 10px 0;
+        
+        &--link:hover {
+          background-color: rgb(240, 240, 240);
+          border-radius: 5px;
+        }
+
         &__name {
 
         }

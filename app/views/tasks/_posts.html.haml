@@ -2,7 +2,7 @@
   .task
     .task__left
       = link_to user_path(task.user_id) do
-        .user-info
+        .user-info.user-info--link
           .user-info__name
             = task.user.name
           .user-info__image
