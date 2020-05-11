@@ -1,0 +1,36 @@
+.user-menu-list
+  = link_to "#", class: "user-menu menu-link" do
+    .user-menu__title
+      ・フォロー：
+    .user-menu__count
+      100
+  = link_to "#", class: "user-menu menu-link" do
+    .user-menu__title
+      ・フォロワー：
+    .user-menu__count
+      100
+  = link_to praises_index_user_path(@user), class: "user-menu menu-link" do
+    .user-menu__title
+      ・グッジョブ
+
+.user-box
+  - if @user == current_user
+    .user-info.user-info--link
+      = link_to edit_user_path(@user) do
+        .user-info__name
+          = @user.name
+        .user-info__img
+          = image_tag @user.image.url
+  - else
+    .user-info
+      = link_to user_path(@user) do
+        .user-info__name
+          = @user.name
+        .user-info__img
+          = image_tag @user.image.url
+    - if current_user.already_followed?(@user)
+      = link_to user_relationship_path(@user), class: "follow-btn follow-btn--on", method: :delete do
+        フォロー中
+    -else
+      = link_to user_relationships_path(@user), class: "follow-btn follow-btn--off", method: :post do
+        ＋ フォロー
