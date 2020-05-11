@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "welcome#home"
-  resources :users
+  resources :users do
+    resources :relationships, only: [:index, :create, :destroy]
+  end
   resources :routines, except: [:index, :show]
   resources :tasks, except: [:edit]
   get "praises/:user_id/index" => "praises#index"
