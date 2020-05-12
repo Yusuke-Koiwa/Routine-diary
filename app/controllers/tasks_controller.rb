@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_action :correct_user?, only: [:update, :destroy]
 
   def index
-    @tasks = Task.includes([:user, user: :praises]).where("date <= ?", Date.today).where.not(score: nil).order(date: "DESC")
+    @tasks = Task.includes([:user, user: :praises, user: :routines]).where("date <= ?", Date.today).where.not(score: nil).order(date: "DESC")
   end
 
   def show
@@ -14,19 +14,27 @@ class TasksController < ApplicationController
 
   def new
     if Task.exists?(date: params[:format], user_id: current_user.id)
+      flash[:alert] = "無効なURLです"
       redirect_to user_path(current_user)
-    else
+    elsif current_user.routines.exists?
       @task = Task.new(date: params[:format], start_time: params[:format].to_datetime, user_id: current_user.id)
+    else
+      flash[:alert] = "習慣化したいことを先に入力して下さい"
+      redirect_to user_path(current_user)
     end
   end
 
   def create
     @task = Task.new(task_params)
+    if @task.score == nil && @task.body == ""
+      redirect_to user_path(current_user)
+    else
       if @task.save
         redirect_to user_path(current_user)
       else
         render :new
       end
+    end
   end
 
   def update
