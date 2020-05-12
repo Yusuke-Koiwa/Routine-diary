@@ -1,0 +1,25 @@
+- users.each do |user|
+  .user
+    .user__left
+      = link_to user_path(user) do
+        .user-info.user-info--link
+          .user-info__name
+            = user.name
+          .user-info__image
+            = image_tag user.image.url
+
+    .user__right
+      - if showing_user == current_user
+        - if current_user.already_followed?(user)
+          = link_to user_relationship_path(user), class: "follow-btn follow-btn--on", method: :delete do
+            フォロー中
+        - else
+          = link_to user_relationships_path(user), class: "follow-btn follow-btn--off", method: :post do
+            ＋ フォロー
+
+      .routine-list
+        - user.routines.each do |r|
+          .routine
+            = r.content
+
+      
