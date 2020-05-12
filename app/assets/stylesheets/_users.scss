@@ -112,21 +112,18 @@
     width: 50%;
     height: 150px;
     border: 1px solid lightskyblue;
-    display: flex;
+    text-align: center;
     
-    .new-link {
-      height: 20px;
-      .new-link__icon {
-        color: rgb(0, 58, 146);
-        font-size: 20px;
-        margin: 10px 0 0 5px;
-      }
+    .new-link__icon {
+      color: rgb(0, 58, 146);
+      font-size: 20px;
+      margin: 0 auto;
     }
     .routine-list {
       width: 96%;
-      padding: 5px;
+      padding: 10px 5px 0;
       margin: 0 auto;
-      overflow-x: scroll;
+      text-align: left;
       ::-webkit-scrollbar {
         display: none;
       }
