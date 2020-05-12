@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :follower_users, through: :reverse_relationships, source: :user
 
   mount_uploader :image, ImageUploader
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 12 }
 
   def done_days(tasks)
     sorted_tasks = tasks.where("date <= ?", Date.today)
