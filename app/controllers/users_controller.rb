@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :move_to_root_path, unless: :user_signed_in?
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :praises_index]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :praises_index, :follow_index]
   before_action :correct_user?, only: [:edit, :update, :destroy]
 
   def show
@@ -35,6 +35,11 @@ class UsersController < ApplicationController
   def praises_index
     @praised_tasks = @user.praised_tasks.order(created_at: "DESC")
   end
+
+  def follow_index
+    @follow_users = @user.follow_users.includes(:routines)
+  end
+
 
   private
   def move_to_root_path
