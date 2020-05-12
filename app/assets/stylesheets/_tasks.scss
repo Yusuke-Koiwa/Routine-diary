@@ -21,7 +21,13 @@
       
       .user-info {
         text-align: center;
-      
+        padding: 10px 0;
+        
+        &--link:hover {
+          background-color: rgb(240, 240, 240);
+          border-radius: 5px;
+        }
+
         &__name {
 
         }
@@ -116,12 +122,16 @@
               line-height: 30px;
               margin-bottom: 10px;
               padding-left: 10px;
+
+              &--none {
+                background-color: rgb(228, 228, 228);
+                color: gray;
+              }
             }
           }
 
           .good-job {
             display: flex;
-            // align-items: center;
             margin: 5px 5px 5px auto;
             padding: 2px 5px 0;
             border: 1px solid;

@@ -1,0 +1,14 @@
+.user-header.user-header--fixed
+  .user-header__left
+    = render "user_info"
+  
+  .user-header__center
+    - if @user.id == current_user.id
+      = render "users/routines_myself"
+    - else
+      = render "users/routines_others"
+
+.index-title
+  グッジョブした投稿
+.task-list.task-list--down
+  = render partial: "tasks/posts", locals: { tasks: @praised_tasks}

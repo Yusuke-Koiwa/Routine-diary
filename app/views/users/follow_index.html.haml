@@ -1,0 +1,15 @@
+.user-header.user-header--fixed
+  .user-header__left
+    = render "user_info"
+  
+  .user-header__center
+    - if @user.id == current_user.id
+      = render "users/routines_myself"
+    - else
+      = render "users/routines_others"
+
+.index-title
+  = link_to "フォロー中", follow_index_user_path(@user), class: "follow"
+  = link_to "フォロワー", follower_index_user_path(@user), class: "follower index-title--off"
+.user-list.user-list--down
+  = render "user_index", { users: @follow_users, showing_user: @user }

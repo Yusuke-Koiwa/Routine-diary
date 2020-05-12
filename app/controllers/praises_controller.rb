@@ -1,9 +1,4 @@
 class PraisesController < ApplicationController
-
-  def index
-    @user = User.find(params[:user_id])
-    @praised_tasks = @user.praised_tasks
-  end
   
   def create
     @praise = Praise.create(praise_params)
@@ -20,4 +15,5 @@ class PraisesController < ApplicationController
   def praise_params
     params.permit(:task_id).merge(user_id: current_user.id)
   end
+  
 end

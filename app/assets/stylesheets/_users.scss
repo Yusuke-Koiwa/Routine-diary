@@ -44,7 +44,7 @@
       flex-direction: column;
 
       .user-info {
-        &--myself:hover {
+        &--link:hover {
           background-color: rgb(240, 240, 240);
           border-radius: 5px;
         }
@@ -65,8 +65,7 @@
           }
         }
       }
-      &__follow-btn {
-        background-color: white;
+      .follow-btn {
         border: 1px solid lightskyblue;
         border-radius: 25px;
         height: 25px;
@@ -75,9 +74,18 @@
         text-align: center;
         margin-top: 3px;
         
-        &:hover {
-          background-color: rgb(92, 192, 255);
+        &--off {
+          background-color: white;
+          &:hover {
+            background-color: rgb(211, 238, 255);
+          }
+        }
+        &--on {
+          background-color: rgb(63, 179, 252);
           color: white;
+          &:hover {
+            background-color: rgb(97, 192, 252);
+          }
         }
       }
     }
@@ -206,4 +214,17 @@
   margin-top: 160px;
   text-align: center;
   padding: 5px;
+  display: flex;
+  justify-content: center;
+  &--off {
+    color: lightgray;
+    &:hover {
+      background-color: rgb(240, 240, 240);
+      color: rgb(190, 190, 190);
+      border-radius: 5px;
+    }
+  }
+  .follow {
+    margin-right: 25px;
+  }
 }

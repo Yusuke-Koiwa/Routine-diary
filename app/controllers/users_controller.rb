@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :move_to_root_path, unless: :user_signed_in?
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
   before_action :correct_user?, only: [:edit, :update, :destroy]
 
   def show
@@ -30,6 +30,18 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:notice] = "退会しました。またのご利用をお待ちしております。"
     redirect_to root_path
+  end
+
+  def praises_index
+    @praised_tasks = @user.praised_tasks.order("praises.created_at DESC")
+  end
+
+  def follow_index
+    @follow_users = @user.follow_users.includes(:routines).order("relationships.created_at DESC")
+  end
+
+  def follower_index
+    @follower_users = @user.follower_users.includes(:routines).order("relationships.created_at DESC")
   end
 
   private

@@ -1,58 +1,24 @@
-.contents
-  .user-header
-    .user-header__left
-      .user-menu-list
-        = link_to "#", class: "user-menu menu-link" do
-          .user-menu__title
-            ・フォロー：
-          .user-menu__count
-            100
-        = link_to "#", class: "user-menu menu-link" do
-          .user-menu__title
-            ・フォロワー：
-          .user-menu__count
-            100
-        = link_to "/praises/#{@user.id}/index", class: "user-menu menu-link" do
-          .user-menu__title
-            ・グッジョブ
-
-      .user-box
-        - if @user.id == current_user.id
-          .user-info.user-info--myself
-            = link_to edit_user_path(@user) do
-              .user-info__name
-                = @user.name
-              .user-info__img
-                = image_tag @user.image.url
-        - else
-          .user-info
-            .user-info__name
-              = @user.name
-            .user-info__img
-              = image_tag @user.image.url
-          = link_to "#", class: "user-box__follow-btn" do
-            ＋ フォロー
-    
-    .user-header__center
-      - if @user.id == current_user.id
-        = render "routines_myself"
-      - else
-        = render "routines_others"
-
-    .user-header__right
-      .continuous-days
-        .count-top
-          .count
-            = @continuous_days
-          .unit
-            日
-        .text
-          継続中
-
-      .done-days
-        = "達成総日数：#{@done_days}日"
-
-  = render "calendar"
+.user-header
+  .user-header__left
+    = render "user_info"
   
-  
-  
+  .user-header__center
+    - if @user.id == current_user.id
+      = render "routines_myself"
+    - else
+      = render "routines_others"
+
+  .user-header__right
+    .continuous-days
+      .count-top
+        .count
+          = @continuous_days
+        .unit
+          日
+      .text
+        継続中
+
+    .done-days
+      = "達成総日数：#{@done_days}日"
+
+= render "calendar"
