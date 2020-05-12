@@ -44,10 +44,6 @@
       flex-direction: column;
 
       .user-info {
-        &--link:hover {
-          background-color: rgb(240, 240, 240);
-          border-radius: 5px;
-        }
 
         &__name {
           text-align: center;
@@ -62,6 +58,25 @@
 
           img {
             border-radius: 50%;
+          }
+        }
+        &__edit {
+          display: none;
+          position: absolute;
+          background-color: rgba(255, 255, 255, 0.733);
+          top: 20px;
+          left: 30px;
+          width: 40px;
+          text-align: center;
+          font-size: 12px;
+          border-radius: 5px;
+        }
+        &--link:hover {
+          background-color: rgb(240, 240, 240);
+          border-radius: 5px;
+          position: relative;
+          .user-info__edit {
+            display: block;
           }
         }
       }
@@ -97,28 +112,26 @@
     width: 50%;
     height: 150px;
     border: 1px solid lightskyblue;
-    display: flex;
+    text-align: center;
     
-    .new-link {
-      height: 20px;
-      .new-link__icon {
-        color: rgb(0, 58, 146);
-        font-size: 20px;
-        margin: 10px 0 0 5px;
-      }
+    .new-link__icon {
+      color: rgb(0, 58, 146);
+      font-size: 20px;
+      margin: 0 auto;
     }
     .routine-list {
       width: 96%;
-      padding: 5px;
+      padding: 10px 5px 0;
       margin: 0 auto;
-      overflow-x: scroll;
+      text-align: left;
       ::-webkit-scrollbar {
         display: none;
       }
       &__message {
         color: gray;
         height: 20px;
-        margin-top: 2px;
+        margin-bottom: 5px;
+        text-align: center;
       }
       .routine {
         background-color: rgb(238, 252, 255);

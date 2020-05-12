@@ -4,7 +4,12 @@ class RoutinesController < ApplicationController
   before_action :correct_user?, only: [:edit, :update, :destroy]
 
   def new
-    @routine = Routine.new
+    if current_user.routines.length < 3
+      @routine = Routine.new
+    else
+      flash[:alert] = "登録できる習慣は３つまでです"
+      redirect_to user_path(current_user)
+    end
   end
 
   def create

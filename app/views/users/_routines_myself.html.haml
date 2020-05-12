@@ -1,9 +1,7 @@
-= link_to new_routine_path, class: "new-link" do
-  = icon('fa', 'plus-circle', class: "new-link__icon")
 .routine-list
   - if @user.routines.length == 0
     .routine-list__message
-      ← 習慣にしたいことを記入しよう！
+      習慣にしたいことを記入しよう！
 
   - @user.routines.each do |routine|
     .routine
@@ -17,3 +15,7 @@
           = icon('fa', 'edit', class: "routine__icon routine__icon--edit")
         = link_to routine_path(routine), method: :delete, data: { confirm: '削除します。よろしいですか?' } do
           = icon('fa', 'trash-alt', class: "routine__icon routine__icon--destroy")
+
+- if current_user.routines.length < 3
+  = link_to new_routine_path do
+    = icon('fa', 'plus-circle', class: "new-link__icon")

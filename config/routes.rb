@@ -7,8 +7,8 @@ Rails.application.routes.draw do
       get :praises_index, :follow_index, :follower_index
     end
   end
+  resources :tasks, except: [:edit] do
+    resources :praises, only: [:create, :destroy]
+  end
   resources :routines, except: [:index, :show]
-  resources :tasks, except: [:edit]
-  post "praises/:task_id/create" => "praises#create"
-  post "praises/:task_id/destroy" => "praises#destroy"
 end

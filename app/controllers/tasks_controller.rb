@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_action :correct_user?, only: [:update, :destroy]
 
   def index
-    @tasks = Task.includes([:user, user: :praises, user: :routines]).where("date <= ?", Date.today).where.not(score: nil).order(date: "DESC")
+    @tasks = Task.includes([:user, :praises, user: :routines]).where("date <= ?", Date.today).where.not(score: nil).order(date: "DESC")
   end
 
   def show
