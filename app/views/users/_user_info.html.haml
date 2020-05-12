@@ -21,6 +21,8 @@
           = @user.name
         .user-info__img
           = image_tag @user.image.url
+        .user-info__edit
+          編集
   - else
     .user-info
       = link_to user_path(@user) do
@@ -28,6 +30,7 @@
           = @user.name
         .user-info__img
           = image_tag @user.image.url
+
     - if current_user.already_followed?(@user)
       = link_to user_relationship_path(@user), class: "follow-btn follow-btn--on", method: :delete do
         フォロー中
