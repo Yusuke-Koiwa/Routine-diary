@@ -18,8 +18,10 @@
             ＋ フォロー
 
       .routine-list
-        - user.routines.each do |r|
-          .routine
-            = r.content
-
-      
+        - if user.routines.length != 0
+          - user.routines.each do |r|
+            .routine
+              = r.content
+        - else 
+          .routine.routine--none
+            習慣が設定されていません
