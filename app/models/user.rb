@@ -7,9 +7,9 @@ class User < ApplicationRecord
   has_many :praises, dependent: :destroy
   has_many :praised_tasks, through: :praises, source: :task
 
-  has_many :relationships
+  has_many :relationships, dependent: :destroy
   has_many :follow_users, through: :relationships, source: :follow
-  has_many :reverse_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :reverse_relationships, class_name: 'Relationship', foreign_key: 'follow_id', dependent: :destroy
   has_many :follower_users, through: :reverse_relationships, source: :user
 
   mount_uploader :image, ImageUploader
