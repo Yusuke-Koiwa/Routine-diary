@@ -28,3 +28,13 @@
       - if user.routines.exists?
         - user.routines.each do |routine|
           = routine.content
+
+.comments
+  - @comments.each do |comment|
+    = comment.user.name
+    = image_tag comment.user.image.url
+    = comment.content
+    = comment.created_at
+= form_with(model: [@task, @comment], local: true) do |f|
+  = f.text_area :content, placeholder: "コメントする", rows: "2"
+  = f.submit "送信"
