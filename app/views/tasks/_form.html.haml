@@ -8,10 +8,11 @@
         - task.errors.full_messages.each do |message|
           %li= message
   .field
-    = form.radio_button :score, :done
-    = form.label :score, "◯", {value: :done, style: "display: inline-block;"}
-    = form.radio_button :score, :bad
-    = form.label :score, "×", {value: :bad, style: "display: inline-block;"}
+    - if task.date <= Date.today
+      = form.radio_button :score, :done
+      = form.label :score, "◯", {value: :done, style: "display: inline-block;"}
+      = form.radio_button :score, :bad
+      = form.label :score, "×", {value: :bad, style: "display: inline-block;"}
 
   .field
     = form.text_area :body, cols: "27", rows: "5"
