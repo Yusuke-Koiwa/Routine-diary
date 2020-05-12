@@ -1,19 +1,27 @@
 class PraisesController < ApplicationController
+  before_action :set_task
   
   def create
-    @praise = Praise.create(praise_params)
-    redirect_back(fallback_location: root_path)
+    @praise = current_user.praise(@task)
+    if @praise.save
+      redirect_back(fallback_location: tasks_path)
+    else
+      redirect_back(fallback_location: tasks_path)
+    end
   end
 
   def destroy
-    @praise = Praise.find_by(task_id: params[:task_id], user_id: current_user.id)
-    @praise.destroy
-    redirect_back(fallback_location: root_path)
+    @praise = current_user.unpraise(@task)
+    if @praise.destroy
+      redirect_back(fallback_location: tasks_path)
+    else
+      redirect_back(fallback_location: tasks_path)
+    end
   end
 
   private
-  def praise_params
-    params.permit(:task_id).merge(user_id: current_user.id)
+  def set_task
+    @task = Task.find(params[:task_id])
   end
-  
+
 end
