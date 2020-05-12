@@ -9,7 +9,7 @@
       = render "users/routines_others"
 
 .index-title
-  = link_to "フォロー中", follow_index_user_path(@user), class: "follow"
-  = link_to "フォロワー", follower_index_user_path(@user), class: "follower index-title--off"
+  = link_to "フォロー中", follow_index_user_path(@user), class: "follow index-title--off"
+  = link_to "フォロワー", follower_index_user_path(@user), class: "follower"
 .user-list.user-list--down
-  = render "user_index", { users: @follow_users, showing_user: @user }
+  = render "user_index", { users: @follower_users, showing_user: @user }

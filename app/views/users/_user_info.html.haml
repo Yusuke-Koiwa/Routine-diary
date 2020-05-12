@@ -3,12 +3,12 @@
     .user-menu__title
       ・フォロー：
     .user-menu__count
-      100
-  = link_to "#", class: "user-menu menu-link" do
+      = @user.follow_users.count
+  = link_to follower_index_user_path(@user), class: "user-menu menu-link" do
     .user-menu__title
       ・フォロワー：
     .user-menu__count
-      100
+      = @user.follower_users.count
   = link_to praises_index_user_path(@user), class: "user-menu menu-link" do
     .user-menu__title
       ・グッジョブ

@@ -214,4 +214,17 @@
   margin-top: 160px;
   text-align: center;
   padding: 5px;
+  display: flex;
+  justify-content: center;
+  &--off {
+    color: lightgray;
+    &:hover {
+      background-color: rgb(240, 240, 240);
+      color: rgb(190, 190, 190);
+      border-radius: 5px;
+    }
+  }
+  .follow {
+    margin-right: 25px;
+  }
 }
