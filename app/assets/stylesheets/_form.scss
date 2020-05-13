@@ -1,0 +1,41 @@
+.form {
+  border: 2px solid rgb(81, 166, 236);
+  padding-top: 20px;
+  position: absolute;
+  width: 400px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  h2 {
+    font-size: 20px;
+    border-bottom: 1px solid lightsteelblue;
+    padding-bottom: 15px;
+    margin: 0 20px;
+  }
+
+  .field {
+    margin: 40px 20px;
+    
+    input {
+      width: 100%;
+      padding: 10px;
+    }
+  }
+  .actions {
+    padding-top: 10px;
+
+    #submit-btn {
+    background-color: rgb(81, 183, 247);
+    color: white;
+    border-style: none;
+    width: 100%;
+    padding: 20px;
+    cursor: pointer;
+      &:hover {
+        background-color: rgb(109, 197, 252);
+      }
+    }
+    
+  }
+}
