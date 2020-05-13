@@ -4,5 +4,50 @@
 .image-mask
   .back-image
 .home-contents
-  = link_to "ログイン", new_user_session_path, class: "btn btn--login"
-  = link_to "新規登録", new_user_registration_path, class: "btn btn--signup"
+  #login-btn.btn
+    ログイン
+  #signup-btn.btn
+    新規登録
+
+#new-registration.form
+  = icon('fa', 'times', class: "close-btn")
+  .form__title
+    .form__title--active
+      Sign up
+    #login-link.form__title--other
+      → ログイン
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .field
+      = f.text_field :name, autofocus: true, maxlength: 12, placeholder: "Nickname"
+    .field
+      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email"
+    .field
+      = f.password_field :password, autocomplete: "new-password", placeholder: "Password（6文字以上）"
+    .field
+      = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password 再入力"
+    .field
+      = f.label :プロフィール画像（登録後の設定もできます）
+      %br/
+      = f.file_field :image
+    .actions
+      = f.submit "アカウント作成", class: "submit-btn"
+
+#new-session.form
+  = icon('fa', 'times', class: "close-btn")
+  .form__title
+    .form__title--active
+      Log in
+    #signup-link.form__title--other
+      → アカウント作成
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .field
+      = f.label :email
+      %br/
+      = f.email_field :email, value: "test_user@test.com", autofocus: true, autocomplete: "email"
+    .field
+      = f.label :password
+      %br/
+      = f.password_field :password, value: "aaa111", autocomplete: "current-password"
+    .actions
+      = f.submit "ログイン", class: "submit-btn"

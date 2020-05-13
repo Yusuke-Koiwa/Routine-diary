@@ -1,4 +1,3 @@
-
 .home-title {
   position: fixed;
   z-index: 1;
@@ -58,20 +57,28 @@
     line-height: 50px;
     text-align: center;
     font-size: 18px;
-
-    &--login {
-      margin-bottom: 100px;
-      &:hover {
-        background-color: rgba(135, 206, 250, 0.123);
-      }
-    }
-
-    &--signup {
-      background-color: lightskyblue;
-      color: white;
-      &:hover {
-        background-color: rgb(104, 193, 248);
-      }
+    cursor: pointer;
+  }
+  #login-btn {
+    margin-bottom: 100px;
+    &:hover {
+      background-color: rgba(135, 206, 250, 0.123);
     }
   }
+
+  #signup-btn {
+    background-color: rgb(111, 200, 255);
+    color: white;
+    &:hover {
+      background-color: rgb(104, 193, 248);
+    }
+  }
+}
+
+#new-registration {
+  display: none;
+}
+
+#new-session {
+  display: none;
 }

@@ -1,17 +1,36 @@
 .form {
+  background-color: white;
   border: 2px solid rgb(81, 166, 236);
-  padding-top: 20px;
-  position: absolute;
-  width: 500px;
+  box-shadow: 3px 3px 10px gray;
+  width: 600px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  z-index: 5;
+  position: fixed;
+  padding-top: 20px;
+
+  .close-btn {
+    position: absolute;
+    right: 0;
+    top: -5px;
+    display: block;
+    width: 20px;
+    text-align: end;
+    font-size: 25px;
+    margin: 10px 10px 0 auto;
+    color: lightgray;
+    cursor: pointer;
+    &:hover {
+      color: gray;
+    }
+  }
 
   &__title {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid lightsteelblue;
-    margin: 10px 20px 0;
+    margin: 0 20px 0;
     align-items: center;
 
     &--active {
@@ -20,7 +39,12 @@
     }
     &--other {
       font-size: 14px;
-      color: gray;
+      margin-right: 20px;
+      color: lightgray;
+      cursor: pointer;
+      &:hover {
+        color: gray;
+      }
     }
   }
 
