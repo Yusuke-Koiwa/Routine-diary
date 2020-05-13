@@ -1,1 +1,8 @@
-.contents
+.home-title
+  = icon('fa', 'check', class: "task-icon")
+  継続しよう
+.image-mask
+  .back-image
+.home-contents
+  = link_to "ログイン", new_user_session_path, class: "btn btn--login"
+  = link_to "新規登録", new_user_registration_path, class: "btn btn--signup"
