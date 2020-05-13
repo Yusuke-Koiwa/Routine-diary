@@ -2,20 +2,31 @@
   border: 2px solid rgb(81, 166, 236);
   padding-top: 20px;
   position: absolute;
-  width: 400px;
+  width: 500px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 
-  h2 {
-    font-size: 20px;
+  &__title {
+    display: flex;
+    justify-content: space-between;
     border-bottom: 1px solid lightsteelblue;
-    padding-bottom: 15px;
-    margin: 0 20px;
+    margin: 10px 20px 0;
+    align-items: center;
+
+    &--active {
+      font-size: 20px;
+      padding-bottom: 15px;
+    }
+    &--other {
+      font-size: 14px;
+      color: gray;
+    }
   }
 
   .field {
     margin: 40px 20px;
+    color: gray;
     
     input {
       width: 100%;
@@ -25,7 +36,7 @@
   .actions {
     padding-top: 10px;
 
-    #submit-btn {
+    .submit-btn {
     background-color: rgb(81, 183, 247);
     color: white;
     border-style: none;
@@ -36,6 +47,22 @@
         background-color: rgb(109, 197, 252);
       }
     }
-    
+  }
+  #error_explanation {
+    border: 1px solid rgb(255, 60, 0);
+    padding: 20px;
+    margin: 20px 20px 0;
+
+    h3 {
+      border-bottom: 1px solid lightsteelblue;
+    }
+    ul {
+      margin-top: 10px;
+      padding-left: 10px;
+      li {
+        list-style: disc;
+      }
+    }
   }
 }
+
