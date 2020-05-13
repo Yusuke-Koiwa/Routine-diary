@@ -10,6 +10,8 @@ class TasksController < ApplicationController
   def show
     @user = @task.user
     @praised_users = @task.praised_users if @task.praises.exists?
+    @comments = @task.comments.includes(:user)
+    @comment = Comment.new
   end
 
   def new

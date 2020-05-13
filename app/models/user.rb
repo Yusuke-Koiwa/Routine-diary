@@ -4,6 +4,7 @@ class User < ApplicationRecord
          
   has_many :tasks, dependent: :destroy
   has_many :routines, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :praises, dependent: :destroy
   has_many :praised_tasks, through: :praises, source: :task
 
