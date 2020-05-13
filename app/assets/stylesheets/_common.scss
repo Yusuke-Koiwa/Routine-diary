@@ -40,6 +40,16 @@ header {
   }
 }
 
+.modal-wrapper {
+  position: fixed;
+  z-index: 2;
+  background-color: gray;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
 .contents {
   background-color: white;
   width: 100%;
