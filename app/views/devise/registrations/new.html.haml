@@ -1,30 +1,21 @@
-.contents
-  %h2 Sign up
+.form
+  .form__title
+    .form__title--active
+      Sign up
+    = link_to "→ ログイン", new_user_session_path, class: "form__title--other"
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = render "devise/shared/error_messages", resource: resource
     .field
-      = f.label :ニックネーム
-      %br/
-      = f.text_field :name, autofocus: true, maxlength: 12
+      = f.text_field :name, autofocus: true, maxlength: 12, placeholder: "Nickname"
     .field
-      = f.label :email
-      %br/
-      = f.email_field :email, autofocus: true, autocomplete: "email"
+      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email"
     .field
-      = f.label :パスワード
-      - if @minimum_password_length
-        %em
-          (#{@minimum_password_length} 文字以上)
-      %br/
-      = f.password_field :password, autocomplete: "new-password"
+      = f.password_field :password, autocomplete: "new-password", placeholder: "Password（6文字以上）"
     .field
-      = f.label :パスワード確認用
-      %br/
-      = f.password_field :password_confirmation, autocomplete: "new-password"
+      = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password 再入力"
     .field
       = f.label :プロフィール画像（登録後の設定もできます）
       %br/
       = f.file_field :image
     .actions
-      = f.submit "Sign up"
-  = render "devise/shared/links"
+      = f.submit "アカウント作成", class: "submit-btn"
