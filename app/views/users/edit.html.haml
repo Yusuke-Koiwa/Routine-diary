@@ -8,9 +8,16 @@
         %li= message
 
 .form
+  .form__title
+    プロフィール編集
   = form_with(model: @user, local: true) do |f|
-    = f.text_field :name, class: 'form__user__name', maxlength: 12, placeholder: 'ニックネーム（最大12文字）'
-    = f.label :image, class: 'form__user__image' do
-      = icon('fas', 'image', class: 'form__user__icon')
-      = f.file_field :image, class: 'form__user__file'
-    = f.submit 'Send', class: 'form__user__submit'
+    .field
+      ニックネーム
+      = f.text_field :name, class: 'form__user__name', maxlength: 12, placeholder: 'ニックネーム（最大12文字）'
+    .field
+      プロフィール画像
+      = f.label :image, class: 'form__user__image' do
+        = icon('fas', 'image', class: 'form__user__icon')
+        = f.file_field :image, class: 'form__user__file'
+    .actions
+      = f.submit 'Send', class: 'submit-btn'
