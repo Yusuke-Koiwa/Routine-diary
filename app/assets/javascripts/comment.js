@@ -26,7 +26,9 @@ $(function(){
     return html;
   }
 
-  $("#comments-index").animate({scrollTop: $("#comments-index")[0].scrollHeight});
+  if ($("#comments-index").length > 0) {
+    $("#comments-index").animate({scrollTop: $("#comments-index")[0].scrollHeight});
+  }
 
   $("#comment-form").on('submit', function(e){
     e.preventDefault();
