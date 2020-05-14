@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 
 def create
   @comment = Comment.new(comment_params)
+  @user_image_url = @comment.user_image_url(@comment.user)
   if @comment.save
     respond_to do |format|
       format.json
