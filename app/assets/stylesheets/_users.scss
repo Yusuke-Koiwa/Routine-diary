@@ -10,7 +10,7 @@
 
   &--fixed {
     position: fixed;
-    z-index: 1;
+    z-index: 5;
   }
   &__left {
     display: flex;
@@ -220,7 +220,7 @@
   background-color: white;
   border-bottom: 1px solid lightgray;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   width: 100%;
   height: 35px;
   margin-top: 160px;
