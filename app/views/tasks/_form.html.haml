@@ -1,4 +1,4 @@
-= form_with(model: task, local: true) do |form|
+= form_with(model: task, local: true) do |f|
   - if task.errors.any?
     #error_explanation
       %h2
@@ -7,18 +7,19 @@
       %ul
         - task.errors.full_messages.each do |message|
           %li= message
-  .field
+  .task-field
     - if task.date <= Date.today
-      = form.radio_button :score, :done
-      = form.label :score, "◯", {value: :done, style: "display: inline-block;"}
-      = form.radio_button :score, :bad
-      = form.label :score, "×", {value: :bad, style: "display: inline-block;"}
+      #score-field
+        = f.radio_button :score, :done
+        = f.label :score, icon('fa', 'check'), class: "score score--check score--btn score--left", value: :done
+        = f.radio_button :score, :bad
+        = f.label :score, icon('fa', 'times'), class: "score score--bad score--btn", value: :bad
 
-  .field
-    = form.text_area :body, cols: "27", rows: "5"
-  .field
-    = form.hidden_field :start_time
-    = form.hidden_field :date
-    = form.hidden_field :user_id
-  .actions
-    = form.submit
+  .task-field
+    = f.text_area :body, cols: "30", rows: "5", placeholder: "本文"
+  .task-field
+    = f.hidden_field :start_time
+    = f.hidden_field :date
+    = f.hidden_field :user_id
+  .task-actions
+    = f.submit "SEND"
