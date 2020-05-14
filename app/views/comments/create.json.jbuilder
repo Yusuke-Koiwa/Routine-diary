@@ -1,3 +1,5 @@
+json.user_id @comment.user.id
 json.user_name @comment.user.name
-json.created_at @comment.created_at
+json.user_image_url @user_image_url
+json.created_at @comment.created_at.strftime('%Y/%-m/%-d %H:%M')
 json.content @comment.content
