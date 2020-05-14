@@ -26,6 +26,8 @@ $(function(){
     return html;
   }
 
+  $("#comments-index").animate({scrollTop: $("#comments-index")[0].scrollHeight});
+
   $("#comment-form").on('submit', function(e){
     e.preventDefault();
     let formData = new FormData(this);
@@ -42,6 +44,7 @@ $(function(){
       let html = buildComment(data);
       $("#comments-index").append(html);
       $("form")[0].reset();
+      $("#comments-index").animate({scrollTop: $("#comments-index")[0].scrollHeight});
     })
     .fail(function() {
       alert("コメント送信に失敗しました");
