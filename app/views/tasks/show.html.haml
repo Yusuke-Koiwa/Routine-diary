@@ -54,8 +54,8 @@
 
   #reaction-contents
     #comments-window
-      #comment-form
-        = form_with(model: [@task, @comment], local: true) do |f|
+      #comment-top
+        = form_with(model: [@task, @comment], local: true, id: "comment-form") do |f|
           = f.text_area :content, placeholder: "コメントする", rows: "2", maxlength: 200
           = f.submit "SEND"
       #comments-index
