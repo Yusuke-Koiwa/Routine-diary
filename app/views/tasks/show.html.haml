@@ -20,7 +20,7 @@
             = icon('fa', 'times', class: "score-icon score-icon--bad")
 
           .body
-            = @task.body
+            = simple_format @task.body
 
         .task__main__right-box
           .routine-list
@@ -70,9 +70,9 @@
                     = image_tag comment.user.image.url
             .comment-box
               .comment-content
-                = comment.content
+                = simple_format comment.content
               .comment-date
-                = comment.created_at.strftime('%Y/%-m/%-d %H:%M')
+                = comment.created_at.strftime('%Y/%-m/%-d %-H:%M')
               
 
     #praised_user-window

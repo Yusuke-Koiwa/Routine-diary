@@ -1,5 +1,7 @@
 - tasks.each do |task|
   .task
+    .task-date
+      = task.created_at.strftime('%Y/%-m/%-d %-H:%M')
     = link_to task_path(task), class: "task-link" do
       .task__left
         = link_to user_path(task.user_id) do
@@ -21,7 +23,7 @@
               = icon('fa', 'times', class: "score-icon score-icon--bad")
 
             .body
-              = task.body
+              = simple_format task.body
 
           .task__main__right-box
             .routine-list
@@ -32,7 +34,7 @@
               - else 
                 .routine.routine--none
                   習慣が設定されていません
-
+              
             - if current_user.already_praised?(task)
               = link_to task_praise_path(task, id: current_user), method: :delete, class: "good-job good-job--on" do
                 = icon('far', 'thumbs-up', class: "good-job__btn good-job--on") 
