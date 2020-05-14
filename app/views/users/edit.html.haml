@@ -14,6 +14,3 @@
       = icon('fas', 'image', class: 'form__user__icon')
       = f.file_field :image, class: 'form__user__file'
     = f.submit 'Send', class: 'form__user__submit'
-
-- if @user.id == current_user.id
-  = link_to "退会", user_path(@user), method: :delete, data: { confirm: 'アカウントを削除します。本当によろしいですか?' }

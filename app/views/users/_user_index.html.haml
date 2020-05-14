@@ -9,7 +9,7 @@
             = image_tag user.image.url
 
     .user__right
-      - if showing_user == current_user
+      - if user != current_user
         - if current_user.already_followed?(user)
           = link_to user_relationship_path(user), class: "follow-btn follow-btn--on", method: :delete do
             フォロー中

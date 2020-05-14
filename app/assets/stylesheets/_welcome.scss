@@ -1,0 +1,84 @@
+.home-title {
+  position: fixed;
+  z-index: 1;
+  background-color: rgb(95, 189, 247);
+  box-shadow: 3px 3px 10px gray;
+  height: 100px;
+  color: white;
+  width: 100vw;
+  line-height: 100px;
+  font-size: 50px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+
+  .task-icon {
+    display: block;
+    color: greenyellow;
+    font-size: 130px;
+    line-height: 85px;
+    margin-right: 10px;
+  }
+}
+
+.image-mask {
+  opacity: 0.3;
+  .back-image {
+    margin: 10px auto 0;
+    height: 850px;
+    width: 1025px;
+    background-size: cover;
+    background-image: image-url("top-page-background.png");
+  }
+}
+
+.home-contents {
+  background-color: white;
+  position: absolute;
+  border: 2px solid rgb(36, 174, 253);
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px gray;
+  width: 500px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -30%);
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .btn {
+    margin: 0 auto;
+    display: block;
+    border: 1px solid lightskyblue;
+    border-radius: 25px;
+    width: 300px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  #login-btn {
+    margin-bottom: 100px;
+    &:hover {
+      background-color: rgba(135, 206, 250, 0.123);
+    }
+  }
+
+  #signup-btn {
+    background-color: rgb(111, 200, 255);
+    color: white;
+    &:hover {
+      background-color: rgb(104, 193, 248);
+    }
+  }
+}
+
+#new-registration {
+  display: none;
+}
+
+#new-session {
+  display: none;
+}

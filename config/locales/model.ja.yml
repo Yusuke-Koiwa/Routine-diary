@@ -8,7 +8,9 @@ ja:
         id: ID
         first_name: 名前 # view側： User.human_attribute_name :name => "名前" /　t("activerecord.attributes.user.name")と同じ
         last_name: 姓
-        email: メールアドレス
+        name: Nickname
+        email: Email
+        password_confirmation: Password再入力
         file: プロフィール画像
         crypted_password: パスワード
         created_at: 作成日

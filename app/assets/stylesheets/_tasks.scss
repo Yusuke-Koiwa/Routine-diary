@@ -5,157 +5,267 @@
   &--down {
     padding-top: 200px
   }
+}
+.task-show-window {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 800px;
+}
 
-  .task {
+.task {
+  background-color: white;
+  border: 1px solid lightskyblue;
+  box-shadow: 1px 1px 3px lightslategray;
+  margin-bottom: 20px;
+  padding: 10px 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 220px;
+  width: 100%;
+  position: relative;
+
+  .task-link {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .task-date {
+    font-size: 12px;
+    position: absolute;
+    top: 3px;
+    right: 10px;
+  }
+
+  &__left {
+    width: 125px;
+
+    .user-info {
+      text-align: center;
+      padding: 10px;
+      z-index: 2;
+      position: absolute;
+      top: 35px;
+      left: 20px;
+
+      &--link:hover {
+        background-color: rgb(236, 248, 255);
+        border-radius: 5px;
+      }
+      &__name {
+      }
+      &__image {
+        margin: 0 auto;
+        background-color: white;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        border: 1px solid lightskyblue;
+        
+        img {
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  &__right {
+    width: 80%;
     background-color: white;
     border: 1px solid lightskyblue;
-    box-shadow: 1px 1px 3px lightslategray;
-    margin-bottom: 20px;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-    &__left {
-      width: 125px;
-      
-      .user-info {
-        text-align: center;
-        padding: 10px 0;
-        
-        &--link:hover {
-          background-color: rgb(240, 240, 240);
-          border-radius: 5px;
+    .task__main {
+      padding: 10px 0 0 10px;
+      display: flex;
+
+      &__left-box {
+        background-color: white;
+        border: 1px solid lightskyblue;
+        width: 25%;
+        margin-bottom: 10px;
+        height: 150px;
+        position: relative;
+
+        .date {
+          font-size: 16px;
         }
-
-        &__name {
-
-        }
-
-        &__image {
-          margin: 0 auto;
-          background-color: white;
-          height: 100px;
+        .score-icon {
+          font-size: 100px;
           width: 100px;
-          border-radius: 50%;
-          border: 1px solid lightskyblue;
+          position: absolute;
+          top: 30px;
+          left: 50%;
+          transform : translateX(-50%);
+          text-align: center;
+          overflow: hidden;
           
-          img {
-            border-radius: 50%;
+          &--done {
+            color: greenyellow;
+            opacity: 0.7;
+          }
+          &--bad {
+            color: red;
+            opacity: 0.6;
+          }
+        }
+        .body {
+          position: absolute;
+          top: 25px;
+          height: 125px;
+          width: 100%;
+          overflow: scroll;
+          word-wrap: break-word;
+        }
+      }
+
+      &__right-box {
+        width: 75%;
+        margin-left: 10px;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;	
+
+        .routine-list {
+          border: 1px solid lightskyblue;
+          max-height: 140px;
+          padding: 10px 10px 0;
+          margin-right: 10px;
+          ::-webkit-scrollbar {
+            display: none;
+          }
+          .routine {
+            background-color: rgb(238, 252, 255);;
+            box-shadow: 1px 1px 3px lightslategray;
+            border: 1px solid lightskyblue;
+            height: 30px;
+            line-height: 28px;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            overflow-x: scroll;
+            white-space: nowrap;
+
+            &--none {
+              background-color: rgb(228, 228, 228);
+              color: gray;
+            }
+          }
+        }
+        .good-job {
+          display: flex;
+          margin: 5px 5px 5px auto;
+          padding: 2px 5px 0;
+          border: 1px solid;
+          border-radius: 15px;
+          z-index: 2;
+          &:hover {
+            opacity: 0.7;
+          }
+          &--on {
+            color: rgb(252, 77, 135);
+          }
+          &--off {
+            color: lightskyblue;
+          }
+          &__btn {
+            margin-right: 5px;
+            font-size: 18px;
+          }
+          &__count {
+            font-size: 16px;
+          }
+        }
+      }
+    } 
+  }
+}
+
+#reaction-menu {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgb(119, 119, 119);
+  padding-bottom: 5px;
+  color: lightgray;
+
+  .selected {
+    color: black;
+  }
+  i {
+    margin-right: 5px;
+  }
+  #praise-tab {
+    display: flex;
+    margin-left: 100px;
+    cursor: pointer;
+  }
+  #comment-tab {
+    display: flex;
+    cursor: pointer;
+  }
+}
+#reaction-contents {
+  margin-top: 20px;
+  width: 100%;
+  height: 600px;
+  border: 1px solid rgb(119, 119, 119);
+  
+  #comments-window {
+    
+    #comment-top {
+      padding: 10px 20px;
+      background-color: rgb(241, 241, 241);
+      
+      form {
+        display: flex;
+        justify-content: space-between;
+        
+        textarea {
+          resize: none;
+          width: 80%;
+          margin-right: 20px;
+        }
+        input {
+          border-style: none;
+          background-color: rgb(95, 189, 248);
+          color: white;
+          width: 20%;
+          cursor: pointer;
+          &:hover {
+            background-color: lightskyblue;
           }
         }
       }
     }
+    #comments-index {
+      border-top: 1px solid rgb(119, 119, 119);
+      overflow-y: scroll;
+      height: 500px;
+      padding: 10px 20px 10px;
 
-    &__right {
-      width: 85%;
-      background-color: white;
-      border: 1px solid lightskyblue;
-
-      .task__main {
-        padding: 10px 0 0 10px;
+      .comment-box {
+        width: 80%;
         display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
-        &__left-box {
-          background-color: white;
-          border: 1px solid lightskyblue;
-          width: 25%;
-          margin-bottom: 10px;
-          height: 150px;
-          position: relative;
-
-          .date {
-            font-size: 16px;
-          }
-            
-          .score-icon {
-            font-size: 100px;
-            width: 100px;
-            position: absolute;
-            top: 30px;
-            left: 50%;
-            transform : translateX(-50%);
-            text-align: center;
-            overflow: hidden;
-            
-            &--done {
-              color: greenyellow;
-              opacity: 0.7;
-            }
-
-            &--bad {
-              color: red;
-              opacity: 0.6;
-            }
-          }
-            
-          
-          .body {
-            position: absolute;
-            top: 25px;
-            height: 125px;
-            width: 100%;
-            overflow: scroll;
-            word-wrap: break-word;
-          }
+        .comment-date {
+          margin: 0 0 0 auto;
+          font-size: 12px;
         }
-
-        &__right-box {
-          width: 75%;
-          margin-left: 10px;
-          display: flex;
-          flex-flow: column;
-          justify-content: space-between;	
-
-          .routine-list {
-            border: 1px solid lightskyblue;
-            max-height: 140px;
-            overflow-y: scroll;
-            padding: 10px 10px 0;
-            margin-right: 10px;
-
-            .routine {
-              background-color: rgb(238, 252, 255);;
-              box-shadow: 1px 1px 3px lightslategray;
-              border: 1px solid lightskyblue;
-              height: 30px;
-              line-height: 30px;
-              margin-bottom: 10px;
-              padding-left: 10px;
-
-              &--none {
-                background-color: rgb(228, 228, 228);
-                color: gray;
-              }
-            }
-          }
-
-          .good-job {
-            display: flex;
-            margin: 5px 5px 5px auto;
-            padding: 2px 5px 0;
-            border: 1px solid;
-            border-radius: 15px;
-
-            &--on {
-              color: rgb(252, 77, 135);
-            }
-
-            &--off {
-              color: lightskyblue;
-            }
-            
-            &__btn {
-              margin-right: 5px;
-              font-size: 18px;
-              
-            }
-            &__count {
-              font-size: 16px;
-            }
-          }
-        }
-      } 
+      }
+    }
+  }
+  #praised_user-window {
+    display: none;
+    padding: 20px;
+    height: 600px;
+    #praised_user-box {
+      overflow-y: scroll;
+      width: 100%;
+      height: 100%;
     }
   }
 }

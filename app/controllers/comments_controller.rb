@@ -2,9 +2,13 @@ class CommentsController < ApplicationController
 
 def create
   @comment = Comment.new(comment_params)
+  @user_image_url = @comment.user_image_url(@comment.user)
   if @comment.save
-    redirect_back(fallback_location: tasks_path)
+    respond_to do |format|
+      format.json
+    end
   else
+    flash[:alert] = "コメントが入力されていません"
     redirect_back(fallback_location: tasks_path)
   end
 end

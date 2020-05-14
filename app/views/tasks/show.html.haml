@@ -1,40 +1,83 @@
-- if @user.id == current_user.id
-  = render 'form', task: @task
-  = link_to 'Back', user_path(current_user)
-  = link_to 'Destroy', task_path(@task), method: :delete, data: { confirm: '削除します。よろしいですか?' }
+.task-show-window
+  .task
+    .task__left
+      = link_to user_path(@task.user_id) do
+        .user-info.user-info--link
+          .user-info__name
+            = @task.user.name
+          .user-info__image
+            = image_tag @task.user.image.url
 
-- else
-  = @task.score
-  = @task.body
+    .task__right
+      .task__main
+        .task__main__left-box
+          .date
+            = @task.date.strftime('%-m月%-d日')
 
-- if current_user.already_praised?(@task)
-  = link_to "/praises/#{@task.id}/destroy", method: :post, class: "good-job good-job--on" do
-    = icon('far', 'thumbs-up', class: "good-job__btn good-job--on") 
-    .good-job__count
-      = @task.praises.count
-- else
-  = link_to "/praises/#{@task.id}/create", method: :post, class: "good-job good-job--off" do
-    = icon('far', 'thumbs-up', class: "good-job__btn good-job--off")
-    .good-job__count
-      = @task.praises.count
+          - if @task.score == "done"
+            = icon('fa', 'check', class: "score-icon score-icon--done")
+          - else @task.score == "bad"
+            = icon('fa', 'times', class: "score-icon score-icon--bad")
 
-.praised_user-btn
-  グッジョブ
-- if @praised_users  
-  - @praised_users.each do |user|
-    = link_to user_path(user) do
-      = user.name
-      = image_tag user.image.url
-      - if user.routines.exists?
-        - user.routines.each do |routine|
-          = routine.content
+          .body
+            = simple_format @task.body
 
-.comments
-  - @comments.each do |comment|
-    = comment.user.name
-    = image_tag comment.user.image.url
-    = comment.content
-    = comment.created_at
-= form_with(model: [@task, @comment], local: true) do |f|
-  = f.text_area :content, placeholder: "コメントする", rows: "2"
-  = f.submit "送信"
+        .task__main__right-box
+          .routine-list
+            - if @task.user.routines.length != 0
+              - @task.user.routines.each do |r|
+                .routine
+                  = r.content
+            - else 
+              .routine.routine--none
+                習慣が設定されていません
+
+          - if current_user.already_praised?(@task)
+            = link_to task_praise_path(@task, id: current_user), method: :delete, class: "good-job good-job--on" do
+              = icon('far', 'thumbs-up', class: "good-job__btn good-job--on") 
+              .good-job__count
+                = @task.praises.count
+          - else
+            = link_to task_praises_path(@task), method: :post, class: "good-job good-job--off" do
+              = icon('far', 'thumbs-up', class: "good-job__btn good-job--off")
+              .good-job__count
+                = @task.praises.count
+  
+  #reaction-menu
+    #comment-tab.selected
+      = icon('far', 'comments', class: "comment-icon")
+      コメント
+
+    #praise-tab
+      = icon('far', 'thumbs-up', class: "good-job__btn good-job--on") 
+      グッジョブしたユーザー
+
+  #reaction-contents
+    #comments-window
+      #comment-top
+        = form_with(model: [@task, @comment], local: true, id: "comment-form") do |f|
+          = f.text_area :content, placeholder: "コメントする", rows: "2", maxlength: 200
+          = f.submit "SEND"
+      #comments-index
+        - @comments.each do |comment|
+          .user
+            .user__left
+              = link_to user_path(comment.user) do
+                .user-info.user-info--link
+                  .user-info__name
+                    = comment.user.name
+                  .user-info__image
+                    = image_tag comment.user.image.url
+            .comment-box
+              .comment-content
+                = simple_format comment.content
+              .comment-date
+                = comment.created_at.strftime('%Y/%-m/%-d %-H:%M')
+              
+
+    #praised_user-window
+      #praised_user-box
+        - if @praised_users  
+          = render "users/user_index", { users: @praised_users, showing_user: @user } 
+
+    

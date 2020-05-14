@@ -1,5 +1,8 @@
-.contents
-  %h2 Log in
+.form
+  .form__title
+    .form__title--active
+      Log in
+    = link_to "→ アカウント作成", new_user_registration_path, class: "form__title--other"
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
       = f.label :email
@@ -9,10 +12,5 @@
       = f.label :password
       %br/
       = f.password_field :password, value: "aaa111", autocomplete: "current-password"
-    - if devise_mapping.rememberable?
-      .field
-        = f.check_box :remember_me
-        = f.label :remember_me
     .actions
-      = f.submit "Log in"
-  = render "devise/shared/links"
+      = f.submit "ログイン", class: "submit-btn"
