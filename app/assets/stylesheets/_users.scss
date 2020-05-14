@@ -12,7 +12,6 @@
     position: fixed;
     z-index: 1;
   }
-
   &__left {
     display: flex;
     align-items: center;
@@ -34,7 +33,7 @@
         justify-content: space-between;
       }
       .menu-link:hover {
-        background-color: rgb(240, 240, 240);
+        background-color: rgb(236, 248, 255);
         border-radius: 5px;
       }
     }
@@ -72,7 +71,7 @@
           border-radius: 5px;
         }
         &--link:hover {
-          background-color: rgb(240, 240, 240);
+          background-color: rgb(236, 248, 255);
           border-radius: 5px;
           position: relative;
           .user-info__edit {
