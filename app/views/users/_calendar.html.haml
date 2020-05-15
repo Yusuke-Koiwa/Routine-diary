@@ -11,8 +11,7 @@
       = HolidayJp.between(date, date).first.name
   
   - if @user.id == current_user.id
-    = link_to new_task_path(date) do
-      .new_task_link
+    .new_task_link
 
   - tasks.each do |task|
     - if task.score
