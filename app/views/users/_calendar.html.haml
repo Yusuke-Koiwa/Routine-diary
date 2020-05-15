@@ -15,17 +15,9 @@
       .new_task_link
 
   - tasks.each do |task|
-    -if task.score
-      - if current_user.already_praised?(task)
-        = link_to task_praise_path(task), method: :delete, class: "good-job good-job--on" do
-          = icon('far', 'thumbs-up', class: "good-job__btn good-job--on") 
-          .good-job__count
-            = task.praises.count
-      - else
-        = link_to task_praises_path(task), method: :post, class: "good-job good-job--off" do
-          = icon('far', 'thumbs-up', class: "good-job__btn good-job--off")
-          .good-job__count
-            = task.praises.count
+    - if task.score
+      .praise-btn{id: "praise-#{task.id}"}
+        = render partial: "tasks/praise", locals: { task: task }
 
 
     - if task.score == "done"
