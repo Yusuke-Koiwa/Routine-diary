@@ -1,0 +1,10 @@
+- if current_user.already_praised?(task)
+  = link_to task_praise_path(task, id: current_user), method: :delete, class: "good-job good-job--on", remote: true do
+    = icon('far', 'thumbs-up', class: "good-job__btn good-job--on") 
+    .good-job__count
+      = task.praises.count
+- else
+  = link_to task_praises_path(task), method: :post, class: "good-job good-job--off", remote: true do
+    = icon('far', 'thumbs-up', class: "good-job__btn good-job--off")
+    .good-job__count
+      = task.praises.count
