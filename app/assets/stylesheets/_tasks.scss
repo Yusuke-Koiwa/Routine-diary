@@ -192,23 +192,26 @@
   justify-content: center;
   border-bottom: 1px solid rgb(119, 119, 119);
   padding-bottom: 5px;
-  color: lightgray;
+
+  i {
+    margin-right: 5px;
+  }
+  .praise-tab {
+    display: flex;
+    margin-left: 100px;
+    color: lightgray;
+    cursor: pointer;
+  }
+  .comment-tab {
+    display: flex;
+    color: lightgray;
+    cursor: pointer;
+  }
 
   .selected {
     color: black;
   }
-  i {
-    margin-right: 5px;
-  }
-  #praise-tab {
-    display: flex;
-    margin-left: 100px;
-    cursor: pointer;
-  }
-  #comment-tab {
-    display: flex;
-    cursor: pointer;
-  }
+  
 }
 #reaction-contents {
   margin-top: 20px;
@@ -263,7 +266,6 @@
     }
   }
   #praised_user-window {
-    display: none;
     padding: 20px;
     height: 600px;
     #praised_user-box {
