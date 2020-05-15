@@ -1,5 +1,10 @@
 .task-show-window
   .task
+    - if @task.user == current_user
+      .task-menu
+        = icon('fa', 'edit', id: "task-edit")
+        = link_to task_path(@task), id: "task-delete", method: :delete, data: { confirm: '削除します。よろしいですか?' } do
+          = icon('fa', 'trash-alt')
     .task-date
       = @task.created_at.strftime('%Y/%-m/%-d %-H:%M')
     .task__left
