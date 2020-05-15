@@ -1,5 +1,5 @@
 - users.each do |user|
-  .user
+  .user{id: "user-#{user.id}"}
     .user__left
       = link_to user_path(user) do
         .user-info.user-info--link
