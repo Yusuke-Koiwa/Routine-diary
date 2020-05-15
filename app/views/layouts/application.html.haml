@@ -8,7 +8,7 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body
-    .modal-wrapper
+    %div{id: "modal-wrapper"}
     %header
       .nav-bar
         = link_to "トップページ", root_path, class: "logo"
