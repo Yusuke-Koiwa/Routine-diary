@@ -11,4 +11,41 @@
 .index-title
   グッジョブした投稿
 .task-list.task-list--down
-  = render partial: "tasks/posts", locals: { tasks: @praised_tasks}
+  - @praised_tasks.each do |task|
+    .task
+      .task-date
+        = task.created_at.strftime('%Y/%-m/%-d %-H:%M')
+      = link_to task_path(task), class: "task-link" do
+        .task__left
+          = link_to user_path(task.user_id) do
+            .user-info.user-info--link
+              .user-info__name
+                = task.user.name
+              .user-info__image
+                = image_tag task.user.image.url
+
+        .task__right
+          .task__main
+            .task__main__left-box
+              .date
+                = task.date.strftime('%-m月%-d日')
+
+              - if task.score == "done"
+                = icon('fa', 'check', class: "score-icon score-icon--done")
+              - else task.score == "bad"
+                = icon('fa', 'times', class: "score-icon score-icon--bad")
+
+              .body
+                = simple_format task.body
+
+            .task__main__right-box
+              .routine-list
+                - if task.user.routines.length != 0
+                  - task.user.routines.each do |r|
+                    .routine
+                      = r.content
+                - else 
+                  .routine.routine--none
+                    習慣が設定されていません
+              .praise-content{id: "praise-#{task.id}"}
+                = render partial: "tasks/praise", locals: { task: task }
