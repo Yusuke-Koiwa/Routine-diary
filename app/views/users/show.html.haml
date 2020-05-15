@@ -22,3 +22,22 @@
       = "達成総日数：#{@done_days}日"
 
 = render "calendar"
+
+#new-task.form.form--task
+  = icon('fa', 'times', class: "close-btn")
+  .form__title
+    .form__title--active
+      
+  = form_with url: {controller: 'tasks', action: 'create'}, id: "new-task-form"  do |f|
+    .task-field
+      #score-field
+        = f.radio_button :score, :done
+        = f.label :score, icon('fa', 'check'), class: "score score--check score--btn score--left", value: :done
+        = f.radio_button :score, :bad
+        = f.label :score, icon('fa', 'times'), class: "score score--bad score--btn", value: :bad
+
+    .task-field
+      = f.text_area :body, cols: "30", rows: "5", placeholder: "本文"
+      %input{type: "hidden", name: "user_id", value: "#{current_user.id}"}
+    .task-actions
+      = f.submit "SEND", id: "task-submit"
