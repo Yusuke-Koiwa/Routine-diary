@@ -26,14 +26,16 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = Task.new(new_task_params)
+    @task.start_time = @task.start_time.to_datetime
+    @task.start_time = @task.date.to_date
     if @task.score == nil && @task.body == ""
       redirect_to user_path(current_user)
     else
       if @task.save
         redirect_to user_path(current_user)
       else
-        render :new
+        redirect_to user_path(current_user)
       end
     end
   end
@@ -59,6 +61,10 @@ class TasksController < ApplicationController
   private
     def set_task
       @task = Task.find(params[:id])
+    end
+
+    def new_task_params
+      params.permit(:score, :body, :start_time, :date, :user_id)
     end
 
     def task_params
