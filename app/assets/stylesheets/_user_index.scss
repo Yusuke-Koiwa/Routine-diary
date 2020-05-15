@@ -6,81 +6,82 @@
     padding-top: 200px
   }
 }
-  .user {
-    background-color: white;
-    border: 1px solid lightskyblue;
-    box-shadow: 1px 1px 3px lightslategray;
-    margin-bottom: 20px;
-    padding: 10px 20px 10px 10px;
-    display: flex;
-    justify-content: space-between;
+.user {
+  background-color: white;
+  border: 1px solid lightskyblue;
+  box-shadow: 1px 1px 3px lightslategray;
+  margin-bottom: 20px;
+  padding: 10px 20px 10px 10px;
+  display: flex;
+  justify-content: space-between;
 
-    &__left {
-      width: 125px;
-      margin: auto 0;
+  &__left {
+    width: 125px;
+    margin: auto 0;
+    
+    .user-info {
+      text-align: center;
       
-      .user-info {
-        text-align: center;
-        
-        &--link:hover {
-          background-color: rgb(236, 248, 255);
-          border-radius: 5px;
-        }
-        &__name {
-
-        }
-        &__image {
-          margin: 0 auto;
-          background-color: white;
-          height: 100px;
-          width: 100px;
-          border-radius: 50%;
-          border: 1px solid lightskyblue;
-          
-          img {
-            border-radius: 50%;
-          }
-        }
+      &--link:hover {
+        background-color: rgb(236, 248, 255);
+        border-radius: 5px;
       }
-    }
+      &__name {
 
-    &__right {
-      width: 75%;
-      display: flex;
-      flex-direction: column;
-
-      .routine-list {
+      }
+      &__image {
+        margin: 0 auto;
+        background-color: white;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
         border: 1px solid lightskyblue;
-        width: 100%;
-        max-height: 140px;
-        overflow-y: scroll;
-        padding: 10px 10px 0;
-
-        .routine {
-          background-color: rgb(238, 252, 255);;
-          box-shadow: 1px 1px 3px lightslategray;
-          border: 1px solid lightskyblue;
-          height: 30px;
-          line-height: 30px;
-          margin-bottom: 10px;
-          padding-left: 10px;
-
-          &--none {
-            background-color: rgb(228, 228, 228);
-            color: gray;
-          }
+        
+        img {
+          border-radius: 50%;
         }
       }
     }
+  }
+
+  &__right {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+
+    .routine-list {
+      border: 1px solid lightskyblue;
+      width: 100%;
+      max-height: 140px;
+      overflow-y: scroll;
+      padding: 10px 10px 0;
+
+      .routine {
+        background-color: rgb(238, 252, 255);;
+        box-shadow: 1px 1px 3px lightslategray;
+        border: 1px solid lightskyblue;
+        height: 30px;
+        line-height: 30px;
+        margin-bottom: 10px;
+        padding-left: 10px;
+
+        &--none {
+          background-color: rgb(228, 228, 228);
+          color: gray;
+        }
+      }
+    }
+  
+    .follow-content {
+      margin: 0 0 10px auto;
+
       .follow-btn {
         border: 1px solid lightskyblue;
         border-radius: 25px;
-        height: 30px;
-        width: 100px;
+        padding: 5px;
         line-height: 30px;
         font-size: 14px;
         text-align: center;
-        margin: 0 0 10px auto;
         
         &--off {
           background-color: white;
@@ -96,4 +97,6 @@
           }
         }
       }
+    }
   }
+}

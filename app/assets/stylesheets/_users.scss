@@ -79,26 +79,29 @@
           }
         }
       }
-      .follow-btn {
-        border: 1px solid lightskyblue;
-        border-radius: 25px;
-        height: 25px;
-        line-height: 25px;
-        font-size: 14px;
-        text-align: center;
-        margin-top: 3px;
-        
-        &--off {
-          background-color: white;
-          &:hover {
-            background-color: rgb(211, 238, 255);
+      .follow-content {
+        margin: 3px auto 0;
+
+        .follow-btn {
+          border: 1px solid lightskyblue;
+          border-radius: 25px;
+          line-height: 25px;
+          font-size: 14px;
+          text-align: center;
+          padding: 5px;
+          
+          &--off {
+            background-color: white;
+            &:hover {
+              background-color: rgb(211, 238, 255);
+            }
           }
-        }
-        &--on {
-          background-color: rgb(63, 179, 252);
-          color: white;
-          &:hover {
-            background-color: rgb(97, 192, 252);
+          &--on {
+            background-color: rgb(63, 179, 252);
+            color: white;
+            &:hover {
+              background-color: rgb(97, 192, 252);
+            }
           }
         }
       }
