@@ -1,5 +1,7 @@
 .task-show-window
   .task
+    .task-date
+      = @task.created_at.strftime('%Y/%-m/%-d %-H:%M')
     .task__left
       = link_to user_path(@task.user_id) do
         .user-info.user-info--link
@@ -32,16 +34,8 @@
               .routine.routine--none
                 習慣が設定されていません
 
-          - if current_user.already_praised?(@task)
-            = link_to task_praise_path(@task, id: current_user), method: :delete, class: "good-job good-job--on" do
-              = icon('far', 'thumbs-up', class: "good-job__btn good-job--on") 
-              .good-job__count
-                = @task.praises.count
-          - else
-            = link_to task_praises_path(@task), method: :post, class: "good-job good-job--off" do
-              = icon('far', 'thumbs-up', class: "good-job__btn good-job--off")
-              .good-job__count
-                = @task.praises.count
+          .praise-content.praise-btn{id: "praise-#{@task.id}"}
+            = render partial: "praise", locals: { task: @task }
   
   #reaction-menu
     #comment-tab.selected
@@ -76,6 +70,7 @@
               
 
     #praised_user-window
+      %input{type: "hidden", value: current_user.id, class: 'current_user_id' }
       #praised_user-box
         - if @praised_users  
           = render "users/user_index", { users: @praised_users, showing_user: @user } 
