@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :move_to_root_path,  unless: :user_signed_in?
-  before_action :set_task, only: [:show, :update, :destroy]
+  before_action :set_task, only: [:show, :update, :destroy, :praised_users_index]
   before_action :correct_user?, only: [:update, :destroy]
 
   def index
@@ -9,7 +9,6 @@ class TasksController < ApplicationController
 
   def show
     @user = @task.user
-    @praised_users = @task.praised_users.order("praises.created_at DESC") if @task.praises.exists?
     @comments = @task.comments.includes(:user)
     @comment = Comment.new
   end
@@ -50,6 +49,11 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     redirect_to user_path(current_user)
+  end
+
+  def praised_users_index
+    @user = @task.user
+    @praised_users = @task.praised_users.order("praises.created_at DESC") if @task.praises.exists?
   end
 
   private
