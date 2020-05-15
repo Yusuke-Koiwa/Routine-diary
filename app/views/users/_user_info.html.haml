@@ -31,9 +31,5 @@
         .user-info__img
           = image_tag @user.image.url
 
-    - if current_user.already_followed?(@user)
-      = link_to user_relationship_path(@user), class: "follow-btn follow-btn--on", method: :delete do
-        フォロー中
-    -else
-      = link_to user_relationships_path(@user), class: "follow-btn follow-btn--off", method: :post do
-        ＋ フォロー
+    .follow-content{id: "follow-#{@user.id}"}
+      = render partial: "users/follow-btn", locals: { user: @user }
