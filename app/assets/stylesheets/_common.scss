@@ -40,10 +40,10 @@ header {
   }
 }
 
-.modal-wrapper {
+#modal-wrapper {
   position: fixed;
   z-index: 2;
-  background-color: gray;
+  background-color: rgb(51, 50, 50);
   opacity: 0.5;
   width: 100%;
   height: 100%;
