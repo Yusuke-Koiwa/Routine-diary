@@ -163,6 +163,8 @@
     }
     textarea {
       resize: none;
+      display: block;
+      margin: 0 auto;
     }
     .task-actions input {
       display: block;
@@ -203,5 +205,9 @@
       }
     }
   }
+}
+
+#new-task {
+  display: none;
 }
 
