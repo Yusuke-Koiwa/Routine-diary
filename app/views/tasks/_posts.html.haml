@@ -34,14 +34,5 @@
               - else 
                 .routine.routine--none
                   習慣が設定されていません
-              
-            - if current_user.already_praised?(task)
-              = link_to task_praise_path(task, id: current_user), method: :delete, class: "good-job good-job--on" do
-                = icon('far', 'thumbs-up', class: "good-job__btn good-job--on") 
-                .good-job__count
-                  = task.praises.count
-            - else
-              = link_to task_praises_path(task), method: :post, class: "good-job good-job--off" do
-                = icon('far', 'thumbs-up', class: "good-job__btn good-job--off")
-                .good-job__count
-                  = task.praises.count
+            .praise-content{id: "praise-#{task.id}"}
+              = render partial: "praise", locals: { task: task }
