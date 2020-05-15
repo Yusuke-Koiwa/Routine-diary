@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     end
   end
   resources :tasks, except: [:edit] do
+    member do
+      get :praised_users_index
+    end
     resources :comments, only: [:create]
     resources :praises, only: [:create, :destroy]
   end
