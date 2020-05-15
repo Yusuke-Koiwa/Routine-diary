@@ -1,6 +1,6 @@
 class PraisesController < ApplicationController
   before_action :set_task
-  
+
   def create
     @praise = current_user.praise(@task)
   end
