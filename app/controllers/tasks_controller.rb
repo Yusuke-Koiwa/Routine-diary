@@ -9,7 +9,7 @@ class TasksController < ApplicationController
 
   def show
     @user = @task.user
-    @praised_users = @task.praised_users if @task.praises.exists?
+    @praised_users = @task.praised_users.order("praises.created_at DESC") if @task.praises.exists?
     @comments = @task.comments.includes(:user)
     @comment = Comment.new
   end
