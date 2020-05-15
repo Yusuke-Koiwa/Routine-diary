@@ -3,12 +3,12 @@
     .task-date
       = @task.created_at.strftime('%Y/%-m/%-d %-H:%M')
     .task__left
-      = link_to user_path(@task.user_id) do
+      = link_to user_path(@user) do
         .user-info.user-info--link
           .user-info__name
-            = @task.user.name
+            = @user.name
           .user-info__image
-            = image_tag @task.user.image.url
+            = image_tag @user.image.url
 
     .task__right
       .task__main
@@ -38,11 +38,11 @@
             = render partial: "praise", locals: { task: @task }
   
   #reaction-menu
-    #comment-tab.selected
+    = link_to task_path(@task), class: "comment-tab selected" do
       = icon('far', 'comments', class: "comment-icon")
       コメント
 
-    #praise-tab
+    = link_to praised_users_index_task_path(@task), class: "praise-tab" do
       = icon('far', 'thumbs-up', class: "good-job__btn good-job--on") 
       グッジョブしたユーザー
 
@@ -67,12 +67,3 @@
                 = simple_format comment.content
               .comment-date
                 = comment.created_at.strftime('%Y/%-m/%-d %-H:%M')
-              
-
-    #praised_user-window
-      %input{type: "hidden", value: current_user.id, class: 'current_user_id' }
-      #praised_user-box
-        - if @praised_users  
-          = render "users/user_index", { users: @praised_users, showing_user: @user } 
-
-    
