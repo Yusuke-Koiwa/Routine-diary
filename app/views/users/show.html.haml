@@ -23,12 +23,16 @@
 
 = render "calendar"
 
+- if @user.routines.count < 3
+  #new-routine.form
+    = render partial: "routines/new_form", locals: { routine: @routine }
+
 #new-task.form.form--task
   = icon('fa', 'times', class: "close-btn")
   .form__title
     .form__title--active
       
-  = form_with url: {controller: 'tasks', action: 'create'}, id: "new-task-form"  do |f|
+  = form_with url: tasks_path, id: "new-task-form", local: true  do |f|
     .task-field
       #score-field
         = f.radio_button :score, :done
