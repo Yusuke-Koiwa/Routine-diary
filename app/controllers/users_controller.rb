@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @tasks = @user.tasks
     @routines = @user.routines
+    @routine = Routine.new if @routines.count < 3
     if @tasks.present?
       @done_days = @user.done_days(@tasks)
       @continuous_days = @user.continuous_days(@tasks)
