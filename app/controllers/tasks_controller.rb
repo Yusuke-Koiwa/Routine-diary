@@ -13,38 +13,29 @@ class TasksController < ApplicationController
     @comment = Comment.new
   end
 
-  def new
-    if Task.exists?(date: params[:format], user_id: current_user.id)
-      flash[:alert] = "無効なURLです"
-      redirect_to user_path(current_user)
-    elsif current_user.routines.exists?
-      @task = Task.new(date: params[:format], start_time: params[:format].to_datetime, user_id: current_user.id)
-    else
-      flash[:alert] = "習慣化したいことを先に入力して下さい"
-      redirect_to user_path(current_user)
-    end
-  end
-
   def create
     @task = Task.new(new_task_params)
     @task.start_time = @task.start_time.to_datetime
     @task.start_time = @task.date.to_date
     if @task.score == nil && @task.body == ""
       redirect_to user_path(current_user)
+    elsif Task.where(date: @task.date, user_id: current_user.id).length >= 1
+      flash[:alert] = "データが既に存在します"
+      redirect_to user_path(current_user)
+    elsif @task.save
+      redirect_to user_path(current_user)
     else
-      if @task.save
-        redirect_to user_path(current_user)
-      else
-        redirect_to user_path(current_user)
-      end
+      redirect_to user_path(current_user)
     end
   end
 
   def update
-    if @task.update(task_params)
+    @task.update(task_params)
+    if @task.score == nil && @task.body == ""
+      @task.destroy
       redirect_to user_path(current_user)
     else
-      render :edit
+      redirect_to task_path(@task)
     end
   end
 
