@@ -1,34 +1,26 @@
 class RoutinesController < ApplicationController
   before_action :move_to_root_path,  unless: :user_signed_in?
-  before_action :set_routine, only: [:edit, :update, :destroy]
-  before_action :correct_user?, only: [:edit, :update, :destroy]
+  before_action :set_routine, only: [:update, :destroy]
+  before_action :correct_user?, only: [:destroy]
 
-  def new
-    if current_user.routines.length < 3
-      @routine = Routine.new
-    else
+  def create
+    if current_user.routines.length >= 3
       flash[:alert] = "登録できる習慣は３つまでです"
       redirect_to user_path(current_user)
     end
-  end
-
-  def create
     @routine = Routine.new(routine_params)
     if @routine.save
       redirect_to user_path(current_user)
     else
-      render :new
+      redirect_to user_path(current_user)
     end
-  end
-
-  def edit
   end
 
   def update
     if @routine.update(routine_params)
       redirect_to user_path(current_user)
     else
-      render :edit
+      redirect_to user_path(current_user)
     end
   end
 
