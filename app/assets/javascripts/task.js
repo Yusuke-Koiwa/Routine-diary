@@ -12,23 +12,16 @@ $(function(){
   }
 
   $(".new_task_link").on("click", function(){
-    let date = $(this).parent().attr("id");
+    let date = $(this).children("input").val();
     let input = buildInput(date);
     $("#new-task-form").append(input);
     $(".form__title--active").text(date);
     $("#modal-wrapper").fadeIn();
     $("#new-task").fadeIn();
-
-    $(".close-btn").on("click", function(){
-      $("#modal-wrapper").fadeOut();
-      $("#new-task").fadeOut();
-    })
-    
-    $("#new-task-form").on("submit", function(){
-      $("#task-submit").css('pointer-events', 'none');
-      setTimeout(function(){
-        location.reload();
-      },100);
-    })
   })
+
+  $("#task-edit-icon").on('click', function(){
+    $("#edit-task").fadeIn();
+    $("#modal-wrapper").fadeIn();
+  });
 });

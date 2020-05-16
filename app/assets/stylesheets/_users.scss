@@ -116,10 +116,11 @@
     border: 1px solid lightskyblue;
     text-align: center;
     
-    .new-link__icon {
+    #new-routine-icon {
       color: rgb(0, 58, 146);
       font-size: 20px;
       margin: 0 auto;
+      cursor: pointer;
     }
     .routine-list {
       width: 96%;
@@ -159,6 +160,7 @@
             white-space: nowrap;
           }
           &__start-date {
+            text-align: end;
             width: 20%;
             font-size: 10px;
             padding: 0 5px;
@@ -170,6 +172,9 @@
         &__icons {        
           .routine__icon {
             color: rgb(0, 58, 146);
+            &--edit {
+              cursor: pointer;
+            }
           }
         }
       }

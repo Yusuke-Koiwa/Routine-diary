@@ -14,6 +14,10 @@ $(function(){
     $("#modal-wrapper").fadeOut();
     $("#new-registration").fadeOut();
     $("#new-session").fadeOut();
+    $("#new-task").fadeOut();
+    $("#edit-task").fadeOut();
+    $("#new-routine").fadeOut();
+    $(".edit-routine").fadeOut();
   })
 
   $("#login-link").on('click', function(){
@@ -31,6 +35,9 @@ $(function(){
     $("#new-registration").fadeOut();
     $("#new-session").fadeOut();
     $("#new-task").fadeOut();
+    $("#edit-task").fadeOut();
+    $("#new-routine").fadeOut();
+    $(".edit-routine").fadeOut();
   })
 
 });
