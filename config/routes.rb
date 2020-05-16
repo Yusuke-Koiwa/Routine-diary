@@ -7,12 +7,12 @@ Rails.application.routes.draw do
       get :praises_index, :follow_index, :follower_index
     end
   end
-  resources :tasks, except: [:edit] do
+  resources :tasks, except: [:new, :edit] do
     member do
       get :praised_users_index
     end
     resources :comments, only: [:create]
     resources :praises, only: [:create, :destroy]
   end
-  resources :routines, except: [:index, :show]
+  resources :routines, only: [:create, :update, :destroy]
 end
