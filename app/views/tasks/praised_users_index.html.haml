@@ -1,5 +1,10 @@
 .task-show-window
   .task
+    - if @task.user == current_user
+      .task-menu
+        = icon('fa', 'edit', id: "task-edit-icon")
+        = link_to task_path(@task), id: "task-delete-icon", method: :delete, data: { confirm: '削除します。よろしいですか?' } do
+          = icon('fa', 'trash-alt')
     .task-date
       = @task.created_at.strftime('%Y/%-m/%-d %-H:%M')
     .task__left
@@ -18,8 +23,10 @@
 
           - if @task.score == "done"
             = icon('fa', 'check', class: "score-icon score-icon--done")
-          - else @task.score == "bad"
+          - elsif @task.score == "bad"
             = icon('fa', 'times', class: "score-icon score-icon--bad")
+          - else
+            = ""
 
           .body
             = simple_format @task.body
@@ -53,4 +60,5 @@
         - if @praised_users
           = render "users/user_index", { users: @praised_users, showing_user: @user } 
 
-    
+- if @task.user == current_user
+  = render partial: "form", locals: { task: @task }
