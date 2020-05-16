@@ -1,25 +1,23 @@
-= form_with(model: task, local: true) do |f|
-  - if task.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(task.errors.count, "error")
-        prohibited this task from being saved:
-      %ul
-        - task.errors.full_messages.each do |message|
-          %li= message
-  .task-field
-    - if task.date <= Date.today
-      #score-field
-        = f.radio_button :score, :done
-        = f.label :score, icon('fa', 'check'), class: "score score--check score--btn score--left", value: :done
-        = f.radio_button :score, :bad
-        = f.label :score, icon('fa', 'times'), class: "score score--bad score--btn", value: :bad
+#edit-task.form.form--task
+  = icon('fa', 'times', class: "close-btn")
+  .form__title
+    .form__title--active
+      = task.date.strftime("%Y/%-m/%-d")
+  = form_with(model: task, local: true, id: "edit-task-form") do |f|
+    
+    .task-field
+      - if task.date <= Date.today
+        #score-field
+          = f.radio_button :score, :done
+          = f.label :score, icon('fa', 'check'), class: "score score--check score--btn score--left", value: :done
+          = f.radio_button :score, :bad
+          = f.label :score, icon('fa', 'times'), class: "score score--bad score--btn", value: :bad
 
-  .task-field
-    = f.text_area :body, cols: "30", rows: "5", placeholder: "本文"
-  .task-field
-    = f.hidden_field :start_time
-    = f.hidden_field :date
-    = f.hidden_field :user_id
-  .task-actions
-    = f.submit "SEND"
+    .task-field
+      = f.text_area :body, cols: "30", rows: "5", placeholder: "本文"
+    .task-field
+      = f.hidden_field :start_time
+      = f.hidden_field :date
+      = f.hidden_field :user_id
+    .task-actions
+      = f.submit "SEND", id: "edit-task-submit"

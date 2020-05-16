@@ -1,0 +1,9 @@
+= form_with(model: routine, url: routines_path, id: "routine-form", local: true) do |f|
+  = icon('fa', 'times', class: "close-btn")
+  .form__title
+    .form__title--active
+      習慣にすること
+  .field
+    = f.text_area :content, cols: "50", rows: "1",maxlength: "50", placeholder: "入力してください"
+  .routine-actions
+    = f.submit "SEND", id: "edit-routine-submit"

@@ -42,12 +42,8 @@
       → アカウント作成
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
-      = f.label :email
-      %br/
-      = f.email_field :email, value: "test_user@test.com", autofocus: true, autocomplete: "email"
+      = f.email_field :email, placeholder: "Email", autofocus: true, autocomplete: "email"
     .field
-      = f.label :password
-      %br/
-      = f.password_field :password, value: "aaa111", autocomplete: "current-password"
+      = f.password_field :password, placeholder: "Password", autocomplete: "current-password"
     .actions
       = f.submit "ログイン", class: "submit-btn"

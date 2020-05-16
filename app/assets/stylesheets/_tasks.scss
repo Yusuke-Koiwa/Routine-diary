@@ -25,6 +25,25 @@
   width: 100%;
   position: relative;
 
+  .task-menu {
+    font-size: 20px;
+    
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    align-items: center;
+
+    #task-edit-icon {
+      color: rgb(0, 0, 146);
+      margin-right: 5px;
+      cursor: pointer;
+    }
+    #task-delete-icon {
+      color: rgb(0, 0, 146);
+    }
+  }
+
   .task-link {
     position: absolute;
     height: 100%;

@@ -3,7 +3,7 @@
     .routine-list__message
       習慣にしたいことを記入しよう！
 
-  - @user.routines.each do |routine|
+  - @user.routines.each_with_index do |routine, index|
     .routine
       .routine__text-box
         .routine__text-box__content
@@ -11,11 +11,20 @@
         .routine__text-box__start-date
           = "開始日：#{routine.created_at.strftime('%Y/%m/%d')}"
       .routine__icons
-        = link_to edit_routine_path(routine) do
-          = icon('fa', 'edit', class: "routine__icon routine__icon--edit")
+        = icon('fa', 'edit', class: "routine__icon routine__icon--edit", id: index)
         = link_to routine_path(routine), method: :delete, data: { confirm: '削除します。よろしいですか?' } do
           = icon('fa', 'trash-alt', class: "routine__icon routine__icon--destroy")
+    .form.edit-routine{id: "edit-routine-#{index}"}
+      %input{type: "hidden", value: index}
+      = form_with(model: routine, url: routine_path(routine), id: "routine-form", local: true) do |f|
+        = icon('fa', 'times', class: "close-btn")
+        .form__title
+          .form__title--active
+            習慣にすること
+        .field
+          = f.text_area :content, cols: "50", rows: "1",maxlength: "50", placeholder: "入力してください"
+        .routine-actions
+          = f.submit "SEND", id: "edit-routine-submit"
 
 - if current_user.routines.length < 3
-  = link_to new_routine_path do
-    = icon('fa', 'plus-circle', class: "new-link__icon")
+  = icon('fa', 'plus-circle', id: "new-routine-icon")
