@@ -20,17 +20,20 @@
     margin-right: 10px;
   }
 }
+.image_mask {
+  margin: 10px auto 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
 
-.image-mask {
-  opacity: 0.3;
-  .back-image {
+  img {
+    opacity: 0.3;
     margin: 10px auto 0;
-    height: 850px;
-    width: 1025px;
-    background-size: cover;
-    background-image: image-url("top-page-background.png");
+    width: 1000px;
+    height: 800px;
   }
 }
+
 
 .home-contents {
   background-color: white;
