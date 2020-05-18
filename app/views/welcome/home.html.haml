@@ -10,40 +10,7 @@
     新規登録
 
 #new-registration.form
-  = icon('fa', 'times', class: "close-btn")
-  .form__title
-    .form__title--active
-      Sign up
-    #login-link.form__title--other
-      → ログイン
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = render "devise/shared/error_messages", resource: resource
-    .field
-      = f.text_field :name, autofocus: true, maxlength: 12, placeholder: "Nickname"
-    .field
-      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email"
-    .field
-      = f.password_field :password, autocomplete: "new-password", placeholder: "Password（6文字以上）"
-    .field
-      = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password 再入力"
-    .field
-      = f.label :プロフィール画像（登録後の設定もできます）
-      %br/
-      = f.file_field :image
-    .actions
-      = f.submit "アカウント作成", class: "submit-btn"
+  = render "sign_up_modal"
 
 #new-session.form
-  = icon('fa', 'times', class: "close-btn")
-  .form__title
-    .form__title--active
-      Log in
-    #signup-link.form__title--other
-      → アカウント作成
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    .field
-      = f.email_field :email, placeholder: "Email", autofocus: true, autocomplete: "email"
-    .field
-      = f.password_field :password, placeholder: "Password", autocomplete: "current-password"
-    .actions
-      = f.submit "ログイン", class: "submit-btn"
+  = render "login_modal"
