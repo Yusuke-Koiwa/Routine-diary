@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
     if self.user.image?
       return user.image.url
     else
-      return "public/assets/default.jpg"
+      return "/assets/default.jpg"
     end
   end
 end
