@@ -6,7 +6,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.includes([:user, :praises, :comments, user: :routines]).where("date <= ?", Date.today).
-              where.not(score: nil).order(date: "DESC").order("created_at DESC").page(params[:page]).per(5)
+              where.not(score: nil).order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
   end
 
   def show
