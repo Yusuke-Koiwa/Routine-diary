@@ -1,8 +1,10 @@
 $(function(){
 
   function buildInput(date) {
-    let input = `<input type="hidden", name="start_time", value="${date}">
-                  <input type="hidden", name="date", value="${date}">`
+    let input = `<div id="hidden-params">
+                    <input type="hidden", name="start_time", value="${date}", id: "new-start_date">
+                    <input type="hidden", name="date", value="${date}", id: "new-date>
+                </div>`
     return input
   }
   
@@ -12,10 +14,19 @@ $(function(){
   }
 
   $(".new_task_link").on("click", function(){
-    let date = $(this).children("input").val();
-    let input = buildInput(date);
+    $("#hidden-params").remove();
+    $("#score-field").show();
+
+    let dateString = $(this).children(".date-string").val();
+    let date = $(this).children(".date-date").val();
+    let today = $("#date-today").val();
+    let input = buildInput(dateString);
+
+    if (date > today) {
+      $("#score-field").hide();
+    }
     $("#new-task-form").append(input);
-    $(".form__title--active").text(date);
+    $(".form__title--active").text(dateString);
     $("#modal-wrapper").fadeIn();
     $("#new-task").fadeIn();
   })

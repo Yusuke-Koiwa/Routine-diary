@@ -12,7 +12,8 @@
   
   - if @user.id == current_user.id
     .new_task_link
-      %input{type: "hidden", value: "#{date.strftime("%Y/%-m/%-d")}"}
+      %input{type: "hidden", class: "date-string", value: "#{date.strftime("%Y/%-m/%-d")}"}
+      %input{type: "hidden", class: "date-date", value: date}
 
   - tasks.each do |task|
     - if task.score

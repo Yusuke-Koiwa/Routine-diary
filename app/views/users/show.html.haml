@@ -23,25 +23,29 @@
 
 = render "calendar"
 
-- if @user.routines.count < 3
-  #new-routine.form
-    = render partial: "routines/new_form", locals: { routine: @routine }
+- if @user.id == current_user.id
 
-#new-task.form.form--task
-  = icon('fa', 'times', class: "close-btn")
-  .form__title
-    .form__title--active
-      
-  = form_with url: tasks_path, id: "new-task-form", local: true  do |f|
-    .task-field
-      #score-field
-        = f.radio_button :score, :done
-        = f.label :score, icon('fa', 'check'), class: "score score--check score--btn score--left", value: :done
-        = f.radio_button :score, :bad
-        = f.label :score, icon('fa', 'times'), class: "score score--bad score--btn", value: :bad
+  %input{type: "hidden", value: Date.today, id: "date-today"}
 
-    .task-field
-      = f.text_area :body, cols: "30", rows: "5", placeholder: "本文"
-      %input{type: "hidden", name: "user_id", value: "#{current_user.id}"}
-    .task-actions
-      = f.submit "SEND", id: "task-submit"
+  - if @user.routines.count < 3
+    #new-routine.form
+      = render partial: "routines/new_form", locals: { routine: @routine }
+
+  #new-task.form.form--task
+    = icon('fa', 'times', class: "close-btn")
+    .form__title
+      .form__title--active
+        
+    = form_with url: tasks_path, id: "new-task-form", local: true  do |f|
+      .task-field
+        #score-field
+          = f.radio_button :score, :done
+          = f.label :score, icon('fa', 'check'), class: "score score--check score--btn score--left", value: :done
+          = f.radio_button :score, :bad
+          = f.label :score, icon('fa', 'times'), class: "score score--bad score--btn", value: :bad
+
+      .task-field
+        = f.text_area :body, cols: "30", rows: "5", placeholder: "本文"
+        %input{type: "hidden", name: "user_id", value: "#{current_user.id}"}
+      .task-actions
+        = f.submit "SEND", id: "task-submit"
