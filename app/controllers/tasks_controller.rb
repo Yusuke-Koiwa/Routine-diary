@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   before_action :move_to_root_path,  unless: :user_signed_in?
   before_action :set_task, only: [:show, :update, :destroy, :praised_users_index]
   before_action :correct_user?, only: [:update, :destroy]
+  before_action :routine_seted?, only: [:create]
 
   def index
     @tasks = Task.includes([:user, :praises, :comments, user: :routines]).where("date <= ?", Date.today).where.not(score: nil).order(date: "DESC").order("created_at DESC")
@@ -71,6 +72,13 @@ class TasksController < ApplicationController
       task = Task.find(params[:id])
       if task.user_id != current_user.id
         flash[:alert] = "権限がありません"
+        redirect_to user_path(current_user)
+      end
+    end
+
+    def routine_seted?
+      if current_user.routines.length == 0
+        flash[:alert] = "習慣にすることを先に入力してください"
         redirect_to user_path(current_user)
       end
     end
