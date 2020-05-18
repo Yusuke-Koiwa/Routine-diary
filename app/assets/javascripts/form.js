@@ -21,13 +21,13 @@ $(function(){
   })
 
   $("#login-link").on('click', function(){
-    $("#new-registration").fadeOut();
-    $("#new-session").fadeIn();
+    $("#new-registration").hide("fast");
+    $("#new-session").show("fast");
   })
 
   $("#signup-link").on('click', function(){
-    $("#new-session").fadeOut();
-    $("#new-registration").fadeIn();
+    $("#new-session").hide("fast");
+    $("#new-registration").show("fast");
   })
 
   $("#modal-wrapper").on('click', function(){
