@@ -57,8 +57,10 @@
     #praised_user-window
       %input{type: "hidden", value: current_user.id, class: 'current_user_id' }
       #praised_user-box
-        - if @praised_users
-          = render "users/user_index", { users: @praised_users, showing_user: @user } 
+        .jscroll-praise
+          - if @praised_users
+            = render "users/user_index", { users: @praised_users, showing_user: @user } 
+            = paginate @praised_users
 
 - if @task.user == current_user
   = render partial: "form", locals: { task: @task }
