@@ -34,15 +34,15 @@ class UsersController < ApplicationController
   end
 
   def praises_index
-    @praised_tasks = @user.praised_tasks.order("praises.created_at DESC")
+    @praised_tasks = @user.praised_tasks.order("praises.created_at DESC").page(params[:page]).per(10)
   end
 
   def follow_index
-    @follow_users = @user.follow_users.includes(:routines).order("relationships.created_at DESC")
+    @follow_users = @user.follow_users.includes(:routines).order("relationships.created_at DESC").page(params[:page]).per(10)
   end
 
   def follower_index
-    @follower_users = @user.follower_users.includes(:routines).order("relationships.created_at DESC")
+    @follower_users = @user.follower_users.includes(:routines).order("relationships.created_at DESC").page(params[:page]).per(10)
   end
 
   private
