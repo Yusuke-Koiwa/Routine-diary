@@ -8,5 +8,8 @@
 .index-title
   = link_to "フォロー中", follow_index_user_path(@user), class: "follow index-title--off"
   = link_to "フォロワー", follower_index_user_path(@user), class: "follower"
-.user-list.user-list--down
-  = render "user_index", { users: @follower_users, showing_user: @user }
+.jscroll-user
+  .user-list-window
+    .user-list.user-list--down
+      = render "user_index", { users: @follower_users, showing_user: @user }
+      = paginate @follower_users
