@@ -1,2 +1,4 @@
-.task-list
-  = render "posts", tasks: @tasks
+.jscroll
+  .task-list
+    = render "posts", tasks: @tasks
+    = paginate @tasks
