@@ -1,17 +1,18 @@
 .user-header {
   background-color: white;
-  border: 1px solid lightskyblue;
-  width: 100%;
-  height: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 160px;
   margin: 0 auto;
+  border: 1px solid lightskyblue;
 
   &--fixed {
     position: fixed;
     z-index: 5;
   }
+
   &__left {
     display: flex;
     align-items: center;
@@ -20,38 +21,41 @@
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      font-size: 12px;
-      margin-right: 10px;
       height: 100px;
+      margin-right: 10px;
+      font-size: 12px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
 
       .user-menu {
-        padding: 3px;
         display: flex;
         justify-content: space-between;
+        padding: 3px;
       }
+
       .menu-link:hover {
-        background-color: rgb(236, 248, 255);
+        background-color: $light_skyblue;
         border-radius: 5px;
       }
     }
+
     .user-box {
-      margin: 0 15px 0 5px;
       display: flex;
       flex-direction: column;
+      margin: 0 15px 0 5px;
 
       .user-info {
 
         &__name {
           text-align: center;
         }
+
         &__img {
-          margin: 0 auto;
           background-color: white;
-          height: 100px;
           width: 100px;
+          height: 100px;
+          margin: 0 auto;
           border-radius: 50%;
           border: 1px solid lightskyblue;
 
@@ -59,48 +63,52 @@
             border-radius: 50%;
           }
         }
+
         &__edit {
-          display: none;
-          position: absolute;
           background-color: rgba(255, 255, 255, 0.733);
+          position: absolute;
           top: 20px;
           left: 30px;
+          display: none;
           width: 40px;
-          text-align: center;
           font-size: 12px;
+          text-align: center;
           border-radius: 5px;
         }
+
         &--link:hover {
-          background-color: rgb(236, 248, 255);
-          border-radius: 5px;
+          background-color: $light_skyblue;
           position: relative;
+          border-radius: 5px;
           .user-info__edit {
             display: block;
           }
         }
       }
+
       .follow-content {
         margin: 3px auto 0;
 
         .follow-btn {
+          padding: 5px;
           border: 1px solid lightskyblue;
           border-radius: 25px;
-          line-height: 25px;
           font-size: 14px;
+          line-height: 25px;
           text-align: center;
-          padding: 5px;
           
           &--off {
             background-color: white;
             &:hover {
-              background-color: rgb(211, 238, 255);
+              background-color: $light_skyblue;
             }
           }
+
           &--on {
-            background-color: rgb(63, 179, 252);
+            background-color: $follow_blue;
             color: white;
             &:hover {
-              background-color: rgb(97, 192, 252);
+              background-color: $folow_blue_hover;
             }
           }
         }
@@ -117,36 +125,39 @@
     text-align: center;
     
     #new-routine-icon {
-      color: rgb(0, 58, 146);
-      font-size: 20px;
+      color: $dark_blue;
       margin: 0 auto;
+      font-size: 20px;
       cursor: pointer;
     }
+
     .routine-list {
       width: 96%;
-      padding: 10px 5px 0;
       margin: 0 auto;
+      padding: 10px 5px 0;
       text-align: left;
       ::-webkit-scrollbar {
         display: none;
       }
+
       &__message {
         color: gray;
         height: 20px;
         margin-bottom: 5px;
         text-align: center;
       }
+
       .routine {
         background-color: rgb(238, 252, 255);
-        box-shadow: 1px 1px 3px lightslategray;
         display: flex;
         justify-content: space-between;
         width: 100%;
         height: 35px;
-        line-height: 33px;
-        padding: 0 5px;
         margin-bottom: 10px;
+        padding: 0 5px;
+        box-shadow: 1px 1px 3px lightslategray;
         border: 1px solid lightskyblue;  
+        line-height: 33px;
 
         &__text-box{
           display: flex;
@@ -160,18 +171,19 @@
             white-space: nowrap;
           }
           &__start-date {
-            text-align: end;
             width: 20%;
-            font-size: 10px;
             padding: 0 5px;
+            font-size: 10px;
+            text-align: end;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
           }
         }
-        &__icons {        
+
+        &__icons {
           .routine__icon {
-            color: rgb(0, 58, 146);
+            color: $dark_blue;
             &--edit {
               cursor: pointer;
             }
@@ -204,17 +216,19 @@
 
         .count {
           font-size: 50px;
-          color: rgb(252, 81, 81);
+          color: $good_job_red;
         }
         .unit {
           font-size: 16px;
           margin-left: 5px;
         }
       }
+
       .text {
         width: 100%;
       }
     }
+
     .done-days {
       width: 100%;
       font-size: 12px;
@@ -236,6 +250,7 @@
   padding: 5px;
   display: flex;
   justify-content: center;
+
   &--off {
     color: lightgray;
     &:hover {
@@ -244,6 +259,7 @@
       border-radius: 5px;
     }
   }
+  
   .follow {
     margin-right: 25px;
   }

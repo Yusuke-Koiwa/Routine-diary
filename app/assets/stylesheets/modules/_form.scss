@@ -1,25 +1,25 @@
 .form {
   background-color: white;
+  position: fixed;
+  z-index: 20;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  padding-top: 20px;
   border: 2px solid rgb(81, 166, 236);
   box-shadow: 3px 3px 10px gray;
-  width: 600px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 20;
-  position: fixed;
-  padding-top: 20px;
 
   .close-btn {
+    color: lightgray;
     position: absolute;
-    right: 0;
     top: -5px;
+    right: 0;
     display: block;
     width: 20px;
-    text-align: end;
-    font-size: 25px;
     margin: 10px 10px 0 auto;
-    color: lightgray;
+    font-size: 25px;
+    text-align: end;
     cursor: pointer;
     &:hover {
       color: gray;
@@ -28,65 +28,72 @@
   &__title {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid lightsteelblue;
-    margin: 0 20px 0;
     align-items: center;
+    margin: 0 20px 0;
+    border-bottom: 1px solid lightsteelblue;
 
     &--active {
       font-size: 20px;
       padding-bottom: 15px;
     }
+
     &--other {
-      font-size: 14px;
-      margin-right: 20px;
       color: lightgray;
+      margin-right: 20px;
+      font-size: 14px;
       cursor: pointer;
       &:hover {
         color: gray;
       }
     }
   }
+
   .field {
-    margin: 40px 20px;
     color: gray;
+    margin: 40px 20px;
     
     input {
       width: 100%;
       padding: 10px;
     }
   }
+
   .actions {
     padding-top: 10px;
 
     .submit-btn {
     background-color: rgb(81, 183, 247);
     color: white;
-    border-style: none;
     width: 100%;
     padding: 20px;
+    border-style: none;
     cursor: pointer;
       &:hover {
         background-color: rgb(109, 197, 252);
       }
     }
   }
+
   textarea {
-    resize: none;
     display: block;
     margin: 0 auto;
     padding: 10px;
+    resize: none;
   }
+
   #error_explanation {
-    border: 1px solid rgb(255, 60, 0);
-    padding: 20px;
     margin: 20px 20px 0;
+    padding: 20px;
+    border: 1px solid rgb(255, 60, 0);
 
     h3 {
       border-bottom: 1px solid lightsteelblue;
     }
+
     ul {
       margin-top: 10px;
       padding-left: 10px;
+
       li {
         list-style: disc;
       }
@@ -94,18 +101,18 @@
   }
 
   &--task {
-    padding:20px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding:20px 20px;
 
     &__title {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid lightsteelblue;
-    align-items: center;
-    margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 80%;
+      margin-bottom: 20px;
+      border-bottom: 1px solid lightsteelblue;
 
     #delete-icon {
       color: rgb(90, 90, 90);
@@ -114,17 +121,19 @@
       }
     }
     }
+    
     .task-field {
       margin: 10px 0 20px;
 
       &__body {
         width: 290px;
         height: 122px;
+        padding: 5px;
         border: 1px solid gray;
         word-wrap: break-word;
         overflow-y: scroll;
-        padding: 5px;
       }
+
       #score-field {
         display: flex;
         justify-content: center;
@@ -133,9 +142,9 @@
           display: block;
           height: 120px;
           width: 120px;
-          text-align: center;
           font-size: 100px;
           line-height: 120px;
+          text-align: center;
           &--btn {
             cursor: pointer;
             opacity: 0.3;
@@ -152,6 +161,7 @@
             margin-right: 50px;
           }
         }
+
         input[type="radio"] {
           display: none;
           &:checked + .score--btn {
@@ -169,15 +179,15 @@
     }
     
     .task-actions input {
-      display: block;
-      border-style: none;
       background-color: rgb(81, 183, 247);
       color: white;
-      cursor: pointer;
-      text-align: center;
-      margin: 0 auto 20px;
+      display: block;
       width: 290px;
       height: 50px;
+      margin: 0 auto 20px;
+      border-style: none;
+      text-align: center;
+      cursor: pointer;
       &:hover {
         background-color: rgb(109, 197, 252);
       }
@@ -185,23 +195,26 @@
     .good-job {
       background-color: white;
       display: flex;
-      padding: 0 3px;
       margin-top: 2px;
+      padding: 0 3px;
       border: 1px solid;
       border-radius: 15px;
 
       &--on {
-        color: rgb(252, 77, 135);
+        color: $good_job_red;
       }
+
       &--off {
         color: lightskyblue;
       }
+
       &__btn {
-        margin-right: 2px;
         margin-top: 1px;
+        margin-right: 2px;
         font-size: 14px;
         
       }
+      
       &__count {
         font-size: 12px;
       }
@@ -229,10 +242,10 @@
   input {
   background-color: rgb(81, 183, 247);
   color: white;
-  cursor: pointer;
-  text-align: center;
   width: 100%;
   height: 50px;
+  text-align: center;
+  cursor: pointer;
   
   &:hover {
     background-color: rgb(109, 197, 252);

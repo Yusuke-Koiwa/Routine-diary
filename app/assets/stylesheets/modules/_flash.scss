@@ -1,12 +1,14 @@
 .flash {
   color: white;
-  text-align: center;
-  line-height: 30px;
-  height: 30px;
   width: 100%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+
   &__alert{
     background-color: #ff5c7a;
   }
+  
   &__notice {
     background-color: lightskyblue;
   }

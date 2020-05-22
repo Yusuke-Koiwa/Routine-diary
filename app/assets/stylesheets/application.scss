@@ -2,13 +2,14 @@
 *= require simple_calendar
 */
 @import "reset";
-@import "common";
-@import "welcome";
-@import "form";
-@import "tasks";
-@import "users";
-@import "user_index";
-@import "calendar";
-@import "flash";
+@import "color";
+@import "modules/common";
+@import "modules/welcome";
+@import "modules/form";
+@import "modules/tasks";
+@import "modules/users";
+@import "modules/user_index";
+@import "modules/calendar";
+@import "modules/flash";
 @import "font-awesome-sprockets";
 @import "font-awesome";
