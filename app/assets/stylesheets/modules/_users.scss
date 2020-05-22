@@ -18,9 +18,7 @@
     align-items: center;
 
     .user-menu-list {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
+      @include line_up_vertical(space-around);
       height: 100px;
       margin-right: 10px;
       font-size: 12px;
@@ -197,9 +195,7 @@
     height: 150px;
     width: 125px;
     border: 1px solid lightskyblue;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    @include line_up_vertical(space-between);
     margin-left: 5px;
     white-space: nowrap;
     overflow-x: scroll;

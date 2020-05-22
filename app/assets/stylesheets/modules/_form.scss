@@ -101,7 +101,7 @@
   }
 
   &--task {
-    @include line_up_vertical;
+    @include line_up_vertical_side-center;
     padding:20px 20px;
 
     &__title {

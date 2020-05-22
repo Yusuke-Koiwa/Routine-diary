@@ -148,9 +148,7 @@
       }
 
       &__right-box {
-        display: flex;
-        flex-flow: column;
-        justify-content: space-between;	
+        @include line_up_vertical(space-between);
         width: 75%;
         margin-left: 10px;
 
@@ -290,9 +288,7 @@
       overflow-y: scroll;
 
       .comment-box {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        @include line_up_vertical(space-between);
         width: 80%;
 
         .comment-date {
