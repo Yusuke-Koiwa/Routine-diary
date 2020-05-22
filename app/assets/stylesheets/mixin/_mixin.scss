@@ -1,0 +1,11 @@
+@mixin line_up_side($justify-content: center) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify-content;
+}
+
+@mixin line_up_vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

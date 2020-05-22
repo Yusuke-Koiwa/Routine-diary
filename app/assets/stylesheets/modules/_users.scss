@@ -1,8 +1,8 @@
+@import "mixin/mixin";
+
 .user-header {
   background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include line_up_side(center);
   width: 100%;
   height: 160px;
   margin: 0 auto;
@@ -240,16 +240,16 @@
 
 .index-title {
   background-color: white;
-  border-bottom: 1px solid lightgray;
   position: fixed;
   z-index: 5;
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: 35px;
   margin-top: 160px;
-  text-align: center;
   padding: 5px;
-  display: flex;
-  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid lightgray;
 
   &--off {
     color: lightgray;
