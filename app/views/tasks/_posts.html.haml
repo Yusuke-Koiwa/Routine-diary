@@ -40,4 +40,4 @@
                 .routine.routine--none
                   習慣が設定されていません
             .praise-content{id: "praise-#{task.id}"}
-              = render partial: "praise", locals: { task: task }
+              = render partial: "praise", locals: { task: task } if user_signed_in?
