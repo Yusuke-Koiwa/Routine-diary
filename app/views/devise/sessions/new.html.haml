@@ -3,10 +3,15 @@
     .form__title--active
       Log in
     = link_to "→ アカウント作成", new_user_registration_path, class: "form__title--other"
+  .login_message
+    %h3 以下のアカウントでログイン出来ます。
+    %ul
+      %li メールアドレス: test@test.com
+      %li パスワード: aaa111
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
-      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email"
+      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", value: "test@test.com"
     .field
-      = f.password_field :password, autocomplete: "current-password", placeholder: "Password"
+      = f.password_field :password, autocomplete: "current-password", placeholder: "Password", value: "aaa111"
     .actions
       = f.submit "ログイン", class: "submit-btn"
