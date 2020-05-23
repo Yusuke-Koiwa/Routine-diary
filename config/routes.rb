@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "welcome#home"
+  root to: "tasks#index"
   resources :users do
     resources :relationships, only: [:index, :create, :destroy]
     member do
