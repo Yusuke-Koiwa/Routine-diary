@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :move_to_root_path,  unless: :user_signed_in?
+  before_action :move_to_login_page, except: :index,  unless: :user_signed_in?
   before_action :set_task, only: [:show, :update, :destroy, :praised_users_index]
   before_action :correct_user?, only: [:update, :destroy]
   before_action :routine_seted?, only: [:create]
@@ -69,9 +69,9 @@ class TasksController < ApplicationController
       params.require(:task).permit(:score, :body, :start_time, :date, :user_id)
     end
 
-    def move_to_root_path
-      flash.now[:alert] = "ログインが必要です"
-      render "welcome/home"
+    def move_to_login_page
+      flash[:alert] = "ログインが必要です"
+      redirect_to new_user_session_path
     end
 
     def correct_user?

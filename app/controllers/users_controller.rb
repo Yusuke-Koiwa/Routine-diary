@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :move_to_root_path, unless: :user_signed_in?
+  before_action :move_to_login_page, unless: :user_signed_in?
   before_action :set_user
   before_action :correct_user?, only: [:edit, :update, :destroy]
 
@@ -46,9 +46,9 @@ class UsersController < ApplicationController
   end
 
   private
-  def move_to_root_path
-    flash.now[:alert] = "ログインが必要です"
-    render "welcome/home"
+  def move_to_login_page
+    flash[:alert] = "ログインが必要です"
+    redirect_to new_user_session_path
   end
 
   def set_user
