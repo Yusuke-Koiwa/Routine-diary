@@ -27,10 +27,15 @@
 
           .task__main__right-box
             .routine-list
-              - if task.user.routines.length != 0
-                - task.user.routines.each do |r|
+              - if task.routine1 != nil
+                .routine
+                  = task.routine1
+                - if task.routine2 != nil
                   .routine
-                    = r.content
+                    = task.routine2
+                - if task.routine3 != nil
+                  .routine
+                    = task.routine3
               - else 
                 .routine.routine--none
                   習慣が設定されていません

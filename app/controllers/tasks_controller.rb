@@ -19,6 +19,11 @@ class TasksController < ApplicationController
     @task = Task.new(new_task_params)
     @task.start_time = @task.start_time.to_datetime
     @task.start_time = @task.date.to_date
+    for i in 1..3 do
+      @task.routine1 = current_user.routines[0].content
+      @task.routine2 = current_user.routines[1].content if current_user.routines[1] != nil
+      @task.routine3 = current_user.routines[2].content if current_user.routines[2] != nil
+    end
     if @task.score == nil && @task.body == ""
       redirect_to user_path(current_user)
     elsif Task.where(date: @task.date, user_id: current_user.id).length >= 1
