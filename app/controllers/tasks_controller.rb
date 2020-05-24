@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :move_to_login_page, except: :index,  unless: :user_signed_in?
+  before_action :move_to_login_page, except: [:index, :category_index],  unless: :user_signed_in?
   before_action :set_task, only: [:show, :update, :destroy, :praised_users_index]
   before_action :correct_user?, only: [:update, :destroy]
   before_action :routine_seted?, only: [:create]
@@ -50,6 +50,11 @@ class TasksController < ApplicationController
   def praised_users_index
     @user = @task.user
     @praised_users = @task.praised_users.order("praises.created_at DESC").page(params[:page]).per(10) if @task.praises.exists?
+  end
+
+  def category_index
+    @category_name = Category.find(params[:id]).name
+    @routine_logs = RoutineLog.where(category_id: params[:id])
   end
 
   private
