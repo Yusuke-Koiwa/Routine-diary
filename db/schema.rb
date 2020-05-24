@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_012222) do
+ActiveRecord::Schema.define(version: 2020_05_24_033442) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content", null: false
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 2020_05_24_012222) do
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
     t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
     t.index ["user_id"], name: "index_relationships_on_user_id"
+  end
+
+  create_table "routine_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "task_id", null: false
+    t.integer "category_id", default: 0, null: false
+    t.string "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_routine_logs_on_task_id"
   end
 
   create_table "routines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -80,4 +89,5 @@ ActiveRecord::Schema.define(version: 2020_05_24_012222) do
   add_foreign_key "praises", "users"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
+  add_foreign_key "routine_logs", "tasks"
 end
