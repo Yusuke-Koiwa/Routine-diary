@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   before_action :routine_seted?, only: [:create]
 
   def index
-    @tasks = Task.includes([:user, :praises, :comments, user: :routines]).where("date <= ?", Date.today).
+    @tasks = Task.includes([:user, :praises, :comments, :routine_logs]).where("date <= ?", Date.today).
               where.not(score: nil).order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
   end
 
