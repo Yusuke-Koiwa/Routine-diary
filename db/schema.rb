@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_05_24_033442) do
     t.bigint "task_id", null: false
     t.integer "category_id", default: 0, null: false
     t.string "content", null: false
+    t.date "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_routine_logs_on_task_id"
