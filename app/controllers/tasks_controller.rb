@@ -54,7 +54,8 @@ class TasksController < ApplicationController
 
   def category_index
     @category_name = Category.find(params[:id]).name
-    @routine_logs = RoutineLog.where(category_id: params[:id])
+    @routine_logs = RoutineLog.where(category_id: params[:id]).where("date <= ?", Date.today).
+                    order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
   end
 
   private
