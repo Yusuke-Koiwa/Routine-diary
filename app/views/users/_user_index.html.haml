@@ -17,6 +17,7 @@
         - if user.routines.length != 0
           - user.routines.each do |r|
             .routine
+              = icon('fa', "#{r.category.icon}")
               = r.content
         - else 
           .routine.routine--none

@@ -33,9 +33,10 @@
 
         .task__main__right-box
           .routine-list
-            - if @task.user.routines.length != 0
-              - @task.user.routines.each do |r|
+            - if @task.routine_logs.length > 0
+              - @task.routine_logs.each do |r|
                 .routine
+                  = icon('fa', "#{r.category.icon}")
                   = r.content
             - else 
               .routine.routine--none
