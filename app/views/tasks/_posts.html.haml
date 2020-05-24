@@ -35,5 +35,10 @@
               - else 
                 .routine.routine--none
                   習慣が設定されていません
-            .praise-content{id: "praise-#{task.id}"}
-              = render partial: "praise", locals: { task: task } if user_signed_in?
+            .reaction-contents
+              .comment-content
+                = icon('far', 'comment-dots')
+                #comment-count
+                  = task.comments.count
+              .praise-content{id: "praise-#{task.id}"}
+                = render partial: "praise", locals: { task: task } if user_signed_in?
