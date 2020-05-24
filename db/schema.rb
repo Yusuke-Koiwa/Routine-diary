@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_23_053222) do
+ActiveRecord::Schema.define(version: 2020_05_24_012222) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content", null: false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_053222) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category_id", default: 0, null: false
   end
 
   create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -56,9 +57,6 @@ ActiveRecord::Schema.define(version: 2020_05_23_053222) do
     t.datetime "updated_at", null: false
     t.date "date"
     t.integer "user_id"
-    t.string "routine1"
-    t.string "routine2"
-    t.string "routine3"
     t.index ["score"], name: "index_tasks_on_score"
   end
 
