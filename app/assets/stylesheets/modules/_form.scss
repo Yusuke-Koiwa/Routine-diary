@@ -241,10 +241,12 @@
 
 #new-routine {
   display: none;
+  @include category-select();
 }
 
 .edit-routine {
   display: none;
+  @include category-select();
 }
 
 .routine-actions {
