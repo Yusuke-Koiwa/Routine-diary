@@ -35,4 +35,17 @@ $(function(){
     $("#edit-task").fadeIn();
     $("#modal-wrapper").fadeIn();
   });
+
+  $("#category-box__title").hover(function() {
+    $("#category-box__list").show();
+  }, function() {
+    $("#category-box__list").hide();
+  });
+
+  $("#category-box__list").hover(function() {
+    $("#category-box__list").show();
+  }, function() {
+    $("#category-box__list").hide();
+  });
+
 });

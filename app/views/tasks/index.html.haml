@@ -1,3 +1,16 @@
+#search-menu
+#category-box
+  #category-box__title
+    %p カテゴリー検索
+    = icon("fa", "chevron-down")
+  #category-box__list
+    = link_to root_path, class:"category-box__list__menu" do
+      = icon("fa", "#{Category.first.icon}")
+      = "全て"
+    - Category.where.not(id: 0).each do |c|
+      = link_to "/tasks/category/#{c.id}", class:"category-box__list__menu" do
+        = icon("fa", "#{c.icon}")
+        = c.name
 .jscroll
   .task-list
     = render "posts", tasks: @tasks
