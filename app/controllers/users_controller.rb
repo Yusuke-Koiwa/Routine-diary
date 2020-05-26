@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :correct_user?, only: [:edit, :update, :destroy]
 
   def show
-    @tasks = @user.tasks
+    @tasks = @user.tasks.includes(:praises)
     @routines = @user.routines
     @routine = Routine.new if @routines.count < 3
     if @tasks.present?

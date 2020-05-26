@@ -33,25 +33,26 @@
 
         .task__main__right-box
           .routine-list
-            - if @task.routine1 != nil
-              .routine
-                = @task.routine1
-              - if @task.routine2 != nil
+            - if @task.routine_logs.length > 0
+              - @task.routine_logs.each do |r|
                 .routine
-                  = @task.routine2
-              - if @task.routine3 != nil
-                .routine
-                  = @task.routine3
+                  = icon('fa', "#{r.category.icon}")
+                  = r.content
             - else 
               .routine.routine--none
                 習慣が設定されていません
 
-          .praise-content.praise-btn{id: "praise-#{@task.id}"}
-            = render partial: "praise", locals: { task: @task }
+          .reaction-contents
+            .comment-content
+              = icon('far', 'comment-dots')
+              #comment-count
+                = @task.comments.count
+            .praise-content.praise-btn{id: "praise-#{@task.id}"}
+              = render partial: "praise", locals: { task: @task }
   
   #reaction-menu
     = link_to task_path(@task), class: "comment-tab selected" do
-      = icon('far', 'comments', class: "comment-icon")
+      = icon('far', 'comment-dots', class: "comment-icon")
       コメント
 
     = link_to praised_users_index_task_path(@task), class: "praise-tab" do
@@ -63,7 +64,7 @@
       #comment-top
         = form_with(model: [@task, @comment], local: true, id: "comment-form") do |f|
           = f.text_area :content, placeholder: "コメントする", rows: "2", maxlength: 200
-          = f.submit "SEND"
+          = f.submit "SEND", id: "comment-submit"
       #comments-index
         - @comments.each do |comment|
           .user

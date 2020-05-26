@@ -5,5 +5,8 @@
       習慣にすること
   .field
     = f.text_area :content, cols: "50", rows: "1",maxlength: "50", placeholder: "入力してください"
+  .field
+    %lavel カテゴリー：
+    = f.collection_select :category_id, Category.all, :id, :name
   .routine-actions
     = f.submit "SEND", id: "edit-routine-submit"

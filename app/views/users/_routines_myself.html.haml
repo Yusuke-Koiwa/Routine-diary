@@ -7,6 +7,7 @@
     .routine
       .routine__text-box
         .routine__text-box__content
+          = icon('fa', "#{routine.category.icon}")
           = routine.content
         .routine__text-box__start-date
           = "開始日：#{routine.created_at.strftime('%Y/%m/%d')}"
@@ -23,6 +24,9 @@
             習慣にすること
         .field
           = f.text_area :content, cols: "50", rows: "1",maxlength: "50", placeholder: "入力してください"
+        .field
+          %lavel カテゴリー：
+          = f.collection_select :category_id, Category.all, :id, :name
         .routine-actions
           = f.submit "SEND", id: "edit-routine-submit"
 

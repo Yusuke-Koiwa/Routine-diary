@@ -15,4 +15,5 @@ Rails.application.routes.draw do
     resources :praises, only: [:create, :destroy]
   end
   resources :routines, only: [:create, :update, :destroy]
+  get "/tasks/category/:id", to: "tasks#category_index"
 end

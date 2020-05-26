@@ -1,7 +1,7 @@
 #search-menu
 #category-box
   #category-box__title
-    %p カテゴリー：全て
+    = "カテゴリー：#{@category_name}"
     = icon("fa", "chevron-down")
   #category-box__list
     = link_to root_path, class:"category-box__list__menu" do
@@ -13,5 +13,9 @@
         = c.name
 .jscroll
   .task-list
-    = render "posts", tasks: @tasks
-    = paginate @tasks
+    - if @routine_logs.length == 0
+      #none-message
+        = "#{@category_name}カテゴリーの投稿はまだありません"
+    - else
+      = render "posts", tasks: @tasks
+      = paginate @tasks

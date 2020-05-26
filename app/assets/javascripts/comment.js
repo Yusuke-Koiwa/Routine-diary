@@ -45,8 +45,10 @@ $(function(){
     .done(function(data) {
       let html = buildComment(data);
       $("#comments-index").append(html);
+      $("#comment-count").text(data.comments_count);
       $("form")[0].reset();
       $("#comments-index").animate({scrollTop: $("#comments-index")[0].scrollHeight});
+      $("#comment-submit").prop("disabled", false);
     })
     .fail(function() {
       alert("コメント送信に失敗しました");

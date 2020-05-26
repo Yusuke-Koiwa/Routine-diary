@@ -36,7 +36,7 @@ class RoutinesController < ApplicationController
   end
 
   def routine_params
-    params.require(:routine).permit(:content).merge(user_id: current_user.id)
+    params.require(:routine).permit(:content, :category_id).merge(user_id: current_user.id)
   end
 
   def set_routine
