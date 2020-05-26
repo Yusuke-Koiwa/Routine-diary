@@ -55,7 +55,13 @@ class TasksController < ApplicationController
   def category_index
     @category_name = Category.find(params[:id]).name
     @routine_logs = RoutineLog.where(category_id: params[:id]).where("date <= ?", Date.today).
-                    order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
+                    order(date: "DESC").order("created_at DESC")
+    @tasks = []
+    @routine_logs.each do |routine_log|
+      @tasks << routine_log.task
+    end
+    @tasks = @tasks.uniq
+    @tasks = Kaminari.paginate_array(@tasks).page(params[:page]).per(10)
   end
 
   private
