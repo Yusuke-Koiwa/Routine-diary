@@ -39,18 +39,19 @@
 
                 .task__main__right-box
                   .routine-list
-                    - if task.routine1 != nil
-                      .routine
-                        = task.routine1
-                      - if task.routine2 != nil
+                    - if task.routine_logs.length > 0
+                      - task.routine_logs.each do |r|
                         .routine
-                          = task.routine2
-                      - if task.routine3 != nil
-                        .routine
-                          = task.routine3
+                          = icon('fa', "#{r.category.icon}")
+                          = r.content
                     - else 
                       .routine.routine--none
                         習慣が設定されていません
-                  .praise-content{id: "praise-#{task.id}"}
-                    = render partial: "tasks/praise", locals: { task: task }
+                  .reaction-contents
+                    .comment-content
+                      = icon('far', 'comment-dots')
+                      #comment-count
+                        = task.comments.count
+                    .praise-content{id: "praise-#{task.id}"}
+                      = render partial: "tasks/praise", locals: { task: task }
     = paginate @praised_tasks
