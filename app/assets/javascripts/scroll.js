@@ -1,5 +1,6 @@
 $(function() {
   $(window).on('scroll', function(){
+    $(".flash").hide();
     scrollHeight = $(document).height();
     scrollPosition = $(window).height() + $(window).scrollTop();
     if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
