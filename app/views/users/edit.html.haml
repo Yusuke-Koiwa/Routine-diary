@@ -9,7 +9,8 @@
 
 .form
   .form__title
-    プロフィール編集
+    %p プロフィール編集
+    = link_to "Back", :back, class: "back-btn"
   = form_with(model: @user, local: true) do |f|
     .field
       ニックネーム
