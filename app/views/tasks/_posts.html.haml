@@ -41,4 +41,4 @@
                 #comment-count
                   = task.comments.count
               .praise-content{id: "praise-#{task.id}"}
-                = render partial: "praise", locals: { task: task } if user_signed_in?
+                = render partial: "praise", locals: { task: task }
