@@ -37,6 +37,12 @@ describe Task do
       expect(task.errors[:start_time]).to include("を入力してください")
     end
 
+    it "user_idが存在しない場合は登録できない" do
+      task = build(:task, user_id: nil)
+      task.valid?
+      expect(task.errors[:user]).to include("を入力してください")
+    end
+
   end
 
 end
