@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   mount_uploader :image, ImageUploader
   validates :name, presence: true, length: { maximum: 12 }
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
 
   def done_days(tasks)
     sorted_tasks = tasks.where("date <= ?", Date.today)
