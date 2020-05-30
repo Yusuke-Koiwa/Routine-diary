@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
+  mount_uploader :image, ImageUploader
+
   has_many :tasks, dependent: :destroy
   has_many :routines, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -13,7 +15,6 @@ class User < ApplicationRecord
   has_many :reverse_relationships, class_name: 'Relationship', foreign_key: 'follow_id', dependent: :destroy
   has_many :follower_users, through: :reverse_relationships, source: :user
 
-  mount_uploader :image, ImageUploader
   validates :name, presence: true, length: { maximum: 12 }
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
