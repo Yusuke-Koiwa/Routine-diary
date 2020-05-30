@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :move_to_login_page, unless: :user_signed_in?
   before_action :set_user
-  before_action :correct_user?, only: [:edit, :update, :destroy]
+  before_action :correct_user?, only: [:edit, :update]
+  before_action :admin_user?, only: :destroy
 
   def show
     @tasks = @user.tasks.includes(:praises)
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash[:notice] = "退会しました。またのご利用をお待ちしております。"
+    flash[:notice] = "ユーザーを削除しました"
     redirect_to root_path
   end
 
@@ -65,6 +66,10 @@ class UsersController < ApplicationController
       flash[:alert] = "権限がありません"
       redirect_to user_path(user)
     end
+  end
+
+  def admin_user?
+    redirect_to root_path unless current_user.admin?
   end
 
 end
