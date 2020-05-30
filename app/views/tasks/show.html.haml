@@ -1,6 +1,6 @@
 .task-show-window
   .task
-    - if @task.user == current_user
+    - if @task.user == current_user || current_user.admin?
       .task-menu
         = icon('fa', 'edit', id: "task-edit-icon")
         = link_to task_path(@task), id: "task-delete-icon", method: :delete, data: { confirm: '削除します。よろしいですか?' } do
