@@ -21,6 +21,8 @@
     .done-days
       = "達成総日数：#{@done_days}日"
 
+- if current_user.admin? && current_user != @user
+  = link_to "ユーザーを削除", user_path, method: :delete, data: { confirm: "このユーザーを削除しますか？" }
 = render "calendar"
 
 - if @user.id == current_user.id

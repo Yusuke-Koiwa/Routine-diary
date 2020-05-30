@@ -27,8 +27,8 @@
         .field
           %lavel カテゴリー：
           = f.collection_select :category_id, Category.all, :id, :name
-        .routine-actions
-          = f.submit "SEND", id: "edit-routine-submit"
+        .actions
+          = f.submit "SEND", id: "edit-routine-submit", class: "submit-btn"
 
 - if current_user.routines.length < 3
   = icon('fa', 'plus-circle', id: "new-routine-icon")
