@@ -10,6 +10,7 @@ ja:
         last_name: 姓
         name: Nickname
         email: Email
+        password: Password
         password_confirmation: Password再入力
         file: プロフィール画像
         crypted_password: パスワード
