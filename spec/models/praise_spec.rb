@@ -21,7 +21,7 @@ describe Praise do
       expect(praise.errors[:task]).to include("を入力してください")
     end
 
-    it "ユーザーが投稿に「いいね」している場合、同じ投稿に対してそれ以上「いいね」できない" do
+    it "user_id, task_idの組み合わせは一意でなければならない" do
       user = create(:user)
       task = create(:task, user: user)
       praise1 = create(:praise, user: user, task: task)
