@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 12 }
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true
+  validates :password, :password_confirmation, presence: true, on: :create
 
   def done_days(tasks)
     sorted_tasks = tasks.where("date <= ?", Date.today)
