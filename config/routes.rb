@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "tasks#index"
-  resources :users do
+  resources :users, only: [:show, :edit, :update, :destroy] do
     resources :relationships, only: [:index, :create, :destroy]
     member do
       get :praises_index, :follow_index, :follower_index
