@@ -1,18 +1,19 @@
 class RoutinesController < ApplicationController
   before_action :move_to_login_page,  unless: :user_signed_in?
   before_action :set_routine, only: [:update, :destroy]
-  before_action :correct_user?, only: [:destroy]
+  before_action :correct_user?, only: [:update, :destroy]
 
   def create
     if current_user.routines.length >= 3
       flash[:alert] = "登録できる習慣は３つまでです"
       redirect_to user_path(current_user)
-    end
-    @routine = Routine.new(routine_params)
-    if @routine.save
-      redirect_to user_path(current_user)
     else
-      redirect_to user_path(current_user)
+      @routine = Routine.new(routine_params)
+      if @routine.save
+        redirect_to user_path(current_user)
+      else
+        redirect_to user_path(current_user)
+      end
     end
   end
 
