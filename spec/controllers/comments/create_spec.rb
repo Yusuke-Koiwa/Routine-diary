@@ -13,7 +13,7 @@ describe CommentsController do
       end
 
       context "保存に成功した場合" do
-        subject { post :create, params: params }
+        subject { post :create, format: :json, params: params }
         it "commentを保存すること" do
           expect{subject}.to change(Comment, :count).by(1)
         end
@@ -21,7 +21,7 @@ describe CommentsController do
 
       context "保存に失敗した場合" do
         let(:invalid_params) { { task_id: task.id, user_id: user.id, comment: {content: nil} } }
-        subject { post :create,  params: invalid_params }
+        subject { post :create, format: :json, params: invalid_params }
         it "commentを保存しないこと" do
           expect{subject}.not_to change(Comment, :count)
         end
