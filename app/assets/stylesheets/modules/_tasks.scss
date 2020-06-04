@@ -10,11 +10,9 @@
 }
 
 #category-box {
-  display: flex;
-  justify-content: center;
   position: fixed;
   z-index: 4;
-  left: 0;
+  left: 30px;
   cursor: pointer;
 
   &__title {
@@ -22,7 +20,7 @@
     display: flex;
     height: 35px;
     padding: 5px;
-    border: 1px solid lightskyblue;
+    border-bottom: 1px solid lightskyblue;
 
     i {
       padding: 5px 0 0 5px;
@@ -32,7 +30,9 @@
   &__list {
     @include line_up_vertical(space-between);
     background-color: white;
-    border: 1px solid lightskyblue;
+    // border: 1px solid lightskyblue;
+    box-shadow: 1px 1px 3px gray;
+    text-align: center;
     display: none;
 
     a {
