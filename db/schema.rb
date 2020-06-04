@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_235915) do
+ActiveRecord::Schema.define(version: 2020_05_24_033442) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content", null: false
-    t.bigint "user_id"
-    t.bigint "task_id"
+    t.bigint "user_id", null: false
+    t.bigint "task_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_comments_on_task_id"
@@ -23,10 +23,11 @@ ActiveRecord::Schema.define(version: 2020_05_29_235915) do
   end
 
   create_table "praises", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "task_id"
-    t.bigint "user_id"
+    t.bigint "task_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["task_id", "user_id"], name: "index_praises_on_task_id_and_user_id", unique: true
     t.index ["task_id"], name: "index_praises_on_task_id"
     t.index ["user_id"], name: "index_praises_on_user_id"
   end
@@ -53,34 +54,36 @@ ActiveRecord::Schema.define(version: 2020_05_29_235915) do
 
   create_table "routines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "category_id", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id", default: 0, null: false
+    t.index ["user_id"], name: "index_routines_on_user_id"
   end
 
   create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "score"
     t.string "body"
-    t.datetime "start_time"
+    t.date "date", null: false
+    t.datetime "start_time", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "date"
-    t.integer "user_id"
     t.index ["score"], name: "index_tasks_on_score"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "image"
+    t.boolean "admin", default: false, null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
-    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -92,4 +95,6 @@ ActiveRecord::Schema.define(version: 2020_05_29_235915) do
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
   add_foreign_key "routine_logs", "tasks"
+  add_foreign_key "routines", "users"
+  add_foreign_key "tasks", "users"
 end

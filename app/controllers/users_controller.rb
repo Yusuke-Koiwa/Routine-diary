@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      flash[:notice] = "変更を保存しました"
       redirect_to user_path(@user)
     else
       render :edit
@@ -70,6 +71,7 @@ class UsersController < ApplicationController
 
   def admin_user?
     redirect_to root_path unless current_user.admin?
+    redirect_to root_path if User.find(params[:id]).admin?
   end
 
 end
