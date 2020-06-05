@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   before_action :routine_seted?, only: [:create]
 
   def index
-    @tasks = Task.includes([:user, :praises, :comments, :routine_logs]).where("date <= ?", Date.today).
+    @tasks = Task.includes(:user, :routine_logs).where("date <= ?", Date.today).
               where.not(score: nil).order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
   end
 
@@ -49,7 +49,7 @@ class TasksController < ApplicationController
 
   def praised_users_index
     @user = @task.user
-    @praised_users = @task.praised_users.order("praises.created_at DESC").page(params[:page]).per(10) if @task.praises.exists?
+    @praised_users = @task.praised_users.includes(:routines).order("praises.created_at DESC").page(params[:page]).per(10) if @task.praises.exists?
   end
 
   def category_index

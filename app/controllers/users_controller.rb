@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :admin_user?, only: :destroy
 
   def show
-    @tasks = @user.tasks.includes(:praises)
+    @tasks = @user.tasks
     @routines = @user.routines
     @routine = Routine.new if @routines.count < 3
     if @tasks.present?
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def praises_index
-    @praised_tasks = @user.praised_tasks.order("praises.created_at DESC").page(params[:page]).per(10)
+    @praised_tasks = @user.praised_tasks.includes(:user, :routine_logs).order("praises.created_at DESC").page(params[:page]).per(10)
   end
 
   def follow_index
