@@ -1,21 +1,21 @@
 #search-menu
 #category-box
   #category-box__title
-    = "カテゴリー：#{@category_name}"
+    = "カテゴリー：#{@category.name}"
     = icon("fa", "chevron-down")
   #category-box__list
     = link_to root_path, class:"category-box__list__menu" do
       = icon("fa", "#{Category.first.icon}")
       = "全て"
-    - Category.where.not(id: 0).each do |c|
+    - Category.where.not(id: 1).each do |c|
       = link_to "/tasks/category/#{c.id}", class:"category-box__list__menu" do
         = icon("fa", "#{c.icon}")
         = c.name
 .jscroll
   .task-list
-    - if @routine_logs.length == 0
+    - if @tasks.length == 0
       #none-message
-        = "#{@category_name}カテゴリーの投稿はまだありません"
+        = "#{@category.name}カテゴリーの投稿はまだありません"
     - else
       = render "posts", tasks: @tasks
       = paginate @tasks

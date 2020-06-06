@@ -33,8 +33,8 @@
 
         .task__main__right-box
           .routine-list
-            - if @task.routine_logs.length > 0
-              - @task.routine_logs.each do |r|
+            - if @routine_logs
+              - @routine_logs.each do |r|
                 .routine
                   = icon('fa', "#{r.category.icon}")
                   = r.content
