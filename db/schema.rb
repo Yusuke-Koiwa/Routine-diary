@@ -61,9 +61,10 @@ ActiveRecord::Schema.define(version: 2020_06_06_033941) do
   create_table "routines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content", null: false
     t.bigint "user_id", null: false
-    t.integer "category_id", default: 0, null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_routines_on_category_id"
     t.index ["user_id"], name: "index_routines_on_user_id"
   end
 
@@ -102,6 +103,7 @@ ActiveRecord::Schema.define(version: 2020_06_06_033941) do
   add_foreign_key "relationships", "users", column: "follow_id"
   add_foreign_key "routine_logs", "categories"
   add_foreign_key "routine_logs", "tasks"
+  add_foreign_key "routines", "categories"
   add_foreign_key "routines", "users"
   add_foreign_key "tasks", "users"
 end
