@@ -4,7 +4,7 @@ FactoryBot.define do
     task
     content           {"hogehogehogehogehoge"}
     date              {Date.new(2020, 05, 30)}
-    category_id       {1}
+    category
   end
 
 end

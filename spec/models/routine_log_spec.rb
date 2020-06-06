@@ -3,9 +3,10 @@ require 'rails_helper'
 describe RoutineLog do
 
   describe '#create' do
+    let(:category) { create(:category) }
 
     it "content, date, category_id, task_idの全てが存在すれば登録できる" do
-      routine_log = build(:routine_log)
+      routine_log = build(:routine_log, category: category)
       expect(routine_log).to be_valid
     end
 

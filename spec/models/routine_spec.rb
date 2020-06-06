@@ -5,7 +5,7 @@ describe Routine do
   describe '#create' do
 
     it "content, user_id, category_idの全てが存在すれば登録できる" do
-      routine = build(:routine)
+      routine = build(:routine, category_id: 1)
       expect(routine).to be_valid
     end
 
