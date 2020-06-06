@@ -51,7 +51,7 @@ class TasksController < ApplicationController
   def praised_users_index
     @routine_logs = @task.routine_logs.includes(:category)
     @user = @task.user
-    @praised_users = @task.praised_users.includes(:routines).order("praises.created_at DESC").page(params[:page]).per(10) if @task.praises.exists?
+    @praised_users = @task.praised_users.includes(:routines, routines: :category).order("praises.created_at DESC").page(params[:page]).per(10) if @task.praises.exists?
   end
 
   def category_index

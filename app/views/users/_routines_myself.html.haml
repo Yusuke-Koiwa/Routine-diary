@@ -1,9 +1,9 @@
 .routine-list
-  - if @user.routines.length == 0
+  - if @routines.length == 0
     .routine-list__message
       習慣にすることを記入しよう！
 
-  - @user.routines.each_with_index do |routine, index|
+  - @routines.each_with_index do |routine, index|
     .routine
       .routine__text-box
         .routine__text-box__content
@@ -30,5 +30,5 @@
         .actions
           = f.submit "SEND", id: "edit-routine-submit", class: "submit-btn"
 
-- if current_user.routines.length < 3
+- if @routines.length < 3
   = icon('fa', 'plus-circle', id: "new-routine-icon")

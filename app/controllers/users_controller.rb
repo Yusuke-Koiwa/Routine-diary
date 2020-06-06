@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @tasks = @user.tasks
-    @routines = @user.routines
+    @routines = @user.routines.includes(:category)
     @routine = Routine.new if @routines.count < 3
     if @tasks.present?
       @done_days = @user.done_days(@tasks)
@@ -36,15 +36,18 @@ class UsersController < ApplicationController
   end
 
   def praises_index
+    @routines = @user.routines.includes(:category)
     @praised_tasks = @user.praised_tasks.includes(:user, :routine_logs, routine_logs: :category).order("praises.created_at DESC").page(params[:page]).per(10)
   end
 
   def follow_index
-    @follow_users = @user.follow_users.includes(:routines).order("relationships.created_at DESC").page(params[:page]).per(10)
+    @routines = @user.routines.includes(:category)
+    @follow_users = @user.follow_users.includes(:routines, routines: :category).order("relationships.created_at DESC").page(params[:page]).per(10)
   end
 
   def follower_index
-    @follower_users = @user.follower_users.includes(:routines).order("relationships.created_at DESC").page(params[:page]).per(10)
+    @routines = @user.routines.includes(:category)
+    @follower_users = @user.follower_users.includes(:routines, routines: :category).order("relationships.created_at DESC").page(params[:page]).per(10)
   end
 
   private
