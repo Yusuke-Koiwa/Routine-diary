@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   before_action :routine_seted?, only: [:create]
 
   def index
-    @tasks = Task.includes(:user, :routine_logs).where("date <= ?", Date.today).
+    @tasks = Task.includes(:user, :routine_logs, routine_logs: :category).where("date <= ?", Date.today).
               where.not(score: nil).order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
   end
 
@@ -53,15 +53,9 @@ class TasksController < ApplicationController
   end
 
   def category_index
-    @category_name = Category.find(params[:id]).name
-    @routine_logs = RoutineLog.where(category_id: params[:id]).where("date <= ?", Date.today).
-                    order(date: "DESC").order("created_at DESC")
-    @tasks = []
-    @routine_logs.each do |routine_log|
-      @tasks << routine_log.task
-    end
-    @tasks = @tasks.uniq
-    @tasks = Kaminari.paginate_array(@tasks).page(params[:page]).per(10)
+    @category = Category.find(params[:id])
+    @tasks = @category.tasks.distinct.where("tasks.date < ?", Date.today).includes(:user, :routine_logs, routine_logs: :category).
+              order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
   end
 
   private
