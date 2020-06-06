@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def praises_index
-    @praised_tasks = @user.praised_tasks.includes(:user, :routine_logs).order("praises.created_at DESC").page(params[:page]).per(10)
+    @praised_tasks = @user.praised_tasks.includes(:user, :routine_logs, routine_logs: :category).order("praises.created_at DESC").page(params[:page]).per(10)
   end
 
   def follow_index
