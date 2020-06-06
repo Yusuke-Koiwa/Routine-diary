@@ -19,7 +19,7 @@
 
             - if task.score == "done"
               = icon('fa', 'check', class: "score-icon score-icon--done")
-            - else task.score == "bad"
+            - elsif task.score == "bad"
               = icon('fa', 'times', class: "score-icon score-icon--bad")
 
             .body
