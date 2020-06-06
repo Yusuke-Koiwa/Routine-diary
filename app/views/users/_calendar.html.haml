@@ -16,9 +16,15 @@
       %input{type: "hidden", class: "date-date", value: date}
 
   - tasks.each do |task|
-    - if task.score
-      .praise-btn{id: "praise-#{task.id}"}
-        = render partial: "tasks/praise", locals: { task: task }
+    .reaction-view
+      -if task.comments.length > 0
+        .comment-box
+          = icon('far', 'comment-dots')
+          .comment-count
+            = task.comments.count
+      - if task.score
+        .praise-btn{id: "praise-#{task.id}"}
+          = render partial: "tasks/praise", locals: { task: task }
 
 
     - if task.score == "done"

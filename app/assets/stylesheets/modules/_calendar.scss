@@ -115,35 +115,54 @@
         }
       }
 
-      .good-job {
-        background-color: white;
+      .reaction-view {
+        display: flex;
         position: absolute;
         top: 0;
         right: 2px;
-        display: flex;
         margin-top: 2px;
-        padding: 0 3px;
-        border: 1px solid;
-        border-radius: 15px;
 
-        &--on {
-          color: $good_job_red;
-        }
-
-        &--off {
-          color: lightskyblue;
-        }
-        
-        &__btn {
-          margin-top: 1px;
-          margin-right: 2px;
+        .comment-box {
+          color: #333333;
+          display: flex;
+          align-items: center;
+          padding: 0 3px;
           font-size: 14px;
+        
+          .comment-count {
+            margin-left: 3px;
+            font-size: 12px;
+          }
         }
 
-        &__count {
-          font-size: 12px;
+        .good-job {
+          background-color: white;
+          display: flex;
+          margin-left: 3px;
+          padding: 0 3px;
+          border: 1px solid;
+          border-radius: 15px;
+  
+          &--on {
+            color: $good_job_red;
+          }
+  
+          &--off {
+            color: lightskyblue;
+          }
+          
+          &__btn {
+            margin-top: 1px;
+            margin-right: 2px;
+            font-size: 14px;
+          }
+  
+          &__count {
+            font-size: 12px;
+          }
         }
       }
+
     }
   }
 
