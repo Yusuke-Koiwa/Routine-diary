@@ -5,6 +5,7 @@ class Task < ApplicationRecord
   has_many :praises, dependent: :destroy
   has_many :praised_users, through: :praises, source: :user
   has_many :categories, through: :routine_logs
+  has_many :notifications, dependent: :destroy
 
   validates :date, :start_time, presence: true
   validates :score, presence: true, unless: :body?
