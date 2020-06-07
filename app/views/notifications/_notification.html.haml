@@ -13,7 +13,7 @@
         = "あなたをフォローしました"
       - when 'praise' then
         = link_to 'あなたの投稿', notification.task
-        = "にいいねしました"
+        = "にグッジョブしました"
       - when 'comment' then
         - if notification.task.user_id == visited.id
           = link_to "あなたの投稿", notification.task
