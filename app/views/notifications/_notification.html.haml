@@ -1,0 +1,31 @@
+- visitor = notification.visitor
+- visited = notification.visited
+.notification-box
+  .notification-box__top
+    .sentence
+      = link_to user_path(visitor) do
+        = image_tag visitor.image.url, class: "user-icon"
+        = visitor.name
+      %span さんが
+
+      - case notification.action
+      - when 'follow' then
+        = "あなたをフォローしました"
+      - when 'praise' then
+        = link_to 'あなたの投稿', notification.task
+        = "にいいねしました"
+      - when 'comment' then
+        - if notification.task.user_id == visited.id
+          = link_to "あなたの投稿", notification.task
+        - else
+          %span
+            = link_to task_path(notification.task) do
+              = image_tag visitor.image.url, class: "icon_mini" 
+              = notification.task.user.name + 'さんの投稿'
+        = "にコメントしました"
+    .time
+      = time_ago_in_words(notification.created_at).upcase
+      %span<> 前
+  - if notification.action == "comment"
+    .notification-box__bottom
+      = Comment.find_by(id: notification.comment_id)&.content
