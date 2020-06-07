@@ -16,6 +16,8 @@
           .menu-list
             = link_to "投稿一覧", tasks_path, class: "menu-list__menu"
             = link_to "マイページ", user_path(current_user), class: "menu-list__menu"
+            = link_to notifications_path, class: "menu-list__menu bell-mark" do
+              = icon('far', 'bell')
             = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "menu-list__menu", data: { confirm: 'ログアウトしますか?' }
         - else
           .menu-list
