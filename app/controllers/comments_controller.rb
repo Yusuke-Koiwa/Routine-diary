@@ -5,6 +5,7 @@ def create
   @comment = Comment.new(comment_params)
   @user_image_url = @comment.user_image_url(@comment.user)
   if @comment.save
+    @comment.task.create_notification_comment(current_user, @comment.id)
     respond_to do |format|
       format.json
     end

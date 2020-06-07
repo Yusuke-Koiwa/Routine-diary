@@ -4,6 +4,7 @@ class PraisesController < ApplicationController
 
   def create
     @praise = current_user.praise(@task)
+    @task.create_notification_praise(current_user)
   end
 
   def destroy

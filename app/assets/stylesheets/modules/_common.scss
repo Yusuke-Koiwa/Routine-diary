@@ -37,6 +37,22 @@ header {
         margin-right: 20px;
         
       }
+
+      .bell-mark {
+        position: relative;
+        font-size: 20px;
+        margin-left: -5px;
+
+        .notice-circle {
+          position: absolute;
+          background-color: lime;
+          top: 8px;
+          left: 15px;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+        }
+      }
     }
   }
 }

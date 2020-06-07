@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :admin_user?, only: :destroy
 
   def show
-    @tasks = @user.tasks
+    @tasks = @user.tasks.includes(:comments)
     @routines = @user.routines.includes(:category)
     @routine = Routine.new if @routines.count < 3
     if @tasks.present?
