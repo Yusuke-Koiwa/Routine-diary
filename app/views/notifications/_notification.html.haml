@@ -20,7 +20,7 @@
         - else
           %span
             = link_to task_path(notification.task) do
-              = image_tag visitor.image.url, class: "icon_mini" 
+              = image_tag visited.image.url, class: "user-icon" 
               = notification.task.user.name + 'さんの投稿'
         = "にコメントしました"
     .time
