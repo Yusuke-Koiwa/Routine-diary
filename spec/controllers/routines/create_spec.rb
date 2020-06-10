@@ -1,7 +1,8 @@
 require 'rails_helper'
 describe RoutinesController do
   let(:user) { create(:user) }
-  let(:params) { {routine: {content: "hoge", category_id: 1}} }
+  let(:category) { create(:category) }
+  let(:params) { {routine: {content: "hoge", category_id: category.id}} }
 
   describe '#create' do
 
