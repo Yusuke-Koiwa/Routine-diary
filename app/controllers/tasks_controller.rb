@@ -6,7 +6,7 @@ class TasksController < ApplicationController
 
   def index
     @q = Task.ransack(params[:q])
-    @tasks = @q.result(distinct: true).includes(:user, :routine_logs, routine_logs: :category).where("date <= ?", Date.today).
+    @tasks = @q.result(distinct: true).includes(:user, :routine_logs, routine_logs: :category).where("tasks.date <= ?", Date.today).
               where.not(score: nil).order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
   end
 
