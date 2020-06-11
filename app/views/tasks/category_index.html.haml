@@ -1,4 +1,9 @@
 #search-menu
+  #search-box
+    = search_form_for @q, url: "/tasks/category/#{@category.id}" do |f|
+      = f.search_field :body_cont, class: "keyword-input", placeholder: "キーワードで検索"
+      = button_tag type: "submit" do
+        = icon('fas', 'search')
 #category-box
   #category-box__title
     = "カテゴリー：#{@category.name}"
