@@ -1,4 +1,9 @@
 #search-menu
+  #search-box
+    = search_form_for @q, url: "/tasks/category/#{@category.id}" do |f|
+      = f.search_field :body_or_routine_logs_content_cont, class: "keyword-input", placeholder: "キーワードを入力"
+      = button_tag type: "submit" do
+        = icon('fas', 'search')
 #category-box
   #category-box__title
     = "カテゴリー：#{@category.name}"
@@ -15,7 +20,7 @@
   .task-list
     - if @tasks.length == 0
       #none-message
-        = "#{@category.name}カテゴリーの投稿はまだありません"
+        = "該当する投稿はありません"
     - else
       = render "posts", tasks: @tasks
       = paginate @tasks
