@@ -19,5 +19,9 @@
         = c.name
 .jscroll
   .task-list
-    = render "posts", tasks: @tasks
-    = paginate @tasks
+    - if @tasks.length == 0
+      #none-message
+        = "該当する投稿はありません"
+    - else
+      = render "posts", tasks: @tasks
+      = paginate @tasks
