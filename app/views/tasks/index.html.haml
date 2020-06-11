@@ -1,7 +1,7 @@
 #search-menu
   #search-box
     = search_form_for @q, url: tasks_path do |f|
-      = f.search_field :body_or_routine_logs_content_cont, class: "keyword-input", placeholder: "キーワードで検索"
+      = f.search_field :body_or_routine_logs_content_cont, class: "keyword-input", placeholder: "キーワードを入力"
       = button_tag type: "submit" do
         = icon('fas', 'search')
 
