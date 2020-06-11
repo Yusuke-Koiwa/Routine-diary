@@ -1,20 +1,20 @@
-# アプリ名： Continue!
+## アプリ名： Continue!
 ユーザー同士で繋がりながら、毎日の習慣を楽しく継続することを目的としたアプリケーションです。    
 作品URL: https://www.routine-app.xyz/
 
-# 使用技術
-## バックエンド
+## 使用技術
+### バックエンド
 Ruby / Ruby on Rails
-## フロントエンド
+### フロントエンド
 Haml / SCSS / jQuery
-## 環境
+### 環境
 DB: MySQL  
 Webサーバー: Nginx  
 Appサーバー: Unicorn  
 インフラ関係: AWS ( EC2 / S3 / Route53 / ACM / ELB )  
 デプロイ: Capistrano
 
-# アプリケーションの機能一覧
+## アプリケーションの機能一覧
 - アカウント登録 / ログイン機能 (devise)
 - 管理ユーザー機能
 - 記事の一覧 / 詳細表示・投稿・編集・削除機能
