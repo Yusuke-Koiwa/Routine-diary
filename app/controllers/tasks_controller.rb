@@ -5,7 +5,8 @@ class TasksController < ApplicationController
   before_action :routine_seted?, only: [:create]
 
   def index
-    @tasks = Task.includes(:user, :routine_logs, routine_logs: :category).where("date <= ?", Date.today).
+    @q = Task.ransack(params[:q])
+    @tasks = @q.result(distinct: true).includes(:user, :routine_logs, routine_logs: :category).where("date <= ?", Date.today).
               where.not(score: nil).order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
   end
 
@@ -56,7 +57,8 @@ class TasksController < ApplicationController
 
   def category_index
     @category = Category.find(params[:id])
-    @tasks = @category.tasks.distinct.where("tasks.date <= ?", Date.today).includes(:user, :routine_logs, routine_logs: :category).
+    @q = @category.tasks.ransack(params[:q])
+    @tasks = @q.result(distinct: true).where("tasks.date <= ?", Date.today).includes(:user, :routine_logs, routine_logs: :category).
               order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
   end
 
