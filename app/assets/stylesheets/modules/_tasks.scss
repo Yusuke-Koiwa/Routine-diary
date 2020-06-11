@@ -5,8 +5,37 @@
   position: fixed;
   z-index: 3;
   width: 100%;
-  height: 35px;
+  height: 40px;
   border-bottom: 1px solid lightskyblue;
+  line-height: 40px;
+
+  #search-box {
+    @include line_up_side(center);
+    margin: 0 auto;
+    max-width: 750px;
+
+    .keyword-input {
+      width: 400px;
+      height: 30px;
+      padding-left: 5px;
+    }
+
+    button {
+      background: none;
+      border-style: none;
+      background-color: lightskyblue;
+      color: white;
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
+      padding-top: 2px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgb(151, 215, 255);
+      }
+    }
+  }
 }
 
 #category-box {
@@ -14,13 +43,13 @@
   z-index: 4;
   left: 30px;
   cursor: pointer;
+  padding-top: 3px;
 
   &__title {
     background-color: white;
     display: flex;
     height: 35px;
     padding: 5px;
-    border-bottom: 1px solid lightskyblue;
 
     i {
       padding: 5px 0 0 5px;
@@ -30,7 +59,6 @@
   &__list {
     @include line_up_vertical(space-between);
     background-color: white;
-    // border: 1px solid lightskyblue;
     box-shadow: 1px 1px 3px gray;
     text-align: center;
     display: none;
@@ -43,7 +71,6 @@
         background-color: $light_skyblue;
       }
     }
-    
   }
 }
 
