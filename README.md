@@ -13,11 +13,8 @@ Ruby / Ruby on Rails
 ### フロントエンド
 Haml / SCSS / JavaScript / jQuery
 ### 環境
-DB: MySQL  
-Webサーバー: Nginx  
-Appサーバー: Unicorn  
-インフラ関係: AWS ( EC2 / S3 / Route53 / ACM / ELB )  
-デプロイ: Capistrano
+MySQL / Nginx / Unicorn / Capistrano  
+AWS ( EC2 / S3 / Route53 / ACM / ELB )  
 
 ## アプリケーションの機能一覧
 - アカウント登録 / ログイン機能 (devise)
@@ -45,7 +42,8 @@ Appサーバー: Unicorn
 ## 今後の開発予定
 - グループ機能
 - 継続日数ランキング機能
-- Dockerの導入
+- 開発環境にDockerを導入
 - CircleCIでCI/CDパイプライン構築
+- フロントエンドにVue.jsもしくはReactを使用
 ## DB設計
 <img width="75%" alt="DB設計" src="https://user-images.githubusercontent.com/63847712/84472801-de36fd00-acc2-11ea-8874-164cb5a262f8.png">
