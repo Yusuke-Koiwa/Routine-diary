@@ -1,0 +1,42 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    env_file:
+      - ./environments/db.env
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "4306:3306" 
+  
+  app:
+    build:
+      context: .
+    env_file:
+      - ./environments/db.env
+    command: bundle exec puma -C config/puma.rb
+    depends_on:
+      - db
+    volumes:
+      - .:/workdir
+      - public-data:/workdir/public
+      - tmp-data:/workdir/tmp
+      - log-data:/workdir/log
+
+  web:
+    build:
+      context: containers/nginx
+    volumes:
+      - public-data:/workdir/public
+      - tmp-data:/workdir/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - app
+
+volumes:
+  public-data:
+  tmp-data:
+  log-data:
+  mysql-data:
+  bundle:
