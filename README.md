@@ -12,9 +12,12 @@
 Ruby / Ruby on Rails
 ### フロントエンド
 Haml / SCSS / JavaScript / jQuery
-### 環境
-MySQL / Nginx / Unicorn / Capistrano  
+### 開発環境
+Docker ( MySQL / Nginx / puma )
+### 本番環境
+MySQL / Nginx / Unicorn   
 AWS ( EC2 / S3 / Route53 / ACM / ELB )  
+Capistrano  
 
 ## アプリケーションの機能一覧
 - アカウント登録 / ログイン機能 (devise)
