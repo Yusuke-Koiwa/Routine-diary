@@ -42,7 +42,7 @@ AWS ( EC2 / S3 / Route53 / ACM / ELB )
 ## 今後の開発予定
 - グループ機能
 - 継続日数ランキング機能
-- 開発環境にDockerを導入
+- ~開発環境にDockerを導入~ → 6/16 実装済み
 - CircleCIでCI/CDパイプライン構築
 - フロントエンドにVue.jsもしくはReactを使用
 ## DB設計
