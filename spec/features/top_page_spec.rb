@@ -27,14 +27,14 @@ feature 'top_page', type: :feature do
       visit root_path
     end
 
-      scenario '投稿詳細ページに遷移出来る' do
-        find('.task-link').click
-        expect(current_path).to eq task_path(@task)
-      end
+    scenario '投稿詳細ページに遷移出来る' do
+      find('.task-link').click
+      expect(current_path).to eq task_path(@task)
+    end
 
-      scenario 'user詳細ページに遷移出来る' do
-        find('.user_path_link').click
-        expect(current_path).to eq user_path(user)
-      end
+    scenario 'user詳細ページに遷移出来る' do
+      find('.user_path_link').click
+      expect(current_path).to eq user_path(user)
+    end
   end
 end

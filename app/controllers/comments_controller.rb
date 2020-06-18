@@ -1,19 +1,19 @@
 class CommentsController < ApplicationController
   before_action :move_to_login_page, unless: :user_signed_in?
 
-def create
-  @comment = Comment.new(comment_params)
-  @user_image_url = @comment.user_image_url(@comment.user)
-  if @comment.save
-    @comment.task.create_notification_comment(current_user, @comment.id)
-    respond_to do |format|
-      format.json
+  def create
+    @comment = Comment.new(comment_params)
+    @user_image_url = @comment.user_image_url(@comment.user)
+    if @comment.save
+      @comment.task.create_notification_comment(current_user, @comment.id)
+      respond_to do |format|
+        format.json
+      end
+    else
+      flash[:alert] = "コメントが入力されていません"
+      redirect_back(fallback_location: tasks_path)
     end
-  else
-    flash[:alert] = "コメントが入力されていません"
-    redirect_back(fallback_location: tasks_path)
   end
-end
 
   private
 

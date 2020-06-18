@@ -64,35 +64,35 @@ class TasksController < ApplicationController
 
   private
 
-    def set_task
-      @task = Task.find(params[:id])
-    end
+  def set_task
+    @task = Task.find(params[:id])
+  end
 
-    def new_task_params
-      params.permit(:score, :body, :start_time, :date, :user_id)
-    end
+  def new_task_params
+    params.permit(:score, :body, :start_time, :date, :user_id)
+  end
 
-    def task_params
-      params.require(:task).permit(:score, :body, :start_time, :date, :user_id)
-    end
+  def task_params
+    params.require(:task).permit(:score, :body, :start_time, :date, :user_id)
+  end
 
-    def move_to_login_page
-      flash[:alert] = "ログインが必要です"
-      redirect_to new_user_session_path
-    end
+  def move_to_login_page
+    flash[:alert] = "ログインが必要です"
+    redirect_to new_user_session_path
+  end
 
-    def correct_user?
-      task = Task.find(params[:id])
-      unless task.user == current_user || current_user.admin? 
-        flash[:alert] = "権限がありません"
-        redirect_to user_path(current_user)
-      end
+  def correct_user?
+    task = Task.find(params[:id])
+    unless task.user == current_user || current_user.admin? 
+      flash[:alert] = "権限がありません"
+      redirect_to user_path(current_user)
     end
+  end
 
-    def routine_seted?
-      if current_user.routines.length == 0
-        flash[:alert] = "習慣にすることを先に入力してください"
-        redirect_to user_path(current_user)
-      end
+  def routine_seted?
+    if current_user.routines.length == 0
+      flash[:alert] = "習慣にすることを先に入力してください"
+      redirect_to user_path(current_user)
     end
+  end
 end
