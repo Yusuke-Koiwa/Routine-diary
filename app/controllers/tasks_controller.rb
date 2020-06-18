@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   def index
     @q = Task.ransack(params[:q])
     @tasks = @q.result(distinct: true).includes(:user, :routine_logs, routine_logs: :category).where("tasks.date <= ?", Date.today)
-              .where.not(score: nil).order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
+               .where.not(score: nil).order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
   end
 
   def show
@@ -59,7 +59,7 @@ class TasksController < ApplicationController
     @category = Category.find(params[:id])
     @q = @category.tasks.ransack(params[:q])
     @tasks = @q.result(distinct: true).where("tasks.date <= ?", Date.today).includes(:user, :routine_logs, routine_logs: :category)
-              .order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
+               .order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
   end
 
   private
