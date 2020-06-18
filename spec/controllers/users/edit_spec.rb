@@ -4,7 +4,6 @@ describe UsersController do
   let(:other) { create(:user) }
 
   describe '#edit' do
-
     context 'ログインしている場合' do
       before do
         login user
@@ -27,7 +26,6 @@ describe UsersController do
           expect(response).to redirect_to(user_path(other))
         end
       end
-
     end
 
     context 'ログインしていない場合' do
@@ -36,7 +34,5 @@ describe UsersController do
         expect(response).to redirect_to(new_user_session_path)
       end
     end
-
   end
-
 end

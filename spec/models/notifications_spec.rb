@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe Notification do
-
   describe '#create' do
-
     it "visitor_id, visited_id, task_id, comment_id, action, checkedの全てが存在すれば登録できる" do
       notification = build(:notification)
       expect(notification).to be_valid
@@ -31,7 +29,5 @@ describe Notification do
       notification.valid?
       expect(notification.errors[:action]).to include("を入力してください")
     end
-
   end
-
 end

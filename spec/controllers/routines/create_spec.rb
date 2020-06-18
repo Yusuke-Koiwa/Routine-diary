@@ -5,7 +5,6 @@ describe RoutinesController do
   let(:params) { {routine: {content: "hoge", category_id: category.id}} }
 
   describe '#create' do
-
     context 'ログインしている場合' do
       before do
         login user
@@ -38,7 +37,6 @@ describe RoutinesController do
           expect(response).to redirect_to(user_path(user))
         end
       end
-
     end
     
     context 'ログインしていない場合' do
@@ -52,5 +50,4 @@ describe RoutinesController do
       end
     end
   end
-
 end

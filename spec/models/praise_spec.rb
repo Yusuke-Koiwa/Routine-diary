@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe Praise do
-
   describe '#create' do
-
     it "user_id, task_idの全てが存在すれば登録できる" do
       praise = build(:praise)
       expect(praise).to be_valid
@@ -29,7 +27,5 @@ describe Praise do
       praise2.valid?
       expect(praise2.errors[:task_id]).to include("はすでに存在します")
     end
-
   end
-
 end

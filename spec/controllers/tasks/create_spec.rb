@@ -51,7 +51,6 @@ describe TasksController do
             expect(response).to redirect_to(user_path(user))
           end
         end
-
       end
       
       context 'routineが設定されていない場合' do
@@ -73,5 +72,4 @@ describe TasksController do
       end
     end
   end
-
 end

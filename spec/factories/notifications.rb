@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :notification do
     visitor_id    {1}
     visited_id    {2}
@@ -8,5 +7,4 @@ FactoryBot.define do
     action        {"comment"}
     checked       {0}
   end
-
 end

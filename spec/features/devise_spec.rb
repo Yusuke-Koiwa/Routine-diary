@@ -42,5 +42,4 @@ feature 'devise', type: :feature do
       expect(current_path).to eq user_path(new_user)
     }.to change(User, :count).by(1)
   end
-
 end

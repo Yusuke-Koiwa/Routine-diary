@@ -7,14 +7,12 @@ describe TasksController do
   let(:other_user_task) { create(:task, user: other)}
 
   describe '#update' do
-
     context 'ログインしている場合' do
       before do
         login user
       end
         
       context "自分が作成したtaskを更新する場合" do
-
         context 'scoreが入力されている場合' do
           it 'taskを更新する' do
             params = {id: task.id, task: {score: "bad"}}
@@ -41,7 +39,6 @@ describe TasksController do
             expect(response).to redirect_to(user_path(user))
           end
         end
-
       end
 
       context '他ユーザーのtaskを更新しようとした場合' do
@@ -56,7 +53,6 @@ describe TasksController do
           expect(response).to redirect_to(user_path(user))
         end
       end
-
     end
 
     context 'ログインしていない場合' do
@@ -71,7 +67,5 @@ describe TasksController do
         expect(response).to redirect_to(new_user_session_path)
       end
     end
-
   end
-
 end

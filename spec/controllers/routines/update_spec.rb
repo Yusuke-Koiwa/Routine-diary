@@ -6,7 +6,6 @@ describe RoutinesController do
   let(:other_routine) { create(:routine, content: "old", user: other)}
 
   describe '#update' do
-
     context 'ログインしている場合' do
       before do
         login user
@@ -37,7 +36,6 @@ describe RoutinesController do
           expect(response).to redirect_to(user_path(other))
         end
       end
-
     end
 
     context 'ログインしていない場合' do
@@ -52,7 +50,5 @@ describe RoutinesController do
         expect(response).to redirect_to(new_user_session_path)
       end
     end
-
   end
-
 end

@@ -3,7 +3,6 @@ describe TasksController do
   let(:user) { create(:user) }
 
   describe '#index' do
-
     it '@tasksに正しい値が入っている' do
       tasks = create_list(:task, 3)
       get :index
@@ -15,5 +14,4 @@ describe TasksController do
     end
     
   end
-
 end

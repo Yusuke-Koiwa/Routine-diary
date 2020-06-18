@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe Relationship do
-
   describe '#create' do
-
     it "user_id, follow_idの全てが存在すれば登録できる" do
       relationship = build(:relationship)
       expect(relationship).to be_valid
@@ -29,7 +27,5 @@ describe Relationship do
       relationship2.valid?
       expect(relationship2.errors[:follow_id]).to include("はすでに存在します")
     end
-
   end
-
 end

@@ -21,5 +21,4 @@ Rails.application.routes.draw do
   resources :routines, only: [:create, :update, :destroy]
   resources :notifications, only: :index
   get "/tasks/category/:id", to: "tasks#category_index"
-
 end

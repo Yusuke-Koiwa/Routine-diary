@@ -5,7 +5,6 @@ describe UsersController do
   let(:admin) { create(:user, admin: true) }
 
   describe '#destroy' do
-
     context 'ログインしている場合' do
         
       context "管理ユーザーである場合" do
@@ -40,7 +39,6 @@ describe UsersController do
             expect(response).to redirect_to(root_path)
           end
         end
-
       end
 
       context '管理ユーザーでない場合' do
@@ -59,7 +57,6 @@ describe UsersController do
           expect(response).to redirect_to(root_path)
         end
       end
-
     end
 
     context 'ログインしていない場合' do
@@ -75,7 +72,5 @@ describe UsersController do
         expect(response).to redirect_to(new_user_session_path)
       end
     end
-
   end
-
 end

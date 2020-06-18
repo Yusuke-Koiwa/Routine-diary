@@ -6,7 +6,6 @@ describe CommentsController do
   let(:params) { { task_id: task.id, user_id: user.id, comment: {content: "hoge"} } }
 
   describe "#create" do
-
     context "ログインしている場合"do
       before do
         login user

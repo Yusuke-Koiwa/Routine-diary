@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :task do
     user
     score             {"done"}
@@ -8,5 +7,4 @@ FactoryBot.define do
     start_time        {Faker::Time.between_dates(from: Date.today - 3, to: Date.today - 1, period: :all)}
     created_at        {DateTime.now}
   end
-
 end

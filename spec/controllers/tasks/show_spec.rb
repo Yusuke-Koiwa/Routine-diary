@@ -3,7 +3,6 @@ describe TasksController do
   let(:user) { create(:user) }
 
   describe '#show' do
-
     context 'ログインしている場合' do
       before do
         login user
@@ -28,7 +27,5 @@ describe TasksController do
         expect(response).to redirect_to(new_user_session_path)
       end
     end
-
   end
-
 end

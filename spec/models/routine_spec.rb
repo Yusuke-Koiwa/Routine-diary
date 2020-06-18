@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe Routine do
-
   describe '#create' do
-
     it "content, user_id, category_idの全てが存在すれば登録できる" do
       category = create(:category)
       routine = build(:routine, category: category)
@@ -37,7 +35,5 @@ describe Routine do
       routine4.valid?
       expect(routine4.errors[:routine]).to include("登録できる習慣は3つまでです")
     end
-
   end
-
 end

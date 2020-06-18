@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe Comment do
-
   describe '#create' do
-
     it "content, user_id, task_idの全てが存在すれば登録できる" do
       comment = build(:comment)
       expect(comment).to be_valid
@@ -26,7 +24,5 @@ describe Comment do
       comment.valid?
       expect(comment.errors[:task]).to include("を入力してください")
     end
-
   end
-
 end
