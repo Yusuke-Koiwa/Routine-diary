@@ -90,7 +90,7 @@ class TasksController < ApplicationController
   end
 
   def routine_seted?
-    if current_user.routines.length == 0
+    if current_user.routines.empty?
       flash[:alert] = "習慣にすることを先に入力してください"
       redirect_to user_path(current_user)
     end
