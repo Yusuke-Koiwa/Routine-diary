@@ -83,7 +83,7 @@ class TasksController < ApplicationController
 
   def correct_user?
     task = Task.find(params[:id])
-    unless task.user == current_user || current_user.admin? 
+    unless task.user == current_user || current_user.admin?
       flash[:alert] = "権限がありません"
       redirect_to user_path(current_user)
     end

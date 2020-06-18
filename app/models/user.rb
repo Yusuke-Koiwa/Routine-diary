@@ -39,7 +39,7 @@ class User < ApplicationRecord
       calc_continuous_days(tasks, num)
     else
       return 0
-    end    
+    end
   end
 
   def calc_continuous_days(tasks, num)

@@ -38,7 +38,7 @@ describe RoutinesController do
         end
       end
     end
-    
+
     context 'ログインしていない場合' do
       subject { post :create, params: params }
       it 'routineを保存しない' do

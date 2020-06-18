@@ -10,14 +10,13 @@ describe RoutinesController do
       before do
         login user
       end
-        
+
       context "自分が作成したroutineを削除する場合" do
         it 'routineを削除する' do
           params = { id: routine.id }
           expect {
             delete :destroy, params: params
           }.to change(Routine, :count).by(-1)
-          
         end
         it 'マイページにリダイレクトする' do
           params = { id: routine.id }

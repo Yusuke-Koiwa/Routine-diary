@@ -85,7 +85,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'pry-rails'
-gem 'rails-i18n', '~> 5.1' 
+gem 'rails-i18n', '~> 5.1'
 gem 'ransack'
 gem 'rename'
 gem "simple_calendar", "~> 2.0"

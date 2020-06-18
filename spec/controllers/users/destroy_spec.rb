@@ -6,7 +6,6 @@ describe UsersController do
 
   describe '#destroy' do
     context 'ログインしている場合' do
-        
       context "管理ユーザーである場合" do
         before do
           login admin

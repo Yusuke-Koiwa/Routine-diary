@@ -10,14 +10,13 @@ describe TasksController do
       before do
         login user
       end
-        
+
       context "自分が作成したtaskを削除する場合" do
         it 'taskを削除する' do
           params = { id: task.id }
           expect {
             delete :destroy, params: params
           }.to change(Task, :count).by(-1)
-          
         end
         it 'マイページにリダイレクトする' do
           params = { id: task.id }

@@ -10,7 +10,7 @@ describe RoutinesController do
       before do
         login user
       end
-        
+
       context "自分が作成したroutineを更新する場合" do
         it 'routineを更新する' do
           params = { id: routine.id, routine: { content: "new" } }

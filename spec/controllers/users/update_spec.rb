@@ -8,7 +8,7 @@ describe UsersController do
       before do
         login user
       end
-        
+
       context "自身のユーザー情報を更新する場合" do
         it 'userを更新する' do
           params = { id: user.id, user: { name: "new_name" } }

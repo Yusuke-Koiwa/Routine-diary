@@ -15,7 +15,7 @@ describe TasksController do
         before do
           routine = create(:routine, user: user)
         end
-        
+
         context "score, bodyが入力されており、同じdateのレコードが存在しない場合" do
           subject { post :create, params: params }
           it 'taskを保存する' do
@@ -52,7 +52,7 @@ describe TasksController do
           end
         end
       end
-      
+
       context 'routineが設定されていない場合' do
         subject { post :create, params: params }
         it 'taskを保存しない' do
@@ -64,7 +64,7 @@ describe TasksController do
         end
       end
     end
-    
+
     context 'ログインしていない場合' do
       it 'ログインページにリダイレクトする' do
         post :create, params: params

@@ -11,7 +11,7 @@ describe TasksController do
       before do
         login user
       end
-        
+
       context "自分が作成したtaskを更新する場合" do
         context 'scoreが入力されている場合' do
           it 'taskを更新する' do
