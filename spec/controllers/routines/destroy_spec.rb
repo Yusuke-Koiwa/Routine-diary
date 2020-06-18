@@ -3,7 +3,7 @@ describe RoutinesController do
   let(:user) { create(:user) }
   let(:other) { create(:user) }
   let(:routine) { create(:routine, user: user) }
-  let(:other_routine) { create(:routine, user: other)}
+  let(:other_routine) { create(:routine, user: other) }
 
   describe '#destroy' do
     context 'ログインしている場合' do

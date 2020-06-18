@@ -3,7 +3,7 @@ describe TasksController do
   let(:user) { create(:user) }
   let(:other) { create(:user) }
   let(:task) { create(:task, user: user) }
-  let(:other_user_task) { create(:task, user: other)}
+  let(:other_user_task) { create(:task, user: other) }
 
   describe '#destroy' do
     context 'ログインしている場合' do

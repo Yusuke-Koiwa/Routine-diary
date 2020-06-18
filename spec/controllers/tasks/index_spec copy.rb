@@ -6,7 +6,7 @@ describe TasksController do
     it '@tasksに正しい値が入っている' do
       tasks = create_list(:task, 3)
       get :index
-      expect(assigns(:tasks)).to match(tasks.sort{ |a, b| b.date <=> a.date })
+      expect(assigns(:tasks)).to match(tasks.sort { |a, b| b.date <=> a.date })
     end
     it 'index.html.hamlに遷移する' do
       get :index
