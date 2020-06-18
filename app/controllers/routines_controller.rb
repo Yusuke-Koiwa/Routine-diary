@@ -1,7 +1,7 @@
 class RoutinesController < ApplicationController
-  before_action :move_to_login_page,  unless: :user_signed_in?
-  before_action :set_routine, only: [:update, :destroy]
-  before_action :correct_user?, only: [:update, :destroy]
+  before_action :move_to_login_page, unless: :user_signed_in?
+  before_action :set_routine, only: %i[update destroy]
+  before_action :correct_user?, only: %i[update destroy]
 
   def create
     if current_user.routines.length >= 3

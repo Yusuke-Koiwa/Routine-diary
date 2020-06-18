@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :move_to_login_page, unless: :user_signed_in?
   before_action :set_user
-  before_action :correct_user?, only: [:edit, :update]
+  before_action :correct_user?, only: %i[edit update]
   before_action :admin_user?, only: :destroy
 
   def show
