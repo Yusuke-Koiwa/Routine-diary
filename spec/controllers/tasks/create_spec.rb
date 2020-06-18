@@ -3,8 +3,8 @@ describe TasksController do
   let(:user) { create(:user) }
 
   describe '#create' do
-    let(:params) { { score: "done", body: "hoge", date: "#{Date.today - 1}", start_time: "#{Date.today - 1}", user_id: user.id } }
-    let(:blank_params) { { score: nil, body: nil, date: "#{Date.today - 1}", start_time: "#{Date.today - 1}", user_id: user.id } }
+    let(:params) { { score: "done", body: "hoge", date: (Date.today - 1).to_s, start_time: (Date.today - 1).to_s, user_id: user.id } }
+    let(:blank_params) { { score: nil, body: nil, date: (Date.today - 1).to_s, start_time: (Date.today - 1).to_s, user_id: user.id } }
 
     context 'ログインしている場合' do
       before do
