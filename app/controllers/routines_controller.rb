@@ -31,6 +31,7 @@ class RoutinesController < ApplicationController
   end
 
   private
+
   def move_to_login_page
     flash[:alert] = "ログインが必要です"
     redirect_to new_user_session_path

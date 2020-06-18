@@ -12,6 +12,7 @@ class PraisesController < ApplicationController
   end
 
   private
+
   def set_task
     @task = Task.find(params[:task_id])
   end
