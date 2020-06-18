@@ -45,9 +45,7 @@ class User < ApplicationRecord
   def calc_continuous_days(tasks, num)
     calc_day = tasks.first.date
     tasks.each do |task|
-      if calc_day - task.date != 0
-        return num
-      end
+      return num if calc_day - task.date != 0
 
       num += 1
       calc_day -= 1
@@ -73,9 +71,7 @@ class User < ApplicationRecord
   end
 
   def follow(other_user)
-    unless self == other_user
-      relationships.find_or_create_by(follow_id: other_user.id)
-    end
+    relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user
   end
 
   def unfollow(other_user)

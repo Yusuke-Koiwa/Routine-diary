@@ -8,8 +8,6 @@ class Routine < ApplicationRecord
   validate :routines_number, on: :create
 
   def routines_number
-    if user && user.routines.count >= 3
-      errors.add(:routine, "登録できる習慣は3つまでです")
-    end
+    errors.add(:routine, "登録できる習慣は3つまでです") if user && user.routines.count >= 3
   end
 end
