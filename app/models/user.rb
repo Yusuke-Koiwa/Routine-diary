@@ -65,7 +65,7 @@ class User < ApplicationRecord
 
   def unpraise(task)
     praise = self.praises.find_by(task_id: task.id)
-    praise.destroy if praise
+    praise&.destroy
   end
 
   def already_followed?(other_user)
@@ -80,7 +80,7 @@ class User < ApplicationRecord
 
   def unfollow(other_user)
     relationship = self.relationships.find_by(follow_id: other_user.id)
-    relationship.destroy if relationship
+    relationship&.destroy
   end
 
   def create_notification_follow(current_user)
