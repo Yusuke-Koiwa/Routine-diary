@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :move_to_login_page, except: [:index, :category_index],  unless: :user_signed_in?
+  before_action :move_to_login_page, except: [:index, :category_index], unless: :user_signed_in?
   before_action :set_task, only: [:show, :update, :destroy, :praised_users_index]
   before_action :correct_user?, only: [:update, :destroy]
   before_action :routine_seted?, only: [:create]

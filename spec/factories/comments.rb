@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :comment do
     user
     task
-    content              {"hogehogehogehogehoge"}
+    content {"hogehogehogehogehoge"}
   end
 end

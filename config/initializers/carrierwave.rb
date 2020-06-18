@@ -15,7 +15,7 @@ CarrierWave.configure do |config|
       region: 'ap-northeast-1'
     }
 
-    config.fog_directory  = 'koiwa-routine-app'
+    config.fog_directory = 'koiwa-routine-app'
     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/koiwa-routine-app'
   end
 end
