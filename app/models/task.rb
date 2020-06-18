@@ -25,7 +25,7 @@ class Task < ApplicationRecord
         visited_id: user_id,
         action: 'praise'
       )
-       if notification.visitor_id == notification.visited_id
+      if notification.visitor_id == notification.visited_id
         notification.checked = true
       end
       notification.save if notification.valid?
