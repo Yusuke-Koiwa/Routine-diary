@@ -21,7 +21,7 @@ class TasksController < ApplicationController
     @task = Task.new(new_task_params)
     @task.start_time = @task.start_time.to_datetime
     @task.start_time = @task.date.to_date
-    if @task.score == nil && @task.body == ""
+    if @task.score.nil? && @task.body == ""
       redirect_to user_path(current_user)
     elsif Task.where(date: @task.date, user_id: current_user.id).length >= 1
       flash[:alert] = "データが既に存在します"
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
 
   def update
     @task.update(task_params)
-    if @task.score == nil && @task.body == ""
+    if @task.score.nil? && @task.body == ""
       @task.destroy
       redirect_to user_path(current_user)
     else
