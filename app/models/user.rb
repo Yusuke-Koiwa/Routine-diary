@@ -30,6 +30,7 @@ class User < ApplicationRecord
     tasks = tasks.where("date <= ?", Date.today).order(date: "DESC")
     return 0 unless tasks.exists?
     return 0 if tasks.first.score == "bad"
+
     tasks = tasks.where(score: "done")
     latest_day = tasks.first.date
 
@@ -47,6 +48,7 @@ class User < ApplicationRecord
       if calc_day - task.date != 0
         return num
       end
+
       num += 1
       calc_day -= 1
     end
