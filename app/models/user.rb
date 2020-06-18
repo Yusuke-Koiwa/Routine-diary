@@ -56,30 +56,30 @@ class User < ApplicationRecord
   end
 
   def already_praised?(task)
-    self.praised_tasks.include?(task)
+    praised_tasks.include?(task)
   end
 
   def praise(task)
-    self.praises.find_or_create_by(task_id: task.id)
+    praises.find_or_create_by(task_id: task.id)
   end
 
   def unpraise(task)
-    praise = self.praises.find_by(task_id: task.id)
+    praise = praises.find_by(task_id: task.id)
     praise&.destroy
   end
 
   def already_followed?(other_user)
-    self.follow_users.include?(other_user)
+    follow_users.include?(other_user)
   end
 
   def follow(other_user)
     unless self == other_user
-      self.relationships.find_or_create_by(follow_id: other_user.id)
+      relationships.find_or_create_by(follow_id: other_user.id)
     end
   end
 
   def unfollow(other_user)
-    relationship = self.relationships.find_by(follow_id: other_user.id)
+    relationship = relationships.find_by(follow_id: other_user.id)
     relationship&.destroy
   end
 

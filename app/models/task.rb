@@ -13,7 +13,7 @@ class Task < ApplicationRecord
 
   def create_routine_log(user)
     user.routines.each do |r|
-      self.routine_logs.create(category_id: r.category_id, content: r.content, date: self.date)
+      routine_logs.create(category_id: r.category_id, content: r.content, date: date)
     end
   end
 
