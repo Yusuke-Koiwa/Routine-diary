@@ -29,9 +29,9 @@ describe TasksController do
         context 'score, bodyが共に入力されていない場合' do
           it '元のtaskを削除する' do
             params = { id: no_score_task.id, task: { body: "" } }
-            expect {
+            expect do
               patch :update, params: params
-            }.to change(Task, :count).by(-1)
+            end.to change(Task, :count).by(-1)
           end
           it 'マイページにリダイレクトする' do
             params = { id: no_score_task.id, task: { body: "" } }

@@ -14,9 +14,9 @@ describe RoutinesController do
       context "自分が作成したroutineを削除する場合" do
         it 'routineを削除する' do
           params = { id: routine.id }
-          expect {
+          expect do
             delete :destroy, params: params
-          }.to change(Routine, :count).by(-1)
+          end.to change(Routine, :count).by(-1)
         end
         it 'マイページにリダイレクトする' do
           params = { id: routine.id }
@@ -28,9 +28,9 @@ describe RoutinesController do
       context '他ユーザーのroutineを削除しようとした場合' do
         it 'routineを削除しない' do
           params = { id: other_routine.id }
-          expect {
+          expect do
             delete :destroy, params: params
-          }.to_not change(Routine, :count)
+          end.to_not change(Routine, :count)
         end
         it 'マイページにリダイレクトする' do
           params = { id: other_routine.id }
@@ -43,9 +43,9 @@ describe RoutinesController do
     context 'ログインしていない場合' do
       it 'routineを削除しない' do
         params = { id: routine.id }
-        expect {
+        expect do
           delete :destroy, params: params
-        }.to_not change(Routine, :count)
+        end.to_not change(Routine, :count)
       end
       it 'ログインページにリダイレクトする' do
         params = { id: routine.id }

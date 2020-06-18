@@ -14,9 +14,9 @@ describe TasksController do
       context "自分が作成したtaskを削除する場合" do
         it 'taskを削除する' do
           params = { id: task.id }
-          expect {
+          expect do
             delete :destroy, params: params
-          }.to change(Task, :count).by(-1)
+          end.to change(Task, :count).by(-1)
         end
         it 'マイページにリダイレクトする' do
           params = { id: task.id }
@@ -28,9 +28,9 @@ describe TasksController do
       context '他ユーザーのtaskを削除しようとした場合' do
         it 'taskを削除しない' do
           params = { id: other_user_task.id }
-          expect {
+          expect do
             delete :destroy, params: params
-          }.to_not change(Task, :count)
+          end.to_not change(Task, :count)
         end
         it 'マイページにリダイレクトする' do
           params = { id: other_user_task.id }
@@ -43,9 +43,9 @@ describe TasksController do
     context 'ログインしていない場合' do
       it 'taskを削除しない' do
         params = { id: task.id }
-        expect {
+        expect do
           delete :destroy, params: params
-        }.to_not change(Task, :count)
+        end.to_not change(Task, :count)
       end
       it 'ログインページにリダイレクトする' do
         params = { id: task.id }

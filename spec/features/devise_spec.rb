@@ -32,7 +32,7 @@ feature 'devise', type: :feature do
 
   scenario '新規登録を実行' do
     visit new_user_registration_path
-    expect {
+    expect do
       fill_in 'user_name', with: 'new_user'
       fill_in 'user_email', with: 'new@test.com'
       fill_in 'user_password', with: '1234567'
@@ -40,6 +40,6 @@ feature 'devise', type: :feature do
       click_button 'アカウント作成'
       new_user = User.last
       expect(current_path).to eq user_path(new_user)
-    }.to change(User, :count).by(1)
+    end.to change(User, :count).by(1)
   end
 end
