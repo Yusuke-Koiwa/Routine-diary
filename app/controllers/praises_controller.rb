@@ -21,5 +21,4 @@ class PraisesController < ApplicationController
     flash[:alert] = "ログインが必要です"
     redirect_to new_user_session_path
   end
-
 end

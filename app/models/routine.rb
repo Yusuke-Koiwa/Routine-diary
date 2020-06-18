@@ -12,5 +12,4 @@ class Routine < ApplicationRecord
       errors.add(:routine, "登録できる習慣は3つまでです")
     end
   end
-
 end

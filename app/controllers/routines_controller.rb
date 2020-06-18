@@ -52,5 +52,4 @@ class RoutinesController < ApplicationController
       redirect_to user_path(routine.user)
     end
   end
-
 end
