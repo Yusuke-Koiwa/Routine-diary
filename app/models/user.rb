@@ -38,7 +38,7 @@ class User < ApplicationRecord
       num = 0
       calc_continuous_days(tasks, num)
     else
-      return 0
+      0
     end
   end
 
@@ -52,7 +52,7 @@ class User < ApplicationRecord
       num += 1
       calc_day -= 1
     end
-    return num
+    num
   end
 
   def already_praised?(task)

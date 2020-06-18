@@ -7,9 +7,9 @@ class Comment < ApplicationRecord
 
   def user_image_url(user)
     if self.user.image?
-      return user.image.url
+      user.image.url
     else
-      return "/default.jpg"
+      "/default.jpg"
     end
   end
 end
