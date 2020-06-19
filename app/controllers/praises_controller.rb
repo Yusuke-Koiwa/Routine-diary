@@ -12,6 +12,7 @@ class PraisesController < ApplicationController
   end
 
   private
+
   def set_task
     @task = Task.find(params[:task_id])
   end
@@ -20,5 +21,4 @@ class PraisesController < ApplicationController
     flash[:alert] = "ログインが必要です"
     redirect_to new_user_session_path
   end
-
 end

@@ -1,28 +1,18 @@
 class RoutinesController < ApplicationController
-  before_action :move_to_login_page,  unless: :user_signed_in?
-  before_action :set_routine, only: [:update, :destroy]
-  before_action :correct_user?, only: [:update, :destroy]
+  before_action :move_to_login_page, unless: :user_signed_in?
+  before_action :set_routine, only: %i[update destroy]
+  before_action :correct_user?, only: %i[update destroy]
+  before_action :max_routines?, only: :create
 
   def create
-    if current_user.routines.length >= 3
-      flash[:alert] = "登録できる習慣は３つまでです"
-      redirect_to user_path(current_user)
-    else
-      @routine = Routine.new(routine_params)
-      if @routine.save
-        redirect_to user_path(current_user)
-      else
-        redirect_to user_path(current_user)
-      end
-    end
+    @routine = Routine.new(routine_params)
+    @routine.save
+    redirect_to user_path(current_user)
   end
 
   def update
-    if @routine.update(routine_params)
-      redirect_to user_path(current_user)
-    else
-      redirect_to user_path(current_user)
-    end
+    @routine.update(routine_params)
+    redirect_to user_path(current_user)
   end
 
   def destroy
@@ -31,6 +21,7 @@ class RoutinesController < ApplicationController
   end
 
   private
+
   def move_to_login_page
     flash[:alert] = "ログインが必要です"
     redirect_to new_user_session_path
@@ -46,10 +37,16 @@ class RoutinesController < ApplicationController
 
   def correct_user?
     routine = Routine.find(params[:id])
-    if routine.user.id != current_user.id
-      flash[:alert] = "権限がありません"
-      redirect_to user_path(routine.user)
-    end
+    return if routine.user == current_user
+
+    flash[:alert] = "権限がありません"
+    redirect_to user_path(routine.user)
   end
 
+  def max_routines?
+    return unless current_user.routines.length >= 3
+
+    flash[:alert] = "登録できる習慣は３つまでです"
+    redirect_to user_path(current_user)
+  end
 end

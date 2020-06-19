@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe RoutineLog do
-
   describe '#create' do
     let(:category) { create(:category) }
 
@@ -33,7 +32,5 @@ describe RoutineLog do
       routine_log.valid?
       expect(routine_log.errors[:task]).to include("を入力してください")
     end
-
   end
-
 end

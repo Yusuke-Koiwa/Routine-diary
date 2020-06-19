@@ -13,23 +13,21 @@ class Task < ApplicationRecord
 
   def create_routine_log(user)
     user.routines.each do |r|
-      self.routine_logs.create(category_id: r.category_id, content: r.content, date: self.date)
+      routine_logs.create(category_id: r.category_id, content: r.content, date: date)
     end
   end
 
   def create_notification_praise(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and task_id = ? and action = ? ", current_user.id, user_id, id, 'praise'])
-    if temp.blank?
-      notification = current_user.active_notifications.new(
-        task_id: id,
-        visited_id: user_id,
-        action: 'praise'
-      )
-       if notification.visitor_id == notification.visited_id
-        notification.checked = true
-      end
-      notification.save if notification.valid?
-    end
+    return unless temp.blank?
+
+    notification = current_user.active_notifications.new(
+      task_id: id,
+      visited_id: user_id,
+      action: 'praise'
+    )
+    notification.checked = true if notification.visitor_id == notification.visited_id
+    notification.save if notification.valid?
   end
 
   def create_notification_comment(current_user, comment_id)
@@ -47,10 +45,7 @@ class Task < ApplicationRecord
       visited_id: visited_id,
       action: 'comment'
     )
-    if notification.visitor_id == notification.visited_id
-      notification.checked = true
-    end
+    notification.checked = true if notification.visitor_id == notification.visited_id
     notification.save if notification.valid?
   end
-
 end

@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe Task do
-
   describe '#create' do
-
     it "score, body, date, start_time, user_idの全てが存在すれば登録できる" do
       task = build(:task)
       expect(task).to be_valid
@@ -42,7 +40,5 @@ describe Task do
       task.valid?
       expect(task.errors[:user]).to include("を入力してください")
     end
-
   end
-
 end

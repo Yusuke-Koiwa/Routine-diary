@@ -3,15 +3,16 @@ class RelationshipsController < ApplicationController
   before_action :set_user
 
   def create
-    following = current_user.follow(@user)
+    current_user.follow(@user)
     @user.create_notification_follow(current_user)
   end
 
   def destroy
-    following = current_user.unfollow(@user)
+    current_user.unfollow(@user)
   end
 
   private
+
   def set_user
     @user = User.find(params[:user_id])
   end
@@ -20,5 +21,4 @@ class RelationshipsController < ApplicationController
     flash[:alert] = "ログインが必要です"
     redirect_to new_user_session_path
   end
-
 end

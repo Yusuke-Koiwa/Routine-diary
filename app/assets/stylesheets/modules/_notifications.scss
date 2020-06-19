@@ -35,6 +35,10 @@
   &__contents {
     padding-top: 50px;
 
+    p {
+      text-align: center;
+    }
+
     .notification-box {
       border-bottom: 1px solid lightgray;
       padding: 10px;

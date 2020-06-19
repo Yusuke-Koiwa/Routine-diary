@@ -5,9 +5,7 @@ describe UsersController do
   let(:admin) { create(:user, admin: true) }
 
   describe '#destroy' do
-
     context 'ログインしている場合' do
-        
       context "管理ユーザーである場合" do
         before do
           login admin
@@ -16,9 +14,9 @@ describe UsersController do
         context "他ユーザーを削除する場合" do
           it 'userを削除する' do
             params = { id: user.id }
-            expect {
+            expect do
               delete :destroy, params: params
-            }.to change(User, :count).by(-1)
+            end.to change(User, :count).by(-1)
           end
           it 'トップページにリダイレクトする' do
             params = { id: user.id }
@@ -30,9 +28,9 @@ describe UsersController do
         context "管理ユーザー自身を削除しようとした場合" do
           it 'userを削除しない' do
             params = { id: admin.id }
-            expect {
+            expect do
               delete :destroy, params: params
-            }.to_not change(User, :count)
+            end.to_not change(User, :count)
           end
           it 'トップページにリダイレクトする' do
             params = { id: admin.id }
@@ -40,7 +38,6 @@ describe UsersController do
             expect(response).to redirect_to(root_path)
           end
         end
-
       end
 
       context '管理ユーザーでない場合' do
@@ -49,9 +46,9 @@ describe UsersController do
         end
         it 'userを削除しない' do
           params = { id: other.id }
-          expect {
+          expect do
             delete :destroy, params: params
-          }.to_not change(User, :count)
+          end.to_not change(User, :count)
         end
         it 'トップページにリダイレクトする' do
           params = { id: other.id }
@@ -59,15 +56,14 @@ describe UsersController do
           expect(response).to redirect_to(root_path)
         end
       end
-
     end
 
     context 'ログインしていない場合' do
       it 'userを削除しない' do
         params = { id: user.id }
-        expect {
+        expect do
           delete :destroy, params: params
-        }.to_not change(User, :count)
+        end.to_not change(User, :count)
       end
       it 'ログインページにリダイレクトする' do
         params = { id: user.id }
@@ -75,7 +71,5 @@ describe UsersController do
         expect(response).to redirect_to(new_user_session_path)
       end
     end
-
   end
-
 end

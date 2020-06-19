@@ -3,7 +3,7 @@ feature 'devise', type: :feature do
   let(:user) { create(:user) }
 
   scenario '非ログイン時の表示' do
-    category = create(:category)
+    create(:category)
     visit root_path
     expect(page).to have_no_content('マイページ')
   end
@@ -18,7 +18,7 @@ feature 'devise', type: :feature do
   end
 
   scenario 'ログアウトを実行' do
-    category = create(:category)
+    create(:category)
     visit new_user_session_path
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
@@ -32,7 +32,7 @@ feature 'devise', type: :feature do
 
   scenario '新規登録を実行' do
     visit new_user_registration_path
-    expect {
+    expect do
       fill_in 'user_name', with: 'new_user'
       fill_in 'user_email', with: 'new@test.com'
       fill_in 'user_password', with: '1234567'
@@ -40,7 +40,6 @@ feature 'devise', type: :feature do
       click_button 'アカウント作成'
       new_user = User.last
       expect(current_path).to eq user_path(new_user)
-    }.to change(User, :count).by(1)
+    end.to change(User, :count).by(1)
   end
-
 end
