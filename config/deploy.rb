@@ -26,7 +26,7 @@ set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
 # デプロイ処理が終わった後、Unicornを再起動するための記述
-set :linked_files, %w{config/master.key}
+set :linked_files, %w[config/master.key]
 
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
