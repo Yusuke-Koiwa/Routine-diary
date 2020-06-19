@@ -28,3 +28,29 @@ Metrics/LineLength:
 #'frozen_string_literal: true'を無効
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Lint/UnusedBlockArgument:
+  Exclude:
+    - 'config/deploy.rb'
+
+Lint/UnusedMethodArgument:
+  Exclude:
+    - 'app/uploaders/image_uploader.rb'
+
+Metrics/BlockLength:
+  Max: 67
+  Exclude:
+    - 'spec/**'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'test/test_helper.rb'
+
+Style/ExpandPathArguments:
+  Exclude:
+    - 'config/puma.rb'
+    - 'config/unicorn.rb'
+
