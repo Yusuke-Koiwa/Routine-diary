@@ -79,17 +79,17 @@ class TasksController < ApplicationController
 
   def correct_user?
     task = Task.find(params[:id])
-    unless task.user == current_user || current_user.admin?
-      flash[:alert] = "権限がありません"
-      redirect_to user_path(current_user)
-    end
+    return if task.user == current_user || current_user.admin?
+
+    flash[:alert] = "権限がありません"
+    redirect_to user_path(current_user)
   end
 
   def routine_seted?
-    if current_user.routines.empty?
-      flash[:alert] = "習慣にすることを先に入力してください"
-      redirect_to user_path(current_user)
-    end
+    return unless current_user.routines.empty?
+
+    flash[:alert] = "習慣にすることを先に入力してください"
+    redirect_to user_path(current_user)
   end
 
   def new_task

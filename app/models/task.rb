@@ -19,15 +19,15 @@ class Task < ApplicationRecord
 
   def create_notification_praise(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and task_id = ? and action = ? ", current_user.id, user_id, id, 'praise'])
-    if temp.blank?
-      notification = current_user.active_notifications.new(
-        task_id: id,
-        visited_id: user_id,
-        action: 'praise'
-      )
-      notification.checked = true if notification.visitor_id == notification.visited_id
-      notification.save if notification.valid?
-    end
+    return unless temp.blank?
+
+    notification = current_user.active_notifications.new(
+      task_id: id,
+      visited_id: user_id,
+      action: 'praise'
+    )
+    notification.checked = true if notification.visitor_id == notification.visited_id
+    notification.save if notification.valid?
   end
 
   def create_notification_comment(current_user, comment_id)

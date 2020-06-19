@@ -68,17 +68,7 @@ Style/ExpandPathArguments:
     - 'config/puma.rb'
     - 'config/unicorn.rb'
 
-# Offense count: 10
-# Configuration parameters: MinBodyLength.
-Style/GuardClause:
-  Exclude:
-    - 'app/controllers/routines_controller.rb'
-    - 'app/controllers/tasks_controller.rb'
-    - 'app/controllers/users_controller.rb'
-    - 'app/models/comment.rb'
-    - 'app/models/routine.rb'
-    - 'app/models/task.rb'
-    - 'app/models/user.rb'
+
 
 # Offense count: 8
 Style/IdenticalConditionalBranches:

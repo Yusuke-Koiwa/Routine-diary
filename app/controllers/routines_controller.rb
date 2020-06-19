@@ -43,16 +43,16 @@ class RoutinesController < ApplicationController
 
   def correct_user?
     routine = Routine.find(params[:id])
-    if routine.user.id != current_user.id
-      flash[:alert] = "権限がありません"
-      redirect_to user_path(routine.user)
-    end
+    return if routine.user == current_user
+
+    flash[:alert] = "権限がありません"
+    redirect_to user_path(routine.user)
   end
 
   def max_routines?
-    if current_user.routines.length >= 3
-      flash[:alert] = "登録できる習慣は３つまでです"
-      redirect_to user_path(current_user)
-    end
+    return unless current_user.routines.length >= 3
+
+    flash[:alert] = "登録できる習慣は３つまでです"
+    redirect_to user_path(current_user)
   end
 end
