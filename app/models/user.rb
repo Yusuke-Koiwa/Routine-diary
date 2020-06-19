@@ -33,10 +33,8 @@ class User < ApplicationRecord
 
     tasks = tasks.where(score: "done")
     latest_day = tasks.first.date
-
     if latest_day >= Date.yesterday
-      num = 0
-      calc_continuous_days(tasks, num)
+      calc_continuous_days(tasks, 0)
     else
       0
     end

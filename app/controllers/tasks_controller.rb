@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show update destroy praised_users_index]
   before_action :correct_user?, only: %i[update destroy]
   before_action :routine_seted?, only: :create
+  before_action :new_task, only: :create
 
   def index
     @q = Task.ransack(params[:q])
@@ -18,9 +19,6 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(new_task_params)
-    @task.start_time = @task.start_time.to_datetime
-    @task.start_time = @task.date.to_date
     if Task.where(date: @task.date, user_id: current_user.id).length >= 1
       flash[:alert] = "データが既に存在します"
       redirect_to user_path(current_user)
@@ -92,5 +90,11 @@ class TasksController < ApplicationController
       flash[:alert] = "習慣にすることを先に入力してください"
       redirect_to user_path(current_user)
     end
+  end
+
+  def new_task
+    @task = Task.new(new_task_params)
+    @task.start_time = @task.start_time.to_datetime
+    @task.start_time = @task.date.to_date
   end
 end
