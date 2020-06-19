@@ -33,11 +33,6 @@ Lint/UselessAssignment:
     - 'spec/models/relationship_spec.rb'
     - 'spec/models/routine_spec.rb'
 
-# Offense count: 4
-# Configuration parameters: IgnoredMethods.
-Metrics/AbcSize:
-  Max: 31
-
 # Offense count: 40
 # Configuration parameters: CountComments, ExcludedMethods.
 # ExcludedMethods: refine
@@ -67,8 +62,6 @@ Style/ExpandPathArguments:
   Exclude:
     - 'config/puma.rb'
     - 'config/unicorn.rb'
-
-
 
 # Offense count: 3
 # Cop supports --auto-correct.

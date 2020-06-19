@@ -4,9 +4,10 @@ class TasksController < ApplicationController
   before_action :correct_user?, only: %i[update destroy]
   before_action :routine_seted?, only: :create
   before_action :new_task, only: :create
+  before_action :search, only: :index
+  before_action :category_search, only: :category_index
 
   def index
-    @q = Task.ransack(params[:q])
     @tasks = @q.result(distinct: true).includes(:user, :routine_logs, routine_logs: :category).where("tasks.date <= ?", Date.today)
                .where.not(score: nil).order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
   end
@@ -49,8 +50,6 @@ class TasksController < ApplicationController
   end
 
   def category_index
-    @category = Category.find(params[:id])
-    @q = @category.tasks.ransack(params[:q])
     @tasks = @q.result(distinct: true).where("tasks.date <= ?", Date.today).includes(:user, :routine_logs, routine_logs: :category)
                .order(date: "DESC").order("created_at DESC").page(params[:page]).per(10)
   end
@@ -93,5 +92,14 @@ class TasksController < ApplicationController
     @task = Task.new(new_task_params)
     @task.start_time = @task.start_time.to_datetime
     @task.start_time = @task.date.to_date
+  end
+
+  def search
+    @q = Task.ransack(params[:q])
+  end
+
+  def category_search
+    @category = Category.find(params[:id])
+    @q = @category.tasks.ransack(params[:q])
   end
 end
