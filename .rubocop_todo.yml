@@ -70,12 +70,6 @@ Style/ExpandPathArguments:
 
 
 
-# Offense count: 8
-Style/IdenticalConditionalBranches:
-  Exclude:
-    - 'app/controllers/routines_controller.rb'
-    - 'app/controllers/tasks_controller.rb'
-
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: PreferredDelimiters.

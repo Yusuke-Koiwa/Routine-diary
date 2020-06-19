@@ -21,13 +21,10 @@ class TasksController < ApplicationController
   def create
     if Task.where(date: @task.date, user_id: current_user.id).length >= 1
       flash[:alert] = "データが既に存在します"
-      redirect_to user_path(current_user)
     elsif @task.save
       @task.create_routine_log(current_user)
-      redirect_to user_path(current_user)
-    else
-      redirect_to user_path(current_user)
     end
+    redirect_to user_path(current_user)
   end
 
   def update

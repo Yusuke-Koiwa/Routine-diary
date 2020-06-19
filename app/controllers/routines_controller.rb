@@ -6,19 +6,13 @@ class RoutinesController < ApplicationController
 
   def create
     @routine = Routine.new(routine_params)
-    if @routine.save
-      redirect_to user_path(current_user)
-    else
-      redirect_to user_path(current_user)
-    end
+    @routine.save
+    redirect_to user_path(current_user)
   end
 
   def update
-    if @routine.update(routine_params)
-      redirect_to user_path(current_user)
-    else
-      redirect_to user_path(current_user)
-    end
+    @routine.update(routine_params)
+    redirect_to user_path(current_user)
   end
 
   def destroy
