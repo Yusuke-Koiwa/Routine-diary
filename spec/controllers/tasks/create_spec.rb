@@ -13,7 +13,7 @@ describe TasksController do
 
       context 'routineが1つ以上設定されている場合' do
         before do
-          routine = create(:routine, user: user)
+          create(:routine, user: user)
         end
 
         context "score, bodyが入力されており、同じdateのレコードが存在しない場合" do
@@ -40,7 +40,7 @@ describe TasksController do
 
         context 'score, bodyが入力されているが、同じdateのレコードが既に存在する場合' do
           before do
-            task = create(:task, user: user, date: Date.today - 1)
+            create(:task, user: user, date: Date.today - 1)
           end
           subject { post :create, params: params }
           it 'taskを保存しない' do

@@ -22,8 +22,7 @@ class User < ApplicationRecord
   validates :password, :password_confirmation, presence: true, on: :create
 
   def done_days(tasks)
-    sorted_tasks = tasks.where("date <= ?", Date.today)
-    day_count = sorted_tasks.where(score: "done").count
+    tasks.where("date <= ?", Date.today).where(score: "done").count
   end
 
   def continuous_days(tasks)

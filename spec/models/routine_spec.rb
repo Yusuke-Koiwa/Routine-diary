@@ -28,9 +28,9 @@ describe Routine do
 
     it "routineを既に3つ登録しているユーザーは、それ以上routineを登録できない" do
       user = create(:user)
-      routine1 = create(:routine, user: user)
-      routine2 = create(:routine, user: user)
-      routine3 = create(:routine, user: user)
+      create(:routine, user: user)
+      create(:routine, user: user)
+      create(:routine, user: user)
       routine4 = build(:routine, user: user)
       routine4.valid?
       expect(routine4.errors[:routine]).to include("登録できる習慣は3つまでです")

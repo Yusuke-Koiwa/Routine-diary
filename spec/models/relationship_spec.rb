@@ -22,7 +22,7 @@ describe Relationship do
     it "user_id, follow_idの組み合わせは一意でなければならない" do
       user = create(:user)
       other = create(:user, email: "fuga@fuga.come")
-      relationship1 = create(:relationship, user: user, follow: other)
+      create(:relationship, user: user, follow: other)
       relationship2 = build(:relationship, user: user, follow: other)
       relationship2.valid?
       expect(relationship2.errors[:follow_id]).to include("はすでに存在します")

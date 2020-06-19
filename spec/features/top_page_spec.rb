@@ -4,7 +4,7 @@ feature 'top_page', type: :feature do
 
   context 'ログインしていない場合' do
     background do
-      category = create(:category)
+      create(:category)
     end
     scenario '詳細ページに遷移出来ない' do
       @task = create(:task)
@@ -17,7 +17,7 @@ feature 'top_page', type: :feature do
 
   context 'ログインしている場合' do
     background do
-      category = create(:category)
+      create(:category)
       @task = create(:task, user: user)
       visit new_user_session_path
       fill_in 'Email', with: user.email

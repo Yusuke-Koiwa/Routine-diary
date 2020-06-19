@@ -8,8 +8,8 @@ describe RoutinesController do
     context 'ログインしている場合' do
       before do
         login user
-        routine1 = create(:routine, user: user)
-        routine2 = create(:routine, user: user)
+        create(:routine, user: user)
+        create(:routine, user: user)
       end
 
       context 'routineの登録数が2つ以下の場合' do
@@ -25,7 +25,7 @@ describe RoutinesController do
 
       context 'routineが既に3つ存在する場合' do
         before do
-          routine3 = create(:routine, user: user)
+          create(:routine, user: user)
         end
         subject { post :create, params: params }
 

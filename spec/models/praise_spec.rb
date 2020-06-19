@@ -22,7 +22,7 @@ describe Praise do
     it "user_id, task_idの組み合わせは一意でなければならない" do
       user = create(:user)
       task = create(:task, user: user)
-      praise1 = create(:praise, user: user, task: task)
+      create(:praise, user: user, task: task)
       praise2 = build(:praise, user: user, task: task)
       praise2.valid?
       expect(praise2.errors[:task_id]).to include("はすでに存在します")
