@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :move_to_login_page, except: %i[index category_index], unless: :user_signed_in?
   before_action :set_task, only: %i[show update destroy praised_users_index]
   before_action :correct_user?, only: %i[update destroy]
-  before_action :routine_seted?, only: [:create]
+  before_action :routine_seted?, only: :create
 
   def index
     @q = Task.ransack(params[:q])
@@ -21,9 +21,7 @@ class TasksController < ApplicationController
     @task = Task.new(new_task_params)
     @task.start_time = @task.start_time.to_datetime
     @task.start_time = @task.date.to_date
-    if @task.score.nil? && @task.body == ""
-      redirect_to user_path(current_user)
-    elsif Task.where(date: @task.date, user_id: current_user.id).length >= 1
+    if Task.where(date: @task.date, user_id: current_user.id).length >= 1
       flash[:alert] = "データが既に存在します"
       redirect_to user_path(current_user)
     elsif @task.save
