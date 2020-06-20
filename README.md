@@ -17,20 +17,20 @@ Docker ( MySQL / Nginx / puma )
 ### 本番環境
 MySQL / Nginx / Unicorn   
 AWS ( EC2 / S3 / Route53 / ACM / ELB )  
-Capistrano  
+CircleCI ( RuboCop → Rspec → Capistranoによる自動デプロイ )  
 
 ## アプリケーションの機能一覧
-- アカウント登録 / ログイン機能 (devise)
+- アカウント登録 / ログイン機能 ( devise )
 - 管理ユーザー機能
 - 記事の一覧 / 詳細表示・投稿・編集・削除機能
-- ページネーション機能 (kaminari)
-- カレンダー上に投稿を一覧表示する機能 (simple calendar)
-- 画像アップロード機能 (CarrierWave)
-- 投稿の検索機能 (ransack)
+- ページネーション機能 ( kaminari, jScroll )
+- カレンダー上に投稿を一覧表示する機能 ( simple calendar )
+- 画像アップロード機能 ( CarrierWave )
+- 投稿の検索機能 ( ransack )
 - 投稿のカテゴリー別表示機能
 - コメント機能
-- いいね機能 (非同期通信)
-- フォロー機能 (非同期通信)
+- いいね機能 ( 非同期通信 )
+- フォロー機能 ( 非同期通信 )
 - 通知機能
 
 ## 使用イメージ
