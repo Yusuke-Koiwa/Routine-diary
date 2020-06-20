@@ -36,12 +36,11 @@ jobs:
     environment:
       RAILS_ENV: test
     steps:
-      - checkout
       - setup
       - run: mv config/database.yml.ci config/database.yml 
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
-      
+
       - run:
           name: Rubocop
           command: bundle exec rubocop
@@ -68,7 +67,6 @@ jobs:
   deploy:
     executor: default
     steps:
-      - checkout
       - setup
       - add_ssh_keys:
           fingerprints:
