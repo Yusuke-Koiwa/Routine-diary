@@ -56,16 +56,15 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
-
-
   deploy:
     machine:
       image: circleci/classic:edge
     steps:
       - checkout
+      - setup
       - add_ssh_keys:
-        fingerprints:
-          - "97:35:37:f9:50:3f:19:91:04:16:7c:78:81:c1:16:52"
+          fingerprints:
+            - "97:35:37:f9:50:3f:19:91:04:16:7c:78:81:c1:16:52"
       - deploy:
           name: Capistrano_deploy
           command: bundle exec cap production deploy
