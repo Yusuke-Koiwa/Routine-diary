@@ -45,8 +45,9 @@ Capistrano
 ## 今後の開発予定
 - グループ機能
 - 継続日数ランキング機能
-- ~開発環境にDockerを導入~ → 6/16 実装済み
-- CircleCIでCI/CDパイプライン構築
+- ~開発環境にDockerを導入~ → 6/16 実装完了
+- ~CircleCIでCI/CDパイプライン構築~ → 6/20 実装完了
+- 本番環境にDockerを導入
 - フロントエンドにVue.jsもしくはReactを使用
 ## DB設計
 <img width="75%" alt="DB設計" src="https://user-images.githubusercontent.com/63847712/84472801-de36fd00-acc2-11ea-8874-164cb5a262f8.png">
