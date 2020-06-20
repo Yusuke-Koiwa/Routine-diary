@@ -60,10 +60,19 @@ jobs:
           fingerprints:
             - "97:35:37:f9:50:3f:19:91:04:16:7c:78:81:c1:16:52"
 
+  deploy:
+    name: Capistrano deploy
+    command:
+      bundle exec cap production deploy
+
+workflows:
+  version: 2
+  build_and_deploy
+    jobs:
+      - build
       - deploy:
-          name: Capistrano deploy
-          command: |
-            if [ "${CIRCLE_BRANCH}" != "master" ]; then
-              exit 0
-            fi
-            bundle exec cap production deploy
+        requires:
+          - build
+        filters:
+          branches:
+            only: master
