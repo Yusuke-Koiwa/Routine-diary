@@ -35,12 +35,12 @@ CircleCI ( RuboCop → Rspec → Capistranoによる自動デプロイ )
 
 ## 使用イメージ
 1. マイページにカレンダーが表示されます。まずは画面上部から習慣にしたいことを設定します。  
-<img width="33%" alt="1_マイページ" src="https://user-images.githubusercontent.com/63847712/84460139-1d098a80-aca4-11ea-9602-172f38f3ac35.png"> <img width="33%" alt="2_習慣設定" src="https://user-images.githubusercontent.com/63847712/84460741-acfc0400-aca5-11ea-83dd-b5c037406bf9.png"> <img width="33%" alt="3_習慣設定後" src="https://user-images.githubusercontent.com/63847712/84460837-e7fe3780-aca5-11ea-8e05-9c90e179aaf6.png">  
+<img width="30%" alt="1_マイページ" src="https://user-images.githubusercontent.com/63847712/84460139-1d098a80-aca4-11ea-9602-172f38f3ac35.png"> <img width="30%" alt="2_習慣設定" src="https://user-images.githubusercontent.com/63847712/84460741-acfc0400-aca5-11ea-83dd-b5c037406bf9.png"> <img width="30%" alt="3_習慣設定後" src="https://user-images.githubusercontent.com/63847712/84460837-e7fe3780-aca5-11ea-8e05-9c90e179aaf6.png">  
   
 2. 日付をクリックし、習慣を実行できたか毎日記録していきます。  
-<img width="33%" alt="4_実績入力" src="https://user-images.githubusercontent.com/63847712/84461071-82f71180-aca6-11ea-9f67-911ad47d6cee.png"> <img width="33%" alt="5_実績入力後" src="https://user-images.githubusercontent.com/63847712/84461556-b4241180-aca7-11ea-8a0b-6dab58a8324c.png">  
+<img width="30%" alt="4_実績入力" src="https://user-images.githubusercontent.com/63847712/84461071-82f71180-aca6-11ea-9f67-911ad47d6cee.png"> <img width="30%" alt="5_実績入力後" src="https://user-images.githubusercontent.com/63847712/84461556-b4241180-aca7-11ea-8a0b-6dab58a8324c.png">  
   
-3. 先ほどの投稿が一覧ページに公開されます。ここで他ユーザーの投稿を確認することができます。<br>そこからユーザーの活動を確認してフォローしたり、投稿にコメントやグッジョブ（いいね）をすることができます。<br><img width="33%" alt="6_投稿後トップページ" src="https://user-images.githubusercontent.com/63847712/84461632-e5044680-aca7-11ea-9b17-59f9bda03268.png"> <img width="33%" alt="8_ユーザー詳細" src="https://user-images.githubusercontent.com/63847712/84462942-437ef400-acab-11ea-9dd5-af15bd80c2d7.png"> <img width="33%" alt="9_コメント" src="https://user-images.githubusercontent.com/63847712/84463367-842b3d00-acac-11ea-8af9-64c7964f77e9.png">
+3. 先ほどの投稿が一覧ページに公開されます。ここで他ユーザーの投稿を確認することができます。<br>そこからユーザーの活動を確認してフォローしたり、投稿にコメントやグッジョブ（いいね）をすることができます。<br><img width="30%" alt="6_投稿後トップページ" src="https://user-images.githubusercontent.com/63847712/84461632-e5044680-aca7-11ea-9b17-59f9bda03268.png"> <img width="30%" alt="8_ユーザー詳細" src="https://user-images.githubusercontent.com/63847712/84462942-437ef400-acab-11ea-9dd5-af15bd80c2d7.png"> <img width="30%" alt="9_コメント" src="https://user-images.githubusercontent.com/63847712/84463367-842b3d00-acac-11ea-8af9-64c7964f77e9.png">
 
 ## 今後の開発予定
 - グループ機能
@@ -49,5 +49,9 @@ CircleCI ( RuboCop → Rspec → Capistranoによる自動デプロイ )
 - ~CircleCIでCI/CDパイプライン構築~ → 6/20 実装完了
 - 本番環境にDockerを導入
 - フロントエンドにVue.jsもしくはReactを使用
+
+## インフラ構成図
+<img width="75%" alt="infrastructure" src="https://user-images.githubusercontent.com/63847712/85555785-383fa700-b661-11ea-88ae-7efc0fa6ca80.png">
+
 ## DB設計
 <img width="75%" alt="DB設計" src="https://user-images.githubusercontent.com/63847712/84472801-de36fd00-acc2-11ea-8874-164cb5a262f8.png">
