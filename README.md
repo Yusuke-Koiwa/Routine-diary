@@ -16,7 +16,7 @@ Haml / SCSS / JavaScript / jQuery
 Docker ( MySQL / Nginx / puma )
 ### 本番環境
 MySQL / Nginx / Unicorn   
-AWS ( EC2 / S3 / Route53 / ACM / ELB )  
+AWS ( EC2 / S3 / Route53 / ELB / CloudFront / CloudWatch / SNS )  
 CircleCI ( RuboCop → Rspec → Capistranoによる自動デプロイ )  
 
 ## アプリケーションの機能一覧
